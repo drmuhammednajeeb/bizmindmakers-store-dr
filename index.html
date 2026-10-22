@@ -28,6 +28,8 @@
             --bg-section: #f4f6f4;
             --text-color: #2b2b2b;
             --border-color: #e5e7eb;
+            --ice-bg: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+            --ice-border: #cbd5e1;
         }
 
         * {
@@ -209,7 +211,7 @@
             font-size: 11px;
         }
 
-        /* شريط التصنيفات الفرعي */
+        /* شريط التصنيفات الفرعي النصي */
         .sub-nav {
             background-color: #ffffff;
             border-bottom: 1px solid var(--border-color);
@@ -227,6 +229,7 @@
             font-size: 13px;
             font-weight: 600;
             transition: color 0.2s;
+            cursor: pointer;
         }
 
         .sub-nav a:hover {
@@ -235,7 +238,76 @@
             padding-bottom: 2px;
         }
 
-        /* السلايدر الزجاجي الشفاف (Glassmorphism Featured Carousel) */
+        /* قسم تسوق حسب الفئة (مع مسافات واسعة ومريحة للأيقونات الثلجية) */
+        .categories-section {
+            max-width: 1200px;
+            margin: 35px auto 20px auto;
+            padding: 0 20px;
+            text-align: right;
+        }
+
+        .categories-section h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-right: 4px solid var(--accent-color);
+            padding-right: 10px;
+        }
+
+        .categories-grid {
+            display: flex;
+            gap: 35px; /* مسافات أوسع بين الخانات */
+            overflow-x: auto;
+            padding: 10px 10px 20px 10px;
+            justify-content: center; /* توسيط الأيقونات في الشاشات الكبيرة */
+            flex-wrap: wrap;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .category-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .category-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--ice-bg);
+            border: 2px solid var(--ice-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .category-item:hover .category-circle {
+            background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 20px rgba(22, 61, 43, 0.15);
+        }
+
+        .category-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+            text-align: center;
+            max-width: 100px;
+        }
+
+        /* السلايدر الزجاجي الشفاف */
         .hero-slider {
             position: relative;
             background: rgba(255, 255, 255, 0.85);
@@ -349,7 +421,7 @@
             border-radius: 4px;
         }
 
-        /* الكاردات الترويجية المزدوجة أسفل البنر */
+        /* الكاردات الترويجية المزدوجة */
         .promo-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -679,18 +751,18 @@
         </div>
     </header>
 
-    <!-- شريط التصنيفات الفرعي -->
+    <!-- شريط التصنيفات الفرعي النصي -->
     <nav class="sub-nav">
-        <a href="#products-grid">كل المنتجات</a>
-        <a href="#products-grid">عصير الصبار</a>
-        <a href="#products-grid">المكملات</a>
-        <a href="#products-grid">العناية بالشعر والبشرة</a>
-        <a href="#products-grid">التخسيس ونزول الوزن</a>
+        <a onclick="filterByCategory('all')">كل المنتجات</a>
+        <a onclick="filterByCategory('drinks')">عصير الصبار</a>
+        <a onclick="filterByCategory('supplements')">المكملات</a>
+        <a onclick="filterByCategory('care')">العناية بالشعر والبشرة</a>
+        <a onclick="filterByCategory('weight')">التخسيس ونزول الوزن</a>
     </nav>
 
-    <!-- السلايدر الزجاجي الشفاف مع عرض المنتجات المميزة بحجم أكبر -->
+    <!-- السلايدر الزجاجي الشفاف -->
     <section class="hero-slider">
-        <!-- الشريحة الأولى: عصير الألوفيرا جل -->
+        <!-- الشريحة الأولى -->
         <div class="slide active">
             <div class="slide-content">
                 <h1>الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
@@ -701,8 +773,7 @@
                 <img src="815.webp" alt="عصير الألوفيرا جل">
             </div>
         </div>
-
-        <!-- الشريحة الثانية: مزيل العرق آلو إيفر شيلد -->
+        <!-- الشريحة الثانية -->
         <div class="slide">
             <div class="slide-content">
                 <h1>مزيل العرق <span>آلو إيفر شيلد</span></h1>
@@ -713,8 +784,7 @@
                 <img src="067.webp" alt="مزيل العرق آلو إيفر شيلد">
             </div>
         </div>
-
-        <!-- الشريحة الثالثة: فوريفر برايت جل الأسنان -->
+        <!-- الشريحة الثالثة -->
         <div class="slide">
             <div class="slide-content">
                 <h1>ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
@@ -734,6 +804,33 @@
         </div>
     </section>
 
+    <!-- قسم تسوق حسب الفئة (أيقونات ثلجية بمسافات أوسع) -->
+    <section class="categories-section">
+        <h3>تسوق حسب الفئة</h3>
+        <div class="categories-grid">
+            <div class="category-item" onclick="filterByCategory('all')">
+                <div class="category-circle">🛍️</div>
+                <div class="category-title">كل المنتجات</div>
+            </div>
+            <div class="category-item" onclick="filterByCategory('drinks')">
+                <div class="category-circle">🌿</div>
+                <div class="category-title">عصير الصبار</div>
+            </div>
+            <div class="category-item" onclick="filterByCategory('supplements')">
+                <div class="category-circle">💊</div>
+                <div class="category-title">المكملات</div>
+            </div>
+            <div class="category-item" onclick="filterByCategory('care')">
+                <div class="category-circle">✨</div>
+                <div class="category-title">العناية بالشعر والبشرة</div>
+            </div>
+            <div class="category-item" onclick="filterByCategory('weight')">
+                <div class="category-circle">⚖️</div>
+                <div class="category-title">التخسيس ونزول الوزن</div>
+            </div>
+        </div>
+    </section>
+
     <!-- الكاردات الترويجية المزدوجة -->
     <section class="promo-section">
         <div class="promo-card">
@@ -750,7 +847,7 @@
     <main class="container">
         <h2 class="section-title" id="products-grid">أبرز المنتجات المختارة</h2>
         <div class="products-grid" id="products-container">
-            <!-- يتم تعبئة المنتجات تلقائياً هنا -->
+            <!-- يتم تعبئة المنتجات تلقائياً هنا حسب القسم -->
         </div>
     </main>
 
@@ -768,7 +865,7 @@
     </div>
 
     <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%20منتجات فوريفر" 
+    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D9%81%D9%88%D8%B1%D9%8A%D9%81%D8%B1" 
        target="_blank" 
        class="whatsapp-float" 
        title="تواصل معنا عبر واتساب">
@@ -785,27 +882,28 @@
         <p>جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة وعرض المنتجات والسلايدر -->
+    <!-- سكريبت البرمجة وتصنيف المنتجات -->
     <script>
+        // مصفوفة المنتجات مع تصنيفاتها الدقيقة (drinks, supplements, care, weight)
         const products = [
-            { id: 1, name: "عصير الألوفيرا جل النقي", price: 133, img: "815.webp" },
-            { id: 2, name: "مزيل العرق آلو إيفر شيلد", price: 38, img: "067.webp" },
-            { id: 3, name: "فوريفر ألو ليبس مع جوجوبا", price: 19, img: "022.webp" },
-            { id: 4, name: "صابون الأفوكادو للوجه والجسم", price: 39, img: "284.webp" },
-            { id: 5, name: "فوريفر برايت جل الأسنان", price: 39, img: "028.webp" },
-            { id: 6, name: "ألوفيرا جيلي", price: 76, img: "061.webp" },
-            { id: 7, name: "فوريفر ألو سكراب", price: 80, img: "238.webp" },
-            { id: 8, name: "ألو إم إس إم جل", price: 123, img: "205.webp" },
-            { id: 9, name: "ألو بروبوليس كريم", price: 101, img: "051.webp" },
-            { id: 10, name: "ألو موستيرايزنق لوشن", price: 76, img: "063.webp" },
-            { id: 11, name: "غسول ألو للجسم", price: 122, img: "646.webp" },
-            { id: 12, name: "لوشن ألو للجسم", price: 122, img: "647.webp" },
-            { id: 13, name: "ألو فيرست", price: 101, img: "040.webp" },
-            { id: 14, name: "شامبو ألو جوجوبا", price: 102, img: "640.webp" },
-            { id: 15, name: "كريم الترطيب العميق", price: 153, img: "651.webp" },
-            { id: 16, name: "ألو أكتيفيتور", price: 77, img: "612.webp" },
-            { id: 17, name: "عطر فوريفر مالوسي", price: 152, img: "644.webp" },
-            { id: 18, name: "عطر فوريفر الوفا", price: 152, img: "643.webp" }
+            { id: 1, name: "عصير الألوفيرا جل النقي", price: 133, img: "815.webp", category: "drinks" },
+            { id: 2, name: "مزيل العرق آلو إيفر شيلد", price: 38, img: "067.webp", category: "care" },
+            { id: 3, name: "فوريفر ألو ليبس مع جوجوبا", price: 19, img: "022.webp", category: "care" },
+            { id: 4, name: "صابون الأفوكادو للوجه والجسم", price: 39, img: "284.webp", category: "care" },
+            { id: 5, name: "فوريفر برايت جل الأسنان", price: 39, img: "028.webp", category: "care" },
+            { id: 6, name: "ألوفيرا جيلي", price: 76, img: "061.webp", category: "care" },
+            { id: 7, name: "فوريفر ألو سكراب", price: 80, img: "238.webp", category: "care" },
+            { id: 8, name: "ألو إم إس إم جل", price: 123, img: "205.webp", category: "care" },
+            { id: 9, name: "ألو بروبوليس كريم", price: 101, img: "051.webp", category: "care" },
+            { id: 10, name: "ألو موستيرايزنق لوشن", price: 76, img: "063.webp", category: "care" },
+            { id: 11, name: "غسول ألو للجسم", price: 122, img: "646.webp", category: "care" },
+            { id: 12, name: "لوشن ألو للجسم", price: 122, img: "647.webp", category: "care" },
+            { id: 13, name: "ألو فيرست", price: 101, img: "040.webp", category: "care" },
+            { id: 14, name: "شامبو ألو جوجوبا", price: 102, img: "640.webp", category: "care" },
+            { id: 15, name: "كريم الترطيب العميق", price: 153, img: "651.webp", category: "care" },
+            { id: 16, name: "ألو أكتيفيتور", price: 77, img: "612.webp", category: "care" },
+            { id: 17, name: "عطر فوريفر مالوسي", price: 152, img: "644.webp", category: "care" },
+            { id: 18, name: "عطر فوريفر الوفا", price: 152, img: "643.webp", category: "care" }
         ];
 
         let cart = [];
@@ -815,7 +913,7 @@
             if (!grid) return;
 
             if (productsArray.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 20px;">عذراً، لم يتم العثور على منتج مطابق لبحثك.</p>';
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 20px;">عذراً، لم يتم العثور على منتجات في هذا القسم حالياً.</p>';
                 return;
             }
 
@@ -841,6 +939,17 @@
             grid.innerHTML = html;
         }
 
+        // دالة التصفية حسب الفئة
+        function filterByCategory(category) {
+            if (category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // البحث الفوري
         function filterProducts() {
             const query = document.getElementById('search-input').value.trim().toLowerCase();
             const filtered = products.filter(p => p.name.toLowerCase().includes(query));
@@ -947,7 +1056,7 @@
                 dots[slideIndex - 1].classList.add("active");
             }
             
-            slideTimer = setTimeout(showSlides, 5000); // التبديل كل 5 ثوانٍ
+            slideTimer = setTimeout(showSlides, 5000);
         }
 
         function currentSlide(n) {
