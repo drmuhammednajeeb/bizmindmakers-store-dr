@@ -235,16 +235,18 @@
             padding-bottom: 2px;
         }
 
-        /* تنسيقات السلايدر المتحرك (Hero Slider Carousel) */
+        /* السلايدر الزجاجي الشفاف (Glassmorphism Featured Carousel) */
         .hero-slider {
             position: relative;
-            background: linear-gradient(135deg, #163d2b, #1f573d);
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
             margin: 20px 4%;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            min-height: 220px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            min-height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -253,40 +255,57 @@
         .slide {
             display: none;
             width: 100%;
-            text-align: center;
-            padding: 45px 20px;
+            padding: 30px 40px;
             animation: fadeIn 0.8s ease-in-out;
         }
 
         .slide.active {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
         }
 
-        .slide h1 {
-            font-size: 26px;
+        .slide-content {
+            flex: 1;
+            text-align: right;
+        }
+
+        .slide-content h1 {
+            font-size: 24px;
             font-weight: 800;
             margin-bottom: 10px;
-            color: #ffffff;
+            color: var(--primary-color);
         }
 
-        .slide h1 span {
+        .slide-content h1 span {
             color: var(--accent-color);
         }
 
-        .slide p {
+        .slide-content p {
             font-size: 14px;
-            opacity: 0.9;
+            color: #555;
             margin-bottom: 20px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .slide-img-box {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .slide-img-box img {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
         }
 
         .slide-btn {
             background-color: var(--accent-color);
             color: #ffffff;
             border: none;
-            padding: 9px 22px;
+            padding: 9px 24px;
             border-radius: 6px;
             font-weight: 700;
             font-size: 13px;
@@ -301,14 +320,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
+            from { opacity: 0.3; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        /* نقاط التنقل الخاصة بالسلايدر */
+        /* نقاط التنقل التفاعلية */
         .slider-dots {
             position: absolute;
-            bottom: 15px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -316,18 +335,18 @@
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(255,255,255,0.4);
+            width: 8px;
+            height: 8px;
+            background: #cbd5e1;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .dot.active {
-            background: var(--accent-color);
-            width: 25px;
-            border-radius: 5px;
+            background: var(--primary-color);
+            width: 22px;
+            border-radius: 4px;
         }
 
         /* الكاردات الترويجية المزدوجة أسفل البنر */
@@ -616,6 +635,13 @@
                 gap: 3px;
                 text-align: center;
             }
+            .slide.active {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .slide-content {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -662,25 +688,42 @@
         <a href="#products-grid">التخسيس ونزول الوزن</a>
     </nav>
 
-    <!-- السلايدر المتحرك التلقائي في الواجهة (Hero Carousel Slider) -->
+    <!-- السلايدر الزجاجي الشفاف مع عرض المنتجات المميزة بحجم أكبر -->
     <section class="hero-slider">
-        <!-- الشريحة 1 -->
+        <!-- الشريحة الأولى: عصير الألوفيرا جل -->
         <div class="slide active">
-            <h1>منتجات شركة فوريفر ليفينج في السعودية</h1>
-            <p>اكتشف أفضل المكملات الغذائية الطبيعية، عصير الألوفيرا النقي، ومنتجات العناية الشخصية مع توصيل سريع.</p>
-            <a href="#products-grid" class="slide-btn">تسوق الآن</a>
+            <div class="slide-content">
+                <h1>الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
+                <p>متوفر الآن في السوق السعودي! تصميم جديد وعصري، بنفس الفوائد الغذائية الأصلية التي تثق بها.</p>
+                <a href="#products-grid" class="slide-btn">اطلب الآن 🛒</a>
+            </div>
+            <div class="slide-img-box">
+                <img src="815.webp" alt="عصير الألوفيرا جل">
+            </div>
         </div>
-        <!-- الشريحة 2 -->
+
+        <!-- الشريحة الثانية: مزيل العرق آلو إيفر شيلد -->
         <div class="slide">
-            <h1>اختاري روتين العناية <span>اليومية</span></h1>
-            <p>مع منتجات Sonya و Infinite by Forever لبشرة نضرة ومشرقة طوال اليوم.</p>
-            <a href="#products-grid" class="slide-btn">استعرض المنتجات</a>
+            <div class="slide-content">
+                <h1>مزيل العرق <span>آلو إيفر شيلد</span></h1>
+                <p>حماية طوال اليوم - بدون أملاح الألومنيوم، بخلاصة الألوفيرا الطبيعية المنعشة.</p>
+                <a href="#products-grid" class="slide-btn">اكتشف المنتج ✨</a>
+            </div>
+            <div class="slide-img-box">
+                <img src="067.webp" alt="مزيل العرق آلو إيفر شيلد">
+            </div>
         </div>
-        <!-- الشريحة 3 -->
+
+        <!-- الشريحة الثالثة: فوريفر برايت جل الأسنان -->
         <div class="slide">
-            <h1>ابدأ رحلتك <span>الصحية</span></h1>
-            <p>باقة متكاملة وعصائر طبيعية أصلية 100% مدعمة بالفيتامينات الأساسية.</p>
-            <a href="#products-grid" class="slide-btn">اطلب الآن</a>
+            <div class="slide-content">
+                <h1>ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
+                <p>جل الأسنان المفضل بالصبار والعكبر (البروبوليس) لتنظيف عميق وحماية فائقة.</p>
+                <a href="#products-grid" class="slide-btn">تسوق الآن 🌿</a>
+            </div>
+            <div class="slide-img-box">
+                <img src="028.webp" alt="فوريفر برايت جل الأسنان">
+            </div>
         </div>
 
         <!-- نقاط التنقل التفاعلية -->
@@ -725,7 +768,7 @@
     </div>
 
     <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D9%81%D9%88%D8%B1%D9%8A%D9%81%D8%B1" 
+    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%20منتجات فوريفر" 
        target="_blank" 
        class="whatsapp-float" 
        title="تواصل معنا عبر واتساب">
@@ -742,9 +785,8 @@
         <p>جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة (عرض المنتجات، البحث، والسلايدر التلقائي) -->
+    <!-- سكريبت البرمجة وعرض المنتجات والسلايدر -->
     <script>
-        // مصفوفة المنتجات الـ 18 كاملة
         const products = [
             { id: 1, name: "عصير الألوفيرا جل النقي", price: 133, img: "815.webp" },
             { id: 2, name: "مزيل العرق آلو إيفر شيلد", price: 38, img: "067.webp" },
@@ -768,7 +810,6 @@
 
         let cart = [];
 
-        // عرض المنتجات
         function renderProducts(productsArray) {
             const grid = document.getElementById('products-container');
             if (!grid) return;
@@ -800,14 +841,12 @@
             grid.innerHTML = html;
         }
 
-        // البحث الفوري
         function filterProducts() {
             const query = document.getElementById('search-input').value.trim().toLowerCase();
             const filtered = products.filter(p => p.name.toLowerCase().includes(query));
             renderProducts(filtered);
         }
 
-        // إضافة للسلة
         function addToCart(productName, price, qtyInputId) {
             const qtyInput = document.getElementById(qtyInputId);
             const qty = qtyInput ? parseInt(qtyInput.value) : 1;
@@ -885,7 +924,7 @@
             }
         }
 
-        // نظام السلايدر التلقائي (Auto Slider Carousel)
+        // نظام السلايدر التلقائي الزجاجي
         let slideIndex = 0;
         let slideTimer;
 
@@ -908,7 +947,7 @@
                 dots[slideIndex - 1].classList.add("active");
             }
             
-            slideTimer = setTimeout(showSlides, 4500); // الانتقال تلقائياً كل 4.5 ثانية
+            slideTimer = setTimeout(showSlides, 5000); // التبديل كل 5 ثوانٍ
         }
 
         function currentSlide(n) {
@@ -927,10 +966,9 @@
             slides[slideIndex].classList.add("active");
             dots[slideIndex].classList.add("active");
             
-            slideTimer = setTimeout(showSlides, 4500);
+            slideTimer = setTimeout(showSlides, 5000);
         }
 
-        // تشغيل المنتجات والسلايدر عند فتح الصفحة
         window.onload = function() {
             renderProducts(products);
             showSlides();
