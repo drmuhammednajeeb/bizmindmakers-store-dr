@@ -235,30 +235,99 @@
             padding-bottom: 2px;
         }
 
-        /* البنر الرئيسي العريض */
+        /* تنسيقات السلايدر المتحرك (Hero Slider Carousel) */
         .hero-slider {
+            position: relative;
             background: linear-gradient(135deg, #163d2b, #1f573d);
             color: #ffffff;
-            padding: 45px 20px;
-            text-align: center;
             margin: 20px 4%;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero-slider h1 {
+        .slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            padding: 45px 20px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide h1 {
             font-size: 26px;
             font-weight: 800;
             margin-bottom: 10px;
+            color: #ffffff;
         }
 
-        .hero-slider p {
+        .slide h1 span {
+            color: var(--accent-color);
+        }
+
+        .slide p {
             font-size: 14px;
             opacity: 0.9;
             margin-bottom: 20px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .slide-btn {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 9px 22px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: opacity 0.3s;
+        }
+
+        .slide-btn:hover {
+            opacity: 0.9;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        /* نقاط التنقل الخاصة بالسلايدر */
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent-color);
+            width: 25px;
+            border-radius: 5px;
         }
 
         /* الكاردات الترويجية المزدوجة أسفل البنر */
@@ -593,10 +662,33 @@
         <a href="#products-grid">التخسيس ونزول الوزن</a>
     </nav>
 
-    <!-- البنر الرئيسي -->
+    <!-- السلايدر المتحرك التلقائي في الواجهة (Hero Carousel Slider) -->
     <section class="hero-slider">
-        <h1>منتجات شركة فوريفر ليفينج في السعودية</h1>
-        <p>اكتشف أفضل المكملات الغذائية الطبيعية، عصير الألوفيرا النقي، ومنتجات العناية الشخصية مع توصيل سريع لجميع مدن المملكة.</p>
+        <!-- الشريحة 1 -->
+        <div class="slide active">
+            <h1>منتجات شركة فوريفر ليفينج في السعودية</h1>
+            <p>اكتشف أفضل المكملات الغذائية الطبيعية، عصير الألوفيرا النقي، ومنتجات العناية الشخصية مع توصيل سريع.</p>
+            <a href="#products-grid" class="slide-btn">تسوق الآن</a>
+        </div>
+        <!-- الشريحة 2 -->
+        <div class="slide">
+            <h1>اختاري روتين العناية <span>اليومية</span></h1>
+            <p>مع منتجات Sonya و Infinite by Forever لبشرة نضرة ومشرقة طوال اليوم.</p>
+            <a href="#products-grid" class="slide-btn">استعرض المنتجات</a>
+        </div>
+        <!-- الشريحة 3 -->
+        <div class="slide">
+            <h1>ابدأ رحلتك <span>الصحية</span></h1>
+            <p>باقة متكاملة وعصائر طبيعية أصلية 100% مدعمة بالفيتامينات الأساسية.</p>
+            <a href="#products-grid" class="slide-btn">اطلب الآن</a>
+        </div>
+
+        <!-- نقاط التنقل التفاعلية -->
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
     </section>
 
     <!-- الكاردات الترويجية المزدوجة -->
@@ -611,10 +703,10 @@
         </div>
     </section>
 
-    <!-- عرض المنتجات (تُعرض ديناميكياً عبر الجافاسكريبت لضمان عدم وجود أخطاء في العرض أو البحث) -->
+    <!-- عرض المنتجات -->
     <main class="container">
-        <h2 class="section-title">أبرز المنتجات المختارة</h2>
-        <div class="products-grid" id="products-grid">
+        <h2 class="section-title" id="products-grid">أبرز المنتجات المختارة</h2>
+        <div class="products-grid" id="products-container">
             <!-- يتم تعبئة المنتجات تلقائياً هنا -->
         </div>
     </main>
@@ -650,7 +742,7 @@
         <p>جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة وعرض المنتجات ديناميكياً -->
+    <!-- سكريبت البرمجة (عرض المنتجات، البحث، والسلايدر التلقائي) -->
     <script>
         // مصفوفة المنتجات الـ 18 كاملة
         const products = [
@@ -676,9 +768,9 @@
 
         let cart = [];
 
-        // دالة عرض المنتجات في الصفحة
+        // عرض المنتجات
         function renderProducts(productsArray) {
-            const grid = document.getElementById('products-grid');
+            const grid = document.getElementById('products-container');
             if (!grid) return;
 
             if (productsArray.length === 0) {
@@ -708,14 +800,14 @@
             grid.innerHTML = html;
         }
 
-        // دالة البحث الفوري والدقيق
+        // البحث الفوري
         function filterProducts() {
             const query = document.getElementById('search-input').value.trim().toLowerCase();
             const filtered = products.filter(p => p.name.toLowerCase().includes(query));
             renderProducts(filtered);
         }
 
-        // دالة إضافة المنتج إلى السلة
+        // إضافة للسلة
         function addToCart(productName, price, qtyInputId) {
             const qtyInput = document.getElementById(qtyInputId);
             const qty = qtyInput ? parseInt(qtyInput.value) : 1;
@@ -736,13 +828,11 @@
             alert("تمت إضافة المنتج إلى السلة بنجاح! 🛒");
         }
 
-        // دالة حذف منتج من السلة
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCartUI();
         }
 
-        // دالة تحديث واجهة السلة
         function updateCartUI() {
             const cartCount = document.getElementById('cart-count');
             const cartItemsList = document.getElementById('cartItemsList');
@@ -788,7 +878,6 @@
             checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
         }
 
-        // إظهار/إخفاء نافذة السلة
         function toggleCartModal() {
             const modal = document.getElementById('cartModal');
             if (modal) {
@@ -796,9 +885,55 @@
             }
         }
 
-        // تحميل المنتجات أول ما يفتح الموقع
+        // نظام السلايدر التلقائي (Auto Slider Carousel)
+        let slideIndex = 0;
+        let slideTimer;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            
+            if (slides[slideIndex - 1]) {
+                slides[slideIndex - 1].classList.add("active");
+                dots[slideIndex - 1].classList.add("active");
+            }
+            
+            slideTimer = setTimeout(showSlides, 4500); // الانتقال تلقائياً كل 4.5 ثانية
+        }
+
+        function currentSlide(n) {
+            clearTimeout(slideTimer);
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            slideIndex = n;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex].classList.add("active");
+            dots[slideIndex].classList.add("active");
+            
+            slideTimer = setTimeout(showSlides, 4500);
+        }
+
+        // تشغيل المنتجات والسلايدر عند فتح الصفحة
         window.onload = function() {
             renderProducts(products);
+            showSlides();
         };
     </script>
 </body>
