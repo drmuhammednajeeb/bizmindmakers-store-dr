@@ -128,7 +128,6 @@
             font-weight: 600;
             font-size: 13px;
             transition: color 0.2s;
-            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -233,13 +232,13 @@
             cursor: pointer;
         }
 
-        .sub-nav a:hover {
+        .sub-nav a:hover, .sub-nav a.active-cat {
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 2px;
         }
 
-        /* قسم تسوق حسب الفئة */
+        /* قسم تسوق حسب الفئة (بمسافات واسعة وأيقونات ثلجية) */
         .categories-section {
             max-width: 1200px;
             margin: 35px auto 20px auto;
@@ -397,7 +396,6 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* نقاط التنقل التفاعلية */
         .slider-dots {
             position: absolute;
             bottom: 12px;
@@ -554,32 +552,6 @@
 
         .btn-add-cart:hover {
             background-color: #0e2a1d;
-        }
-
-        /* إشعار الإضافة العائم (Toast Notification) بدلاً من نافذة alert المزعجة */
-        .toast-notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #163d2b;
-            color: #ffffff;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 3000;
-            font-size: 13px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-
-        .toast-notification.show {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* نافذة السلة المنبثقة */
@@ -760,7 +732,7 @@
                 <div class="logo-text">متجر <span>د. محمد النبهاني</span></div>
             </a>
             <nav class="nav-links">
-                <a onclick="filterByCategory('all')">الرئيسية</a>
+                <a href="#">الرئيسية</a>
                 <a href="#products-grid">المنتجات</a>
             </nav>
         </div>
@@ -780,16 +752,16 @@
 
     <!-- شريط التصنيفات الفرعي النصي -->
     <nav class="sub-nav">
-        <a onclick="filterByCategory('all')">كل المنتجات</a>
-        <a onclick="filterByCategory('drinks')">عصير الصبار</a>
-        <a onclick="filterByCategory('supplements')">المكملات</a>
-        <a onclick="filterByCategory('care')">العناية بالشعر والبشرة</a>
-        <a onclick="filterByCategory('weight')">التخسيس ونزول الوزن</a>
+        <a onclick="filterByCategory('all')" class="active-cat" id="cat-all">كل المنتجات</a>
+        <a onclick="filterByCategory('drinks')" id="cat-drinks">عصير الصبار</a>
+        <a onclick="filterByCategory('supplements')" id="cat-supplements">المكملات</a>
+        <a onclick="filterByCategory('care')" id="cat-care">العناية بالشعر والبشرة</a>
+        <a onclick="filterByCategory('weight')" id="cat-weight">التخسيس ونزول الوزن</a>
+        <a onclick="filterByCategory('packs')" id="cat-packs">المجموعات</a>
     </nav>
 
     <!-- السلايدر الزجاجي الشفاف -->
     <section class="hero-slider">
-        <!-- الشريحة الأولى -->
         <div class="slide active">
             <div class="slide-content">
                 <h1>الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
@@ -800,7 +772,6 @@
                 <img src="815.webp" alt="عصير الألوفيرا جل">
             </div>
         </div>
-        <!-- الشريحة الثانية -->
         <div class="slide">
             <div class="slide-content">
                 <h1>مزيل العرق <span>آلو إيفر شيلد</span></h1>
@@ -811,7 +782,6 @@
                 <img src="067.webp" alt="مزيل العرق آلو إيفر شيلد">
             </div>
         </div>
-        <!-- الشريحة الثالثة -->
         <div class="slide">
             <div class="slide-content">
                 <h1>ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
@@ -823,7 +793,6 @@
             </div>
         </div>
 
-        <!-- نقاط التنقل التفاعلية -->
         <div class="slider-dots">
             <span class="dot active" onclick="currentSlide(0)"></span>
             <span class="dot" onclick="currentSlide(1)"></span>
@@ -831,7 +800,7 @@
         </div>
     </section>
 
-    <!-- قسم تسوق حسب الفئة -->
+    <!-- قسم تسوق حسب الفئة (بأيقونات ثلجية ومسافات أوسع) -->
     <section class="categories-section">
         <h3>تسوق حسب الفئة</h3>
         <div class="categories-grid">
@@ -855,6 +824,10 @@
                 <div class="category-circle">⚖️</div>
                 <div class="category-title">التخسيس ونزول الوزن</div>
             </div>
+            <div class="category-item" onclick="filterByCategory('packs')">
+                <div class="category-circle">🎁</div>
+                <div class="category-title">المجموعات</div>
+            </div>
         </div>
     </section>
 
@@ -872,16 +845,11 @@
 
     <!-- عرض المنتجات -->
     <main class="container">
-        <h2 class="section-title" id="products-grid">أبرز المنتجات المختارة</h2>
+        <h2 class="section-title" id="products-grid">قائمة المنتجات الكاملة</h2>
         <div class="products-grid" id="products-container">
-            <!-- يتم تعبئة المنتجات تلقائياً هنا -->
+            <!-- يتم تعبئة المنتجات تلقائياً عبر الجافاسكريبت -->
         </div>
     </main>
-
-    <!-- إشعار الإضافة العائم (Toast Notification) -->
-    <div id="toastNotification" class="toast-notification">
-        <span>✅</span> <span id="toastText">تمت إضافة المنتج إلى السلة بنجاح!</span>
-    </div>
 
     <!-- نافذة السلة المنبثقة -->
     <div class="cart-modal" id="cartModal">
@@ -892,12 +860,12 @@
                 <p style="text-align: center; color: #888;">السلة فارغة حالياً</p>
             </div>
             <div class="cart-total" id="cartTotal">الإجمالي: 0 ر.س</div>
-            <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;" onclick="toggleCartModal()">إتمام الطلب عبر الواتساب 📱</a>
+            <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر الواتساب 📱</a>
         </div>
     </div>
 
     <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%20منتجات فوريفر" 
+    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D9%81%D9%88%D8%B1%D9%8A%D9%81%D8%B1" 
        target="_blank" 
        class="whatsapp-float" 
        title="تواصل معنا عبر واتساب">
@@ -914,45 +882,64 @@
         <p>جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة (إلغاء التنبيه الإجباري وإضافة الإشعار العائم السلس) -->
+    <!-- سكريبت البرمجة والمنتجات الـ 31 متكاملة بدون تنبيهات مزعجة ومع حفظ السلة -->
     <script>
         const products = [
-            { id: 1, name: "عصير الألوفيرا جل النقي", price: 133, img: "815.webp", category: "drinks" },
-            { id: 2, name: "مزيل العرق آلو إيفر شيلد", price: 38, img: "067.webp", category: "care" },
-            { id: 3, name: "فوريفر ألو ليبس مع جوجوبا", price: 19, img: "022.webp", category: "care" },
-            { id: 4, name: "صابون الأفوكادو للوجه والجسم", price: 39, img: "284.webp", category: "care" },
-            { id: 5, name: "فوريفر برايت جل الأسنان", price: 39, img: "028.webp", category: "care" },
-            { id: 6, name: "ألوفيرا جيلي", price: 76, img: "061.webp", category: "care" },
-            { id: 7, name: "فوريفر ألو سكراب", price: 80, img: "238.webp", category: "care" },
-            { id: 8, name: "ألو إم إس إم جل", price: 123, img: "205.webp", category: "care" },
-            { id: 9, name: "ألو بروبوليس كريم", price: 101, img: "051.webp", category: "care" },
-            { id: 10, name: "ألو موستيرايزنق لوشن", price: 76, img: "063.webp", category: "care" },
-            { id: 11, name: "غسول ألو للجسم", price: 122, img: "646.webp", category: "care" },
-            { id: 12, name: "لوشن ألو للجسم", price: 122, img: "647.webp", category: "care" },
-            { id: 13, name: "ألو فيرست", price: 101, img: "040.webp", category: "care" },
-            { id: 14, name: "شامبو ألو جوجوبا", price: 102, img: "640.webp", category: "care" },
-            { id: 15, name: "كريم الترطيب العميق", price: 153, img: "651.webp", category: "care" },
-            { id: 16, name: "ألو أكتيفيتور", price: 77, img: "612.webp", category: "care" },
-            { id: 17, name: "عطر فوريفر مالوسي", price: 152, img: "644.webp", category: "care" },
-            { id: 18, name: "عطر فوريفر الوفا", price: 152, img: "643.webp", category: "care" }
+            { id: 1, name: "مجموعة بداية رحلتك (Start Your Journey Pack)", price: 1600, img: "634.webp", category: "packs" },
+            { id: 2, name: "فوريفر رويال جيلي (Forever Royal Jelly)", price: 168, img: "036.webp", category: "supplements" },
+            { id: 3, name: "سيروم المرطب (Hydrating Serum)", price: 163, img: "618.webp", category: "care" },
+            { id: 4, name: "فيتولايز (Vitolize Women)", price: 159, img: "374.webp", category: "supplements" },
+            { id: 5, name: "فوريفر أكتيك سي (Forever Arctic Sea)", price: 168, img: "376.webp", category: "supplements" },
+            { id: 6, name: "فوريفر فايبر (Forever Fiber)", price: 153, img: "464.webp", category: "supplements" },
+            { id: 7, name: "كريم المرطب العميق (Deep Moisturizing Cream)", price: 153, img: "651.webp", category: "care" },
+            { id: 8, name: "فوريفر غارسينيا بلس (Forever Garcinia Plus)", price: 146, img: "071.webp", category: "weight" },
+            { id: 9, name: "ألو بيو-سللوز ماسك (Aloe Bio-cellulose Mask)", price: 144, img: "664.webp", category: "care" },
+            { id: 10, name: "ألو إم إس إم جل (Aloe MSM Gel)", price: 123, img: "205.webp", category: "care" },
+            { id: 11, name: "زيت الشعر المغذي (Nourishing Hair Oil)", price: 126, img: "642.webp", category: "care" },
+            { id: 12, name: "شامبو ألو جوجوبا (Aloe Jojoba Shampoo)", price: 102, img: "640.webp", category: "care" },
+            { id: 13, name: "فوريفر دايلي (Forever Daily)", price: 93, img: "439.png", category: "supplements" },
+            { id: 14, name: "ألوفيرا جيلي (Aloe Vera Gelly)", price: 76, img: "061.webp", category: "care" },
+            { id: 15, name: "ألو هيت لوشن (Aloe Heat Lotion)", price: 76, img: "063.webp", category: "care" },
+            { id: 16, name: "ألو بروبوليس كريم (Aloe Propolis Creme)", price: 101, img: "051.webp", category: "care" },
+            { id: 17, name: "فوريفر برايت جل الأسنان (Forever Bright Toothgel)", price: 39, img: "028.webp", category: "care" },
+            { id: 18, name: "ألو لبس مع جوجوبا (Aloe Lips with Jojoba)", price: 18, img: "022.webp", category: "care" },
+            { id: 19, name: "فوريفر جارليك-ثايم (Forever Garlic-Thyme)", price: 93, img: "065.webp", category: "supplements" },
+            { id: 20, name: "فوريفر ثيرم (Forever Therm)", price: 146, img: "463.webp", category: "weight" },
+            { id: 21, name: "ألو أكتيفيتور (Aloe Activator)", price: 77, img: "612.webp", category: "care" },
+            { id: 22, name: "فوريفر ألو سكراب (Forever Aloe Scrub)", price: 80, img: "238.webp", category: "care" },
+            { id: 23, name: "ألو فيرست (Aloe First)", price: 101, img: "040.webp", category: "care" },
+            { id: 24, name: "ألو موسترايزينغ لوشن (Aloe Moisturizing Lotion)", price: 76, img: "063.webp", category: "care" },
+            { id: 25, name: "ألو إيفر-شيلد (Aloe Ever-Shield Deodorant)", price: 38, img: "067.webp", category: "care" },
+            { id: 26, name: "ألو أفوكادو فايس آند بودي صوب (Aloe Avocado Face & Body Soap)", price: 39, img: "284.webp", category: "care" },
+            { id: 27, name: "فوريفر ألُوفا (Forever Alofa)", price: 152, img: "643.webp", category: "care" },
+            { id: 28, name: "فوريفر مالوسي (Forever Malosi)", price: 152, img: "644.webp", category: "care" },
+            { id: 29, name: "ألو بودي واش (Aloe Body Wash)", price: 122, img: "646.webp", category: "care" },
+            { id: 30, name: "ألو بودي لوشن (Aloe Body Lotion)", price: 122, img: "647.webp", category: "care" },
+            { id: 31, name: "فوريفر ألو فيرا جل (Forever Aloe Vera Gel)", price: 133, img: "815.webp", category: "drinks" }
         ];
 
-        let cart = [];
+        let cart = JSON.parse(localStorage.getItem('forever_cart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('forever_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
 
         function renderProducts(productsArray) {
             const grid = document.getElementById('products-container');
             if (!grid) return;
 
             if (productsArray.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 20px;">عذراً، لم يتم العثور على منتجات في هذا القسم حالياً.</p>';
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 20px;">عذراً، لم يتم العثور على منتجات مطابقة.</p>';
                 return;
             }
 
             let html = '';
             productsArray.forEach(p => {
+                const imgTag = p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : `<div style="height:170px; display:flex; align-items:center; justify-content:center; background:#f0f4f8; border-radius:8px; font-size:40px; margin-bottom:12px;">📦</div>`;
                 html += `
                     <div class="product-card">
-                        <img src="${p.img}" alt="${p.name}">
+                        ${imgTag}
                         <div>
                             <h3>${p.name}</h3>
                             <div class="price">${p.price} ر.س</div>
@@ -971,6 +958,10 @@
         }
 
         function filterByCategory(category) {
+            document.querySelectorAll('.sub-nav a').forEach(el => el.classList.remove('active-cat'));
+            const activeLink = document.getElementById('cat-' + category);
+            if (activeLink) activeLink.classList.add('active-cat');
+
             if (category === 'all') {
                 renderProducts(products);
             } else {
@@ -985,7 +976,7 @@
             renderProducts(filtered);
         }
 
-        // دالة الإضافة إلى السلة بدون أي نوافذ منبثقة مزعجة (مع إشعار عائم Toast)
+        // إضافة إلى السلة بدون نافذة تنبيه مزعجة
         function addToCart(productName, price, qtyInputId) {
             const qtyInput = document.getElementById(qtyInputId);
             const qty = qtyInput ? parseInt(qtyInput.value) : 1;
@@ -999,27 +990,12 @@
                 cart.push({ name: productName, price: price, qty: qty });
             }
 
-            updateCartUI();
-            showToast(`تمت إضافة "${productName}" إلى السلة 🛒`);
-        }
-
-        // دالة إظهار الإشعار العائم المؤقت
-        function showToast(message) {
-            const toast = document.getElementById('toastNotification');
-            const toastText = document.getElementById('toastText');
-            if (!toast || !toastText) return;
-
-            toastText.textContent = message;
-            toast.classList.add('show');
-
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500); // يختفي تلقائياً بعد 2.5 ثانية
+            saveCart();
         }
 
         function removeFromCart(index) {
             cart.splice(index, 1);
-            updateCartUI();
+            saveCart();
         }
 
         function updateCartUI() {
@@ -1045,26 +1021,29 @@
 
                     itemsHtml += `
                         <div class="cart-item-row">
-                            <span><b>${item.name}</b> (×${item.qty})</span>
-                            <span>${itemTotal} ر.س <button class="btn-remove" onclick="removeFromCart(${index})">حذف</button></span>
+                            <span><b>${item.name}</b> (${item.qty} × ${item.price} ر.س)</span>
+                            <div>
+                                <span style="margin-left: 10px; font-weight:bold;">${itemTotal} ر.س</span>
+                                <button class="btn-remove" onclick="removeFromCart(${index})">حذف</button>
+                            </div>
                         </div>
                     `;
                 });
                 cartItemsList.innerHTML = itemsHtml;
                 checkoutBtn.style.display = 'block';
+
+                let message = "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n";
+                cart.forEach(item => {
+                    message += `▪️ ${item.name} | الكمية: ${item.qty} | السعر: ${item.price * item.qty} ر.س\n`;
+                });
+                message += `\n💰 الإجمالي الكلي: ${totalPrice} ر.س`;
+
+                const phone = "966546723820";
+                checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
             }
 
             cartCount.textContent = totalCount;
             cartTotal.textContent = "الإجمالي: " + totalPrice + " ر.س";
-
-            let message = "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n";
-            cart.forEach(item => {
-                message += `▪️ ${item.name} | الكمية: ${item.qty} | السعر: ${item.price * item.qty} ر.س\n`;
-            });
-            message += `\n💰 الإجمالي الكلي: ${totalPrice} ر.س`;
-
-            const phone = "966546723820";
-            checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
         }
 
         function toggleCartModal() {
@@ -1081,6 +1060,8 @@
             let slides = document.getElementsByClassName("slide");
             let dots = document.getElementsByClassName("dot");
             
+            if (slides.length === 0) return;
+
             for (let i = 0; i < slides.length; i++) {
                 slides[i].classList.remove("active");
             }
@@ -1112,8 +1093,10 @@
                 dots[i].classList.remove("active");
             }
             
-            slides[slideIndex].classList.add("active");
-            dots[slideIndex].classList.add("active");
+            if (slides[slideIndex]) {
+                slides[slideIndex].classList.add("active");
+                dots[slideIndex].classList.add("active");
+            }
             
             slideTimer = setTimeout(showSlides, 5000);
         }
@@ -1121,6 +1104,7 @@
         window.onload = function() {
             renderProducts(products);
             showSlides();
+            updateCartUI();
         };
     </script>
 </body>
