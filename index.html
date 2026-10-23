@@ -238,7 +238,7 @@
             padding-bottom: 2px;
         }
 
-        /* قسم تسوق حسب الفئة (بمسافات واسعة وأيقونات ثلجية) */
+        /* قسم تسوق حسب الفئة */
         .categories-section {
             max-width: 1200px;
             margin: 35px auto 20px auto;
@@ -554,6 +554,34 @@
             background-color: #0e2a1d;
         }
 
+        /* إشعار الإضافة العائم (Toast Notification) - يظهر في أسفل اليمين */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 3000;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border-right: 4px solid var(--accent-color);
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* نافذة السلة المنبثقة */
         .cart-modal {
             display: none;
@@ -638,7 +666,7 @@
             font-size: 15px;
         }
 
-        /* زر الواتساب العائم */
+        /* زر الواتساب العائم - في أسفل اليسار */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -800,7 +828,7 @@
         </div>
     </section>
 
-    <!-- قسم تسوق حسب الفئة (بأيقونات ثلجية ومسافات أوسع) -->
+    <!-- قسم تسوق حسب الفئة -->
     <section class="categories-section">
         <h3>تسوق حسب الفئة</h3>
         <div class="categories-grid">
@@ -851,6 +879,11 @@
         </div>
     </main>
 
+    <!-- إشعار الإضافة العائم (Toast Notification) - على اليمين -->
+    <div id="toastNotification" class="toast-notification">
+        <span>✨</span> <span id="toastText">تمت إضافة المنتج إلى السلة بنجاح!</span>
+    </div>
+
     <!-- نافذة السلة المنبثقة -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
@@ -864,8 +897,8 @@
         </div>
     </div>
 
-    <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D9%81%D9%88%D8%B1%D9%8A%D9%81%D8%B1" 
+    <!-- زر الواتساب العائم - على اليسار -->
+    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20منتجات فوريفر" 
        target="_blank" 
        class="whatsapp-float" 
        title="تواصل معنا عبر واتساب">
@@ -882,7 +915,7 @@
         <p>جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة والمنتجات الـ 31 متكاملة بدون تنبيهات مزعجة ومع حفظ السلة -->
+    <!-- سكريبت البرمجة -->
     <script>
         const products = [
             { id: 1, name: "مجموعة بداية رحلتك (Start Your Journey Pack)", price: 1600, img: "634.webp", category: "packs" },
@@ -976,7 +1009,6 @@
             renderProducts(filtered);
         }
 
-        // إضافة إلى السلة بدون نافذة تنبيه مزعجة
         function addToCart(productName, price, qtyInputId) {
             const qtyInput = document.getElementById(qtyInputId);
             const qty = qtyInput ? parseInt(qtyInput.value) : 1;
@@ -991,6 +1023,20 @@
             }
 
             saveCart();
+            showToast(`تمت إضافة "${productName}" إلى السلة 🛒`);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const toastText = document.getElementById('toastText');
+            if (!toast || !toastText) return;
+
+            toastText.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
         }
 
         function removeFromCart(index) {
