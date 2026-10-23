@@ -277,16 +277,33 @@
             font-size: 11px;
         }
 
-        /* شريط التصنيفات الفرعي النصي */
+        /* شريط التصنيفات الفرعي النصي المتجاوب تماماً مع الهواتف */
         .sub-nav {
             background-color: #ffffff;
             border-bottom: 1px solid var(--border-color);
             padding: 10px 4%;
             display: flex;
-            justify-content: center;
-            gap: 25px;
+            justify-content: flex-start;
+            gap: 20px;
             overflow-x: auto;
             white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+
+        @media (min-width: 901px) {
+            .sub-nav {
+                justify-content: center;
+            }
+        }
+
+        .sub-nav::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .sub-nav::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 2px;
         }
 
         .sub-nav a {
@@ -296,6 +313,8 @@
             font-weight: 600;
             transition: color 0.2s;
             cursor: pointer;
+            flex-shrink: 0;
+            padding: 2px 4px;
         }
 
         .sub-nav a:hover, .sub-nav a.active-cat {
@@ -893,7 +912,7 @@
         </div>
     </header>
 
-    <!-- شريط التصنيفات الفرعي النصي -->
+    <!-- شريط التصنيفات الفرعي النصي المتجاوب مع التمرير الأفقي للهواتف -->
     <nav class="sub-nav">
         <a onclick="filterByCategory('all')" class="active-cat" id="cat-all">كل المنتجات</a>
         <a onclick="filterByCategory('drinks')" id="cat-drinks">عصير الصبار</a>
@@ -1032,7 +1051,7 @@
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة مع ترقيم تصاعدي آمن 100% -->
+    <!-- سكريبت البرمجة مع دعم ترقيم السلة وتجاوب الأقسام -->
     <script>
         const products = [
             { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1600, img: "634.webp", category: "packs" },
@@ -1382,7 +1401,6 @@
                 cartTableContainer.innerHTML = tableHtml;
                 checkoutBtn.style.display = 'block';
 
-                // صياغة رسالة واتساب بترقيم تصاعدي آمن 100% (بدون رموز تتشوه)
                 let rawMessage = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
                 
                 cart.forEach((item, index) => {
