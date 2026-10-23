@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title id="meta-title">متجر د. محمد النبهاني | منتجات فوريفر ليفنق الرسمية</title>
-    <meta name="description" content="متجر د. محمد النبهاني الرسمي لمنتجات فوريفر ليفنق في السعودية. عصير الصبار، المكملات الغذائية والعناية بالبشرة.">
+    <meta name="description" content="متجر د. محمد النبهاني الرسمي لمنتجات فوريفر ليفنق في السعودية. عصير الصبار، المكملات الغذائية والعناية بالشعر والبشرة.">
 
     <!-- وسوم المعاينة لوسائل التواصل الاجتماعي (Open Graph) -->
     <meta property="og:title" content="متجر د. محمد النبهاني | منتجات فوريفر ليفنق الرسمية">
@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpg" href="falcon-logo.jpg">
 
-    <!-- تنسيقات التصميم العالمي الفاخر والتجاوبي -->
+    <!-- تنسيقات التصميم العالمي الفاخر والتجاوبي المخصص بدقة -->
     <style>
         :root {
             --primary-color: #163d2b;
@@ -277,23 +277,30 @@
             font-size: 11px;
         }
 
-        /* شريط التصنيفات الفرعي النصي المتجاوب تماماً مع الهواتف */
+        /* شريط التصنيفات الفرعي (متجاوب: متمركز بالكامل في اللابتوب، ويبدأ من اليمين في الجوال) */
         .sub-nav {
             background-color: #ffffff;
             border-bottom: 1px solid var(--border-color);
             padding: 10px 4%;
             display: flex;
-            justify-content: flex-start;
-            gap: 20px;
+            gap: 25px;
             overflow-x: auto;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
         }
 
+        /* إعدادات الشاشات الكبيرة (لابتوب/كمبيوتر): توسيط تام ومتناسق */
         @media (min-width: 901px) {
             .sub-nav {
                 justify-content: center;
+            }
+        }
+
+        /* إعدادات الهواتف الجوالة: يبدأ العرض من اليمين لضمان رؤية جميع الأقسام الأولى */
+        @media (max-width: 900px) {
+            .sub-nav {
+                justify-content: flex-start;
             }
         }
 
@@ -912,7 +919,7 @@
         </div>
     </header>
 
-    <!-- شريط التصنيفات الفرعي النصي المتجاوب مع التمرير الأفقي للهواتف -->
+    <!-- شريط التصنيفات الفرعي المتجاوب بدقة تامية (متوسط في اللابتوب ويبدأ من اليمين في الجوال) -->
     <nav class="sub-nav">
         <a onclick="filterByCategory('all')" class="active-cat" id="cat-all">كل المنتجات</a>
         <a onclick="filterByCategory('drinks')" id="cat-drinks">عصير الصبار</a>
@@ -1051,7 +1058,7 @@
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة مع دعم ترقيم السلة وتجاوب الأقسام -->
+    <!-- سكريبت البرمجة الكامل -->
     <script>
         const products = [
             { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1600, img: "634.webp", category: "packs" },
