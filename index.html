@@ -79,7 +79,7 @@
         }
 
         html[dir="ltr"] .cart-total {
-            text-align: right;
+            text-align: left;
         }
 
         html[dir="ltr"] .toast-notification {
@@ -616,7 +616,7 @@
             background-color: #0e2a1d;
         }
 
-        /* إشعار الإضافة العائم (Toast Notification) - على اليمين */
+        /* إشعار الإضافة العائم (Toast Notification) */
         .toast-notification {
             position: fixed;
             bottom: 30px;
@@ -644,7 +644,7 @@
             transform: translateY(0);
         }
 
-        /* نافذة السلة المنبثقة */
+        /* نافذة السلة المنبثقة بحجم واسع ومريح */
         .cart-modal {
             display: none;
             position: fixed;
@@ -660,58 +660,96 @@
 
         .cart-content {
             background-color: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
+            padding: 30px;
+            border-radius: 14px;
+            width: 95%;
+            max-width: 800px;
+            max-height: 85vh;
             overflow-y: auto;
             position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .cart-close {
             position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 22px;
+            top: 20px;
+            left: 25px;
+            font-size: 24px;
             cursor: pointer;
             font-weight: bold;
             color: #888;
+            transition: color 0.2s;
         }
 
-        .cart-items-list {
-            margin: 15px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 10px 0;
-            max-height: 250px;
+        .cart-close:hover {
+            color: #000;
+        }
+
+        /* جدول السلة الاحترافي الجديد */
+        .cart-table-wrapper {
+            margin: 20px 0;
+            max-height: 350px;
             overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
         }
 
-        .cart-item-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 14px;
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: right;
+        }
+
+        html[dir="ltr"] .cart-table {
+            text-align: left;
+        }
+
+        .cart-table th {
+            background-color: var(--bg-section);
+            color: var(--primary-color);
+            padding: 12px 15px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .cart-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .cart-table tr:last-child td {
+            border-bottom: none;
         }
 
         .btn-remove {
             background: #fee2e2;
             color: #dc2626;
             border: none;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 6px 12px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 12px;
             font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-remove:hover {
+            background: #fecaca;
         }
 
         .cart-total {
             font-weight: 800;
             font-size: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--primary-color);
+            text-align: left;
+        }
+
+        html[dir="ltr"] .cart-total {
+            text-align: right;
         }
 
         .btn-checkout {
@@ -720,11 +758,16 @@
             background-color: #25d366;
             color: white;
             text-align: center;
-            padding: 12px;
+            padding: 14px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
             font-size: 15px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.9;
         }
 
         /* زر الواتساب العائم - على اليسار */
@@ -801,6 +844,10 @@
             }
             .slide-content {
                 text-align: center;
+            }
+            .cart-content {
+                width: 98%;
+                padding: 15px;
             }
         }
     </style>
@@ -948,14 +995,16 @@
         <span>✨</span> <span id="toastText">تمت إضافة المنتج إلى السلة بنجاح!</span>
     </div>
 
-    <!-- نافذة السلة المنبثقة -->
+    <!-- نافذة السلة المنبثقة المنظمة في جدول -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
             <span class="cart-close" onclick="toggleCartModal()">&times;</span>
-            <h3 style="color: var(--primary-color); margin-bottom: 10px;" id="cart-modal-title">سلة المشتريات الخاصة بك</h3>
-            <div class="cart-items-list" id="cartItemsList">
-                <p style="text-align: center; color: #888;" id="cart-empty-text">السلة فارغة حالياً</p>
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;" id="cart-modal-title">سلة المشتريات الخاصة بك</h3>
+            
+            <div class="cart-table-wrapper" id="cartTableContainer">
+                <!-- يتم تعبئة جدول السلة ديناميكياً -->
             </div>
+
             <div class="cart-total" id="cartTotal">الإجمالي: 0 ر.س</div>
             <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر الواتساب 📱</a>
         </div>
@@ -979,15 +1028,10 @@
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة مع دعم اللغتين (عربي / إنجليزي) -->
+    <!-- سكريبت البرمجة -->
     <script>
         const products = [
-            { 
-                id: 1, 
-                arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", 
-                enName: "Start Your Journey Pack", 
-                price: 1600, img: "634.webp", category: "packs" 
-            },
+            { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1600, img: "634.webp", category: "packs" },
             { id: 2, arName: "فوريفر رويال جيلي (Forever Royal Jelly)", enName: "Forever Royal Jelly", price: 168, img: "036.webp", category: "supplements" },
             { id: 3, arName: "سيروم المرطب (Hydrating Serum)", enName: "Hydrating Serum", price: 163, img: "618.webp", category: "care" },
             { id: 4, arName: "فيتولايز (Vitolize Women)", enName: "Vitolize Women", price: 159, img: "374.webp", category: "supplements" },
@@ -1020,7 +1064,6 @@
             { id: 31, arName: "فوريفر ألو فيرا جل (Forever Aloe Vera Gel)", enName: "Forever Aloe Vera Gel", price: 133, img: "815.webp", category: "drinks" }
         ];
 
-        // قاموس الترجمة للغات
         const translations = {
             ar: {
                 metaTitle: "متجر د. محمد النبهاني | منتجات فوريفر ليفنق الرسمية",
@@ -1063,7 +1106,12 @@
                 toastAdded: "تمت إضافة المنتج إلى السلة بنجاح!",
                 deleteBtn: "حذف",
                 sar: "ر.س",
-                total: "الإجمالي"
+                total: "الإجمالي",
+                thProduct: "اسم المنتج",
+                thQty: "الكمية",
+                thPrice: "سعر القطعة",
+                thTotal: "الإجمالي",
+                thAction: "إجراء"
             },
             en: {
                 metaTitle: "Dr. Mohammed Al-Nabhani Store | Official Forever Living Products",
@@ -1106,7 +1154,12 @@
                 toastAdded: "Product added to cart successfully!",
                 deleteBtn: "Delete",
                 sar: "SAR",
-                total: "Total"
+                total: "Total",
+                thProduct: "Product Name",
+                thQty: "Qty",
+                thPrice: "Unit Price",
+                thTotal: "Total",
+                thAction: "Action"
             }
         };
 
@@ -1217,7 +1270,6 @@
 
         function filterByCategory(category) {
             document.querySelectorAll('.sub-nav a').forEach(el => el.classList.remove('active-cat'));
-            // تحديد التصنيف النشط بناءً على الـ ID أو النص
             if (category === 'all') document.getElementById('cat-all').classList.add('active-cat');
             if (category === 'drinks') document.getElementById('cat-drinks').classList.add('active-cat');
             if (category === 'supplements') document.getElementById('cat-supplements').classList.add('active-cat');
@@ -1279,37 +1331,52 @@
 
         function updateCartUI() {
             const cartCount = document.getElementById('cart-count');
-            const cartItemsList = document.getElementById('cartItemsList');
+            const cartTableContainer = document.getElementById('cartTableContainer');
             const cartTotal = document.getElementById('cartTotal');
             const checkoutBtn = document.getElementById('whatsappCheckoutBtn');
             const t = translations[currentLang];
 
-            if (!cartCount || !cartItemsList || !cartTotal || !checkoutBtn) return;
+            if (!cartCount || !cartTableContainer || !cartTotal || !checkoutBtn) return;
 
             let totalCount = 0;
             let totalPrice = 0;
-            let itemsHtml = '';
 
             if (cart.length === 0) {
-                cartItemsList.innerHTML = `<p style="text-align: center; color: #888;">${t.cartEmpty}</p>`;
+                cartTableContainer.innerHTML = `<p style="text-align: center; color: #888; padding: 25px;">${t.cartEmpty}</p>`;
                 checkoutBtn.style.display = 'none';
             } else {
+                let tableHtml = `
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>${t.thProduct}</th>
+                                <th>${t.thQty}</th>
+                                <th>${t.thPrice}</th>
+                                <th>${t.thTotal}</th>
+                                <th>${t.thAction}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
                 cart.forEach((item, index) => {
                     totalCount += item.qty;
                     let itemTotal = item.price * item.qty;
                     totalPrice += itemTotal;
 
-                    itemsHtml += `
-                        <div class="cart-item-row">
-                            <span><b>${item.name}</b> (${item.qty} × ${item.price} ${t.sar})</span>
-                            <div>
-                                <span style="margin-left: 10px; font-weight:bold;">${itemTotal} ${t.sar}</span>
-                                <button class="btn-remove" onclick="removeFromCart(${index})">${t.deleteBtn}</button>
-                            </div>
-                        </div>
+                    tableHtml += `
+                        <tr>
+                            <td><b>${item.name}</b></td>
+                            <td>${item.qty}</td>
+                            <td>${item.price} ${t.sar}</td>
+                            <td><b>${itemTotal} ${t.sar}</b></td>
+                            <td><button class="btn-remove" onclick="removeFromCart(${index})">${t.deleteBtn}</button></td>
+                        </tr>
                     `;
                 });
-                cartItemsList.innerHTML = itemsHtml;
+
+                tableHtml += `</tbody></table>`;
+                cartTableContainer.innerHTML = tableHtml;
                 checkoutBtn.style.display = 'block';
 
                 let message = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
