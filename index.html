@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title id="meta-title">متجر د. محمد النبهاني | منتجات فوريفر ليفنق الرسمية</title>
     <meta name="description" content="متجر د. محمد النبهاني الرسمي لمنتجات فوريفر ليفنق في السعودية. عصير الصبار، المكملات الغذائية والعناية بالبشرة.">
 
@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpg" href="falcon-logo.jpg">
 
-    <!-- تنسيقات التصميم العالمي الفاخر -->
+    <!-- تنسيقات التصميم العالمي الفاخر والتجاوبي -->
     <style>
         :root {
             --primary-color: #163d2b;
@@ -534,10 +534,10 @@
             padding-right: 12px;
         }
 
-        /* شبكة المنتجات */
+        /* شبكة المنتجات المتجاوبة تماماً */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
@@ -656,13 +656,14 @@
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            padding: 10px;
         }
 
         .cart-content {
             background-color: #ffffff;
             padding: 30px;
             border-radius: 14px;
-            width: 95%;
+            width: 100%;
             max-width: 800px;
             max-height: 85vh;
             overflow-y: auto;
@@ -685,10 +686,11 @@
             color: #000;
         }
 
-        /* جدول السلة الاحترافي الجديد */
+        /* جدول السلة الاحترافي الجديد مع دعم التمرير الأفقي للهواتف الصغيرة */
         .cart-table-wrapper {
             margin: 20px 0;
             max-height: 350px;
+            overflow-x: auto;
             overflow-y: auto;
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -699,6 +701,7 @@
             border-collapse: collapse;
             font-size: 13px;
             text-align: right;
+            min-width: 450px;
         }
 
         html[dir="ltr"] .cart-table {
@@ -815,6 +818,7 @@
             margin-right: auto;
         }
 
+        /* Media Queries للتجاوب الفائق على الهواتف */
         @media (max-width: 900px) {
             header {
                 flex-direction: column;
@@ -846,7 +850,7 @@
                 text-align: center;
             }
             .cart-content {
-                width: 98%;
+                width: 100%;
                 padding: 15px;
             }
         }
@@ -1011,7 +1015,7 @@
     </div>
 
     <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/966546723820?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%B9%D9%86%20منتجات فوريفر" 
+    <a href="https://wa.me/966546723820?text=السلام%20عليكم،%20أرغب%20بالاستفسار%20عن%20منتجات%20فوريفر" 
        target="_blank" 
        class="whatsapp-float" 
        title="تواصل معنا عبر واتساب">
@@ -1028,7 +1032,7 @@
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة -->
+    <!-- سكريبت البرمجة مع ترقيم تصاعدي آمن 100% -->
     <script>
         const products = [
             { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1600, img: "634.webp", category: "packs" },
@@ -1100,7 +1104,7 @@
                 addCartBtn: "إضافة إلى السلة",
                 cartModalTitle: "سلة المشتريات الخاصة بك",
                 cartEmpty: "السلة فارغة حالياً",
-                whatsappCheckout: "إتمام الطلب عبر الواتساب 📱",
+                whatsappCheckout: "إتمام الطلب عبر الواتساب",
                 footerDisclaimer: "جميع المنتجات والمكملات الغذائية المعروضة على هذا الموقع ليست دواءً، ولا يُستخدم لتشخيص أو علاج أو منع أي مرض.",
                 footerRights: "جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b>",
                 toastAdded: "تمت إضافة المنتج إلى السلة بنجاح!",
@@ -1148,7 +1152,7 @@
                 addCartBtn: "Add to Cart",
                 cartModalTitle: "Your Shopping Cart",
                 cartEmpty: "Cart is currently empty",
-                whatsappCheckout: "Checkout via WhatsApp 📱",
+                whatsappCheckout: "Checkout via WhatsApp",
                 footerDisclaimer: "All products and dietary supplements displayed on this website are not medicines and are not used to diagnose, treat, cure, or prevent any disease.",
                 footerRights: "All Rights Reserved © Dr. Mohammed Al-Nabhani 2026 | Designed & Developed by <b>BizmindMakers</b>",
                 toastAdded: "Product added to cart successfully!",
@@ -1223,7 +1227,6 @@
 
             document.getElementById('products-grid').textContent = t.productsSectionTitle;
             document.getElementById('cart-modal-title').textContent = t.cartModalTitle;
-            document.getElementById('whatsappCheckoutBtn').textContent = t.whatsappCheckout;
             document.getElementById('footer-disclaimer').textContent = t.footerDisclaimer;
             document.getElementById('footer-rights').innerHTML = t.footerRights;
         }
@@ -1379,18 +1382,22 @@
                 cartTableContainer.innerHTML = tableHtml;
                 checkoutBtn.style.display = 'block';
 
-                let message = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
-                cart.forEach(item => {
-                    message += `▪️ ${item.name} | Qty: ${item.qty} | Price: ${item.price * item.qty} ${t.sar}\n`;
+                // صياغة رسالة واتساب بترقيم تصاعدي آمن 100% (بدون رموز تتشوه)
+                let rawMessage = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
+                
+                cart.forEach((item, index) => {
+                    rawMessage += (index + 1) + ". " + item.name + " (الكمية: " + item.qty + " - السعر: " + (item.price * item.qty) + " " + t.sar + ")\n";
                 });
-                message += `\n💰 ${t.total}: ${totalPrice} ${t.sar}`;
+                
+                rawMessage += "\n" + t.total + ": " + totalPrice + " " + t.sar;
 
                 const phone = "966546723820";
-                checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+                checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(rawMessage);
             }
 
             cartCount.textContent = totalCount;
             cartTotal.textContent = `${t.total}: ${totalPrice} ${t.sar}`;
+            checkoutBtn.textContent = t.whatsappCheckout;
         }
 
         function toggleCartModal() {
