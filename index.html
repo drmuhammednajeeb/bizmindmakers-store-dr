@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="html-root">
+<html lang="ar" dir="rtl" id="html-root" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -12,6 +12,25 @@
     <meta property="og:image" content="falcon-logo.jpg">
     <meta property="og:url" content="https://drmuhammednajeeb.github.io/bizmindmakers-store-dr/">
     <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#163d2b',
+                        accent: '#d4a017',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Chart.js للرسوم البيانية الإدارية -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- خط تجوال المميز للمتاجر العربية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1038,36 +1057,39 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
     <!-- الشريط العلوي -->
-    <div class="top-bar">
-        <span id="topbar-email">البريد الإلكتروني: <a href="mailto:drmuhammed.najeeb2020@gmail.com">drmuhammed.najeeb2020@gmail.com</a> ✉️</span>
-        <div>
+    <div class="top-bar dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700">
+        <span id="topbar-email">البريد الإلكتروني: <a href="mailto:drmuhammed.najeeb2020@gmail.com" class="text-primary dark:text-emerald-400">drmuhammed.najeeb2020@gmail.com</a> ✉️</span>
+        <div class="flex items-center gap-3">
             <span id="topbar-country">🇸🇦 السعودية</span> | 
-            <button class="lang-toggle-btn" id="langToggleBtn" onclick="toggleLanguage()">Eng</button>
+            <!-- زر الوضع الداكن الفوري -->
+            <button onclick="toggleDarkMode()" class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-bold shadow-sm hover:opacity-80">🌙/☀️</button>
+            <button class="lang-toggle-btn dark:border-gray-600 dark:text-emerald-400" id="langToggleBtn" onclick="toggleLanguage()">Eng</button>
         </div>
     </div>
 
     <!-- الهيدر الرئيسي -->
-    <header>
+    <header class="dark:bg-gray-800 dark:border-gray-700">
         <div class="header-right">
             <div class="logo-area" onclick="showMainShop()">
-                <img src="falcon-logo.jpg" alt="شعار صقر فوريفر">
-                <div class="logo-text"><span id="store-title-prefix">متجر</span> <span id="store-owner">د. محمد النبهاني</span></div>
+                <img src="falcon-logo.jpg" alt="شعار صقر فوريفر" class="border border-gray-200 p-0.5 bg-white rounded-full">
+                <div class="logo-text dark:text-gray-100"><span id="store-title-prefix">متجر</span> <span id="store-owner" class="text-accent">د. محمد النبهاني</span></div>
             </div>
             <nav class="nav-links">
-                <button class="nav-btn" onclick="showMainShop()" id="nav-home">الرئيسية</button>
-                <button class="nav-btn" onclick="showMainShopProducts()" id="nav-products">المنتجات</button>
+                <button class="nav-btn dark:text-gray-300 dark:hover:bg-gray-700" onclick="showMainShop()" id="nav-home">الرئيسية</button>
+                <button class="nav-btn dark:text-gray-300 dark:hover:bg-gray-700" onclick="showMainShopProducts()" id="nav-products">المنتجات</button>
+                <button class="nav-btn text-accent font-bold" onclick="showAdminDashboard()" id="nav-admin">📊 لوحة التحكم</button>
             </nav>
         </div>
 
         <div class="header-search">
-            <input type="text" id="search-input" placeholder="ابحث في المتجر (عصير، مكملات، صبار...)" oninput="filterProducts()">
+            <input type="text" id="search-input" placeholder="ابحث في المتجر (عصير، مكملات، صبار...)" oninput="filterProducts()" class="dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600">
         </div>
 
         <div class="header-left">
-            <span class="brand-badge">BizmindMakers</span>
+            <span class="brand-badge dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">BizmindMakers</span>
             <button class="cart-icon-btn" onclick="showCartPage()">
                 🛒 <span id="cart-btn-text">سلة المشتريات</span> <span class="cart-count" id="cart-count">0</span>
             </button>
@@ -1075,24 +1097,24 @@
     </header>
 
     <!-- شريط التصنيفات الفرعي -->
-    <nav class="sub-nav" id="subNavBar">
-        <a onclick="filterByCategory('all')" class="active-cat" id="cat-all">كل المنتجات</a>
-        <a onclick="filterByCategory('drinks')" id="cat-drinks">عصير الصبار</a>
-        <a onclick="filterByCategory('supplements')" id="cat-supplements">المكملات</a>
-        <a onclick="filterByCategory('care')" id="cat-care">العناية بالشعر والبشرة</a>
-        <a onclick="filterByCategory('personal-care')" id="cat-personal-care">العناية الشخصية</a>
-        <a onclick="filterByCategory('weight')" id="cat-weight">التخسيس ونزول الوزن</a>
-        <a onclick="filterByCategory('packs')" id="cat-packs">المجموعات</a>
+    <nav class="sub-nav dark:bg-gray-800 dark:border-gray-700" id="subNavBar">
+        <a onclick="filterByCategory('all')" class="active-cat dark:text-emerald-400" id="cat-all">كل المنتجات</a>
+        <a onclick="filterByCategory('drinks')" class="dark:text-gray-300" id="cat-drinks">عصير الصبار</a>
+        <a onclick="filterByCategory('supplements')" class="dark:text-gray-300" id="cat-supplements">المكملات</a>
+        <a onclick="filterByCategory('care')" class="dark:text-gray-300" id="cat-care">العناية بالشعر والبشرة</a>
+        <a onclick="filterByCategory('personal-care')" class="dark:text-gray-300" id="cat-personal-care">العناية الشخصية</a>
+        <a onclick="filterByCategory('weight')" class="dark:text-gray-300" id="cat-weight">التخسيس ونزول الوزن</a>
+        <a onclick="filterByCategory('packs')" class="dark:text-gray-300" id="cat-packs">المجموعات</a>
     </nav>
 
     <!-- محتوى المتجر الرئيسي -->
     <div id="mainShopContent">
         <!-- 1. سلايدر البنرات العلوي -->
-        <section class="hero-slider" id="home-section">
+        <section class="hero-slider dark:bg-gray-800/90 dark:border-gray-700" id="home-section">
             <div class="slide active">
                 <div class="slide-content">
-                    <h1 id="slide1-title">الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
-                    <p id="slide1-desc">متوفر الآن في السوق السعودي! تصميم جديد وعصري، بنفس الفوائد الغذائية الأصلية التي تثق بها.</p>
+                    <h1 id="slide1-title" class="dark:text-emerald-400">الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
+                    <p id="slide1-desc" class="dark:text-gray-300">متوفر الآن في السوق السعودي! تصميم جديد وعصري، بنفس الفوائد الغذائية الأصلية التي تثق بها.</p>
                     <button class="slide-btn" onclick="filterByProductSearch('Forever Aloe Vera Gel')" id="slide1-btn">اطلب الآن</button>
                 </div>
                 <div class="slide-img-box">
@@ -1101,8 +1123,8 @@
             </div>
             <div class="slide">
                 <div class="slide-content">
-                    <h1 id="slide2-title">متوفر الآن - مزيل العرق <span>ألو إيفر-شيلد</span></h1>
-                    <p id="slide2-desc">عاد للتوفر – بدون أملاح الألومنيوم، بخلاصة الألوفيرا، الكود 067.</p>
+                    <h1 id="slide2-title" class="dark:text-emerald-400">متوفر الآن - مزيل العرق <span>ألو إيفر-شيلد</span></h1>
+                    <p id="slide2-desc" class="dark:text-gray-300">عاد للتوفر – بدون أملاح الألومنيوم، بخلاصة الألوفيرا، الكود 067.</p>
                     <button class="slide-btn" onclick="filterByProductSearch('067')" id="slide2-btn">اطلبه الآن</button>
                 </div>
                 <div class="slide-img-box">
@@ -1111,8 +1133,8 @@
             </div>
             <div class="slide">
                 <div class="slide-content">
-                    <h1 id="slide3-title">ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
-                    <p id="slide3-desc">جل الأسنان المفضل بالصبار والعكبر (البروبوليس) لتنظيف عميق وحماية فائقة.</p>
+                    <h1 id="slide3-title" class="dark:text-emerald-400">ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
+                    <p id="slide3-desc" class="dark:text-gray-300">جل الأسنان المفضل بالصبار والعكبر (البروبوليس) لتنظيف عميق وحماية فائقة.</p>
                     <button class="slide-btn" onclick="filterByProductSearch('Forever Bright Toothgel')" id="slide3-btn">تسوق الآن</button>
                 </div>
                 <div class="slide-img-box">
@@ -1129,35 +1151,35 @@
 
         <!-- قسم تسوق حسب الفئة -->
         <section class="categories-section">
-            <h3 id="cat-section-title">تسوق حسب الفئة</h3>
+            <h3 id="cat-section-title" class="dark:text-emerald-400">تسوق حسب الفئة</h3>
             <div class="categories-grid">
                 <div class="category-item" onclick="filterByCategory('all')">
-                    <div class="category-circle">🛍️</div>
-                    <div class="category-title" id="cat-title-all">كل المنتجات</div>
+                    <div class="category-circle dark:bg-gray-800 dark:border-gray-700">🛍️</div>
+                    <div class="category-title dark:text-gray-300" id="cat-title-all">كل المنتجات</div>
                 </div>
                 <div class="category-item" onclick="filterByCategory('drinks')">
-                    <div class="category-circle">🌿</div>
-                    <div class="category-title" id="cat-title-drinks">عصير الصبار</div>
+                    <div class="category-circle dark:bg-gray-800 dark:border-gray-700">🌿</div>
+                    <div class="category-title dark:text-gray-300" id="cat-title-drinks">عصير الصبار</div>
                 </div>
                 <div class="category-item" onclick="filterByCategory('supplements')">
-                    <div class="category-circle">💊</div>
-                    <div class="category-title" id="cat-title-supplements">المكملات</div>
+                    <div class="category-circle dark:bg-gray-800 dark:border-gray-700">💊</div>
+                    <div class="category-title dark:text-gray-300" id="cat-title-supplements">المكملات</div>
                 </div>
                 <div class="category-item" onclick="filterByCategory('care')">
-                    <div class="category-circle">✨</div>
-                    <div class="category-title" id="cat-title-care">العناية بالشعر والبشرة</div>
+                    <div class="category-circle dark:bg-gray-800 dark:border-gray-700">✨</div>
+                    <div class="category-title dark:text-gray-300" id="cat-title-care">العناية بالشعر والبشرة</div>
                 </div>
                 <div class="category-item" onclick="filterByCategory('personal-care')">
-                    <div class="category-circle">🧴</div>
-                    <div class="category-title" id="cat-title-personal-care">العناية الشخصية</div>
+                    <div class="category-circle dark:bg-gray-800 dark:border-gray-700">🧴</div>
+                    <div class="category-title dark:text-gray-300" id="cat-title-personal-care">العناية الشخصية</div>
                 </div>
                 <div class="category-item" onclick="filterByCategory('weight')">
-                    <div class="category-circle">⚖️</div>
-                    <div class="category-title" id="cat-title-weight">التخسيس ونزول الوزن</div>
+                    <div class="category-circle dark:bg-gray-800 dark:border-gray-700">⚖️</div>
+                    <div class="category-title dark:text-gray-300" id="cat-title-weight">التخسيس ونزول الوزن</div>
                 </div>
                 <div class="category-item" onclick="filterByCategory('packs')">
-                    <div class="category-circle">🎁</div>
-                    <div class="category-title" id="cat-title-packs">المجموعات</div>
+                    <div class="category-circle dark:bg-gray-800 dark:border-gray-700">🎁</div>
+                    <div class="category-title dark:text-gray-300" id="cat-title-packs">المجموعات</div>
                 </div>
             </div>
         </section>
@@ -1182,25 +1204,128 @@
 
         <!-- عرض المنتجات -->
         <main class="container">
-            <h2 class="section-title" id="products-grid">قائمة المنتجات الكاملة</h2>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="section-title dark:text-emerald-400 mb-0" id="products-grid">قائمة المنتجات الكاملة</h2>
+                <button onclick="showAdminDashboard()" class="bg-gray-200 dark:bg-gray-700 text-xs px-3.5 py-2 rounded-lg font-bold hover:bg-primary hover:text-white transition shadow-sm">⚙️ إدارة المنتجات</button>
+            </div>
             <div class="products-grid" id="products-container">
                 <!-- يتم تعبئة المنتجات تلقائياً عبر الجافاسكريبت -->
             </div>
         </main>
     </div>
 
+    <!-- لوحة التحكم الإدارية المحمية (Admin Dashboard & CMS) -->
+    <div id="adminDashboardContainer" class="max-w-[1250px] mx-auto px-[5%] my-8 hidden">
+        <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <div>
+                <h2 class="text-2xl font-extrabold text-primary dark:text-emerald-400">لوحة التحكم والرسوم البيانية 📊</h2>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">متابعة المبيعات، إدارة المحتوى، وتصدير التقارير الإدارية.</p>
+            </div>
+            <button onclick="showMainShop()" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary hover:text-white transition shadow-sm">← العودة للمتجر</button>
+        </div>
+
+        <!-- إحصائيات سريعة وتصدير البيانات -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+            <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                <div class="text-xs text-gray-500 font-semibold mb-1">إجمالي المبيعات التقديرية</div>
+                <div class="text-2xl font-black text-primary dark:text-emerald-400">14,250 ر.س</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                <div class="text-xs text-gray-500 font-semibold mb-1">عدد المنتجات المسجلة</div>
+                <div class="text-2xl font-black text-accent" id="adminTotalProducts">31 منتج</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                <div class="text-xs text-gray-500 font-semibold mb-1">تصدير بيانات التقارير</div>
+                <div class="flex gap-2 mt-2">
+                    <button onclick="exportData('csv')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">تصدير CSV 📄</button>
+                    <button onclick="exportData('json')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">تصدير JSON 🗂️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- الرسوم البيانية التفاعلية (Chart.js) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                <h3 class="font-bold text-sm mb-4 text-primary dark:text-emerald-400">مخطط مبيعات الأقسام (Sales Analytics)</h3>
+                <canvas id="salesChart" height="140"></canvas>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                <h3 class="font-bold text-sm mb-4 text-primary dark:text-emerald-400">مخطط نشاط زوار المتجر (Traffic)</h3>
+                <canvas id="trafficChart" height="140"></canvas>
+            </div>
+        </div>
+
+        <!-- نظام إدارة المحتوى (CMS) لتعديل وإضافة وحذف المنتجات -->
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-lg text-primary dark:text-emerald-400">إدارة محتوى المنتجات (CMS)</h3>
+                <button onclick="openProductModal()" class="bg-primary hover:bg-emerald-900 text-white text-xs font-bold px-4 py-2 rounded-lg transition">+ إضافة منتج جديد</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-right text-sm dark:text-gray-200">
+                    <thead class="bg-gray-100 dark:bg-gray-700 text-primary dark:text-emerald-300">
+                        <tr>
+                            <th class="p-3">الصورة</th>
+                            <th class="p-3">اسم المنتج</th>
+                            <th class="p-3">السعر</th>
+                            <th class="p-3">التصنيف</th>
+                            <th class="p-3">إجراءات التحكم</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminProductsTableBody">
+                        <!-- التعبئة ديناميكية -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <!-- صفحة وقسم السلة المستقلة والتفصيلية -->
-    <div class="cart-page-container" id="cartPageContainer">
-        <button class="cart-back-btn" onclick="showMainShop()" id="cartBackBtnText">← العودة للتسوق</button>
-        <div class="cart-page-header">
-            <h2 id="cart-page-title">سلة المشتريات الخاصة بك</h2>
+    <div class="cart-page-container dark:bg-gray-800 dark:border-gray-700" id="cartPageContainer">
+        <button class="cart-back-btn dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" onclick="showMainShop()" id="cartBackBtnText">← العودة للتسوق</button>
+        <div class="cart-page-header dark:border-gray-700">
+            <h2 id="cart-page-title" class="dark:text-emerald-400">سلة المشتريات الخاصة بك</h2>
             <button class="btn-clear-cart" onclick="clearCart()" id="btnClearCartText">تفريغ السلة بالكامل 🗑️</button>
         </div>
         
-        <div class="cart-table-wrapper" id="cartTableContainer"></div>
+        <div class="cart-table-wrapper dark:border-gray-700" id="cartTableContainer"></div>
 
-        <div class="cart-total" id="cartTotal">الإجمالي: 0 ر.س</div>
+        <div class="cart-total dark:text-emerald-400" id="cartTotal">الإجمالي: 0 ر.س</div>
         <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر الواتساب 📱</a>
+    </div>
+
+    <!-- نافذة منبثقة (Modal) لإضافة/تعديل منتج من لوحة التحكم -->
+    <div id="productModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl max-w-md w-full shadow-2xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-extrabold text-lg text-primary dark:text-emerald-400 mb-4" id="modalTitle">إضافة منتج جديد</h3>
+            <input type="hidden" id="editProductId">
+            <div class="space-y-3 dark:text-gray-200">
+                <div>
+                    <label class="text-xs font-bold block mb-1">اسم المنتج بالعربية</label>
+                    <input type="text" id="modalArName" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <div>
+                    <label class="text-xs font-bold block mb-1">اسم المنتج بالإنجليزية</label>
+                    <input type="text" id="modalEnName" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <div>
+                    <label class="text-xs font-bold block mb-1">السعر (ر.س)</label>
+                    <input type="number" id="modalPrice" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <div>
+                    <label class="text-xs font-bold block mb-1">التصنيف (drinks, supplements, care, personal-care, weight, packs)</label>
+                    <input type="text" id="modalCategory" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <div>
+                    <label class="text-xs font-bold block mb-1">صورة المنتج (مثل 815.webp)</label>
+                    <input type="text" id="modalImg" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600" value="815.webp">
+                </div>
+            </div>
+            <div class="flex gap-3 mt-6">
+                <button onclick="saveProductFromModal()" class="flex-1 bg-primary hover:bg-emerald-900 text-white py-2 rounded-lg font-bold text-sm transition">حفظ المنتج</button>
+                <button onclick="closeProductModal()" class="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm transition">إلغاء</button>
+            </div>
+        </div>
     </div>
 
     <!-- إشعار الإضافة العائم -->
@@ -1219,16 +1344,16 @@
     </a>
 
     <!-- الفوتر والتنبيه الطبي -->
-    <footer>
+    <footer class="dark:bg-gray-900 dark:border-t dark:border-gray-800">
         <div class="legal-disclaimer" id="footer-disclaimer">
             جميع المنتجات والمكملات الغذائية المعروضة على هذا الموقع ليست دواءً، ولا يُستخدم لتشخيص أو علاج أو منع أي مرض.
         </div>
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة -->
+    <!-- سكريبت البرمجة المطور والشامل -->
     <script>
-        const products = [
+        let products = JSON.parse(localStorage.getItem('store_custom_products')) || [
             { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1599.99, img: "634.webp", category: "packs", keywords: ["باقة", "مجموعة", "رحلتك", "pack", "journey"] },
             { id: 2, arName: "فوريفر رويال جيلي (Forever Royal Jelly)", enName: "Forever Royal Jelly", price: 168, img: "036.webp", category: "supplements", keywords: ["رويال", "جيلي", "عكبر", "مكمل", "royal", "jelly"] },
             { id: 3, arName: "سيروم المرطب (Hydrating Serum)", enName: "Hydrating Serum", price: 163, img: "618.webp", category: "care", keywords: ["سيروم", "مرطب", "بشرة", "serum", "hydrating"] },
@@ -1271,6 +1396,7 @@
                 storePrefix: "متجر",
                 home: "الرئيسية",
                 products: "المنتجات",
+                adminNav: "📊 لوحة التحكم",
                 searchPlaceholder: "ابحث في المتجر (عصير، مكملات، صبار...)",
                 cartBtn: "سلة المشتريات",
                 catAll: "كل المنتجات",
@@ -1323,6 +1449,7 @@
                 storePrefix: "Store of",
                 home: "Home",
                 products: "Products",
+                adminNav: "📊 Dashboard",
                 searchPlaceholder: "Search store (juice, supplements, aloe...)",
                 cartBtn: "Shopping Cart",
                 catAll: "All Products",
@@ -1371,6 +1498,24 @@
 
         let currentLang = localStorage.getItem('store_lang') || 'ar';
         let cart = JSON.parse(localStorage.getItem('forever_cart')) || [];
+        let salesChartInstance = null;
+        let trafficChartInstance = null;
+
+        // تفعيل الوضع الداكن (Dark Mode)
+        function toggleDarkMode() {
+            const html = document.getElementById('html-root');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.getElementById('html-root').classList.add('dark');
+        }
 
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
@@ -1387,13 +1532,14 @@
             html.setAttribute('lang', currentLang);
 
             document.getElementById('meta-title').textContent = t.metaTitle;
-            document.getElementById('topbar-email').innerHTML = `${t.emailText} <a href="mailto:drmuhammed.najeeb2020@gmail.com">drmuhammed.najeeb2020@gmail.com</a> ✉️`;
+            document.getElementById('topbar-email').innerHTML = `${t.emailText} <a href="mailto:drmuhammed.najeeb2020@gmail.com" class="text-primary dark:text-emerald-400">drmuhammed.najeeb2020@gmail.com</a> ✉️`;
             document.getElementById('topbar-country').textContent = t.country;
             document.getElementById('langToggleBtn').textContent = t.langBtn;
             
             document.getElementById('store-title-prefix').textContent = t.storePrefix;
             document.getElementById('nav-home').textContent = t.home;
             document.getElementById('nav-products').textContent = t.products;
+            document.getElementById('nav-admin').textContent = t.adminNav;
             document.getElementById('search-input').placeholder = t.searchPlaceholder;
             document.getElementById('cart-btn-text').textContent = t.cartBtn;
 
@@ -1451,6 +1597,7 @@
             document.getElementById('mainShopContent').style.display = 'block';
             document.getElementById('subNavBar').style.display = 'flex';
             document.getElementById('cartPageContainer').classList.remove('active');
+            document.getElementById('adminDashboardContainer').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1465,8 +1612,26 @@
         function showCartPage() {
             document.getElementById('mainShopContent').style.display = 'none';
             document.getElementById('subNavBar').style.display = 'none';
+            document.getElementById('adminDashboardContainer').classList.add('hidden');
             document.getElementById('cartPageContainer').classList.add('active');
             updateCartUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // لوحة التحكم الإدارية المحمية
+        function showAdminDashboard() {
+            const password = prompt("يرجى إدخال كلمة مرور لوحة التحكم الخاصة بالمدير:");
+            if (password !== "12345") { // كلمة المرور الافتراضية ويمكن تغييرها
+                alert("كلمة المرور غير صحيحة! الوصول مرفوض.");
+                return;
+            }
+
+            document.getElementById('mainShopContent').style.display = 'none';
+            document.getElementById('subNavBar').style.display = 'none';
+            document.getElementById('cartPageContainer').classList.remove('active');
+            document.getElementById('adminDashboardContainer').classList.remove('hidden');
+            renderAdminProductsTable();
+            renderCharts();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1512,11 +1677,11 @@
                 }
 
                 html += `
-                    <div class="product-card">
+                    <div class="product-card dark:bg-gray-800 dark:border-gray-700">
                         ${imgTag}
                         <div>
-                            <h3 onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">${name}</h3>
-                            <div class="price">${p.price} ${t.sar}</div>
+                            <h3 onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج" class="dark:text-gray-200">${name}</h3>
+                            <div class="price dark:text-emerald-400">${p.price} ${t.sar}</div>
                         </div>
                         ${actionArea}
                     </div>
@@ -1719,7 +1884,7 @@
                 checkoutBtn.style.display = 'none';
             } else {
                 let tableHtml = `
-                    <table class="cart-table">
+                    <table class="cart-table dark:text-gray-200">
                         <thead>
                             <tr>
                                 <th>${t.thProduct}</th>
@@ -1750,7 +1915,7 @@
                             </td>
                             <td>${item.price} ${t.sar}</td>
                             <td>
-                                <div class="cart-table-stepper">
+                                <div class="cart-table-stepper dark:bg-gray-700 dark:border-gray-600">
                                     <button onclick="updateItemQty('${safeName}', ${item.price}, '${item.img}', ${item.qty - 1})">-</button>
                                     <span>${item.qty}</span>
                                     <button onclick="updateItemQty('${safeName}', ${item.price}, '${item.img}', ${item.qty + 1})">+</button>
@@ -1781,6 +1946,166 @@
             cartCount.textContent = totalCount;
             cartTotal.textContent = `${t.total}: ${totalPrice.toFixed(2)} ${t.sar}`;
             checkoutBtn.textContent = t.whatsappCheckout;
+        }
+
+        // إدارة محتوى المنتجات (CMS) في لوحة التحكم
+        function renderAdminProductsTable() {
+            const tbody = document.getElementById('adminProductsTableBody');
+            document.getElementById('adminTotalProducts').textContent = products.length + " منتج";
+            let html = '';
+            products.forEach(p => {
+                html += `
+                    <tr class="border-b dark:border-gray-700">
+                        <td class="p-3"><img src="${p.img}" class="w-10 h-10 object-contain bg-white rounded border"></td>
+                        <td class="p-3 font-bold">${p.arName}</td>
+                        <td class="p-3">${p.price} ر.س</td>
+                        <td class="p-3">${p.category}</td>
+                        <td class="p-3 flex gap-2">
+                            <button onclick="editProduct(${p.id})" class="bg-blue-100 text-blue-600 px-2.5 py-1 rounded font-bold text-xs">تعديل</button>
+                            <button onclick="deleteProduct(${p.id})" class="bg-red-100 text-red-600 px-2.5 py-1 rounded font-bold text-xs">حذف</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function openProductModal(id = null) {
+            document.getElementById('productModal').classList.remove('hidden');
+            if (id) {
+                const p = products.find(x => x.id === id);
+                document.getElementById('modalTitle').textContent = "تعديل المنتج";
+                document.getElementById('editProductId').value = p.id;
+                document.getElementById('modalArName').value = p.arName;
+                document.getElementById('modalEnName').value = p.enName;
+                document.getElementById('modalPrice').value = p.price;
+                document.getElementById('modalCategory').value = p.category;
+                document.getElementById('modalImg').value = p.img;
+            } else {
+                document.getElementById('modalTitle').textContent = "إضافة منتج جديد";
+                document.getElementById('editProductId').value = "";
+                document.getElementById('modalArName').value = "";
+                document.getElementById('modalEnName').value = "";
+                document.getElementById('modalPrice').value = "";
+                document.getElementById('modalCategory').value = "care";
+                document.getElementById('modalImg').value = "815.webp";
+            }
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        function saveProductFromModal() {
+            const id = document.getElementById('editProductId').value;
+            const arName = document.getElementById('modalArName').value;
+            const enName = document.getElementById('modalEnName').value;
+            const price = parseFloat(document.getElementById('modalPrice').value);
+            const category = document.getElementById('modalCategory').value;
+            const img = document.getElementById('modalImg').value;
+
+            if (!arName || isNaN(price)) {
+                alert("يرجى إدخال اسم المنتج والسعر بشكل صحيح.");
+                return;
+            }
+
+            if (id) {
+                const p = products.find(x => x.id == id);
+                p.arName = arName;
+                p.enName = enName;
+                p.price = price;
+                p.category = category;
+                p.img = img;
+                showToast("تم تعديل المنتج بنجاح!");
+            } else {
+                const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+                products.push({ id: newId, arName, enName, price, category, img, keywords: [arName] });
+                showToast("تمت إضافة المنتج الجديد بنجاح!");
+            }
+
+            localStorage.setItem('store_custom_products', JSON.stringify(products));
+            closeProductModal();
+            renderAdminProductsTable();
+            renderProducts(products);
+        }
+
+        function editProduct(id) {
+            openProductModal(id);
+        }
+
+        function deleteProduct(id) {
+            if (confirm("هل أنت متأكد من حذف هذا المنتج؟")) {
+                products = products.filter(p => p.id !== id);
+                localStorage.setItem('store_custom_products', JSON.stringify(products));
+                renderAdminProductsTable();
+                renderProducts(products);
+                showToast("تم حذف المنتج بنجاح!");
+            }
+        }
+
+        // نظام تصدير البيانات (CSV و JSON)
+        function exportData(type) {
+            if (type === 'json') {
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(products, null, 2));
+                const dlAnchor = document.createElement('a');
+                dlAnchor.setAttribute("href", dataStr);
+                dlAnchor.setAttribute("download", "forever_products.json");
+                document.body.appendChild(dlAnchor);
+                dlAnchor.click();
+                dlAnchor.remove();
+                showToast("تم تصدير ملف JSON بنجاح!");
+            } else if (type === 'csv') {
+                let csvContent = "data:text/csv;charset=utf-8,ID,Arabic Name,English Name,Price,Category\n";
+                products.forEach(p => {
+                    csvContent += `${p.id},"${p.arName}","${p.enName}",${p.price},${p.category}\n`;
+                });
+                const encodedUri = encodeURI(csvContent);
+                const dlAnchor = document.createElement('a');
+                dlAnchor.setAttribute("href", encodedUri);
+                dlAnchor.setAttribute("download", "forever_products.csv");
+                document.body.appendChild(dlAnchor);
+                dlAnchor.click();
+                dlAnchor.remove();
+                showToast("تم تصدير ملف CSV بنجاح!");
+            }
+        }
+
+        // إعداد الرسوم البيانية التفاعلية باستخدام Chart.js
+        function renderCharts() {
+            if (salesChartInstance) salesChartInstance.destroy();
+            if (trafficChartInstance) trafficChartInstance.destroy();
+
+            const salesCtx = document.getElementById('salesChart').getContext('2d');
+            salesChartInstance = new Chart(salesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['العصائر', 'المكملات', 'العناية', 'التخسيس', 'المجموعات'],
+                    datasets: [{
+                        label: 'المبيعات (ر.س)',
+                        data: [4200, 3100, 2500, 2200, 2250],
+                        backgroundColor: '#163d2b',
+                        borderRadius: 6
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+
+            const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+            trafficChartInstance = new Chart(trafficCtx, {
+                type: 'line',
+                data: {
+                    labels: ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'],
+                    datasets: [{
+                        label: 'زوار المتجر',
+                        data: [120, 190, 150, 220, 280, 310, 450],
+                        borderColor: '#d4a017',
+                        backgroundColor: 'rgba(212, 160, 23, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
         }
 
         let slideIndex = 0;
