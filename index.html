@@ -739,6 +739,31 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
+        .cart-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-clear-cart {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .btn-clear-cart:hover {
+            background: #fecaca;
+        }
+
         .cart-close {
             position: absolute;
             top: 20px;
@@ -923,7 +948,7 @@
         </div>
     </div>
 
-    <!-- الهيدر الرئيسي مع أزرار التنقل المستقرة تماماً -->
+    <!-- الهيدر الرئيسي -->
     <header>
         <div class="header-right">
             <div class="logo-area" onclick="scrollToSection('home')">
@@ -959,9 +984,8 @@
         <a onclick="filterByCategory('packs')" id="cat-packs">المجموعات</a>
     </nav>
 
-    <!-- 1. سلايدر البنرات العلوي (يعرض المنتجات المميزة) -->
+    <!-- 1. سلايدر البنرات العلوي -->
     <section class="hero-slider" id="home-section">
-        <!-- الشريحة الأولى: عصير جل الصبار -->
         <div class="slide active">
             <div class="slide-content">
                 <h1 id="slide1-title">الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
@@ -972,7 +996,6 @@
                 <img src="815.webp" alt="عصير الألوفيرا جل">
             </div>
         </div>
-        <!-- الشريحة الثانية: مزيل العرق -->
         <div class="slide">
             <div class="slide-content">
                 <h1 id="slide2-title">متوفر الآن - مزيل العرق <span>ألو إيفر-شيلد</span></h1>
@@ -983,7 +1006,6 @@
                 <img src="067.webp" alt="مزيل العرق ألو إيفر شيلد">
             </div>
         </div>
-        <!-- الشريحة الثالثة: معجون الأسنان -->
         <div class="slide">
             <div class="slide-content">
                 <h1 id="slide3-title">ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
@@ -1072,7 +1094,10 @@
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
             <span class="cart-close" onclick="toggleCartModal()">&times;</span>
-            <h3 style="color: var(--primary-color); margin-bottom: 15px;" id="cart-modal-title">سلة المشتريات الخاصة بك</h3>
+            <div class="cart-header-row">
+                <h3 style="color: var(--primary-color); margin: 0;" id="cart-modal-title">سلة المشتريات الخاصة بك</h3>
+                <button class="btn-clear-cart" onclick="clearCart()" id="btnClearCartText">تفريغ السلة بالكامل 🗑️</button>
+            </div>
             
             <div class="cart-table-wrapper" id="cartTableContainer"></div>
 
@@ -1099,7 +1124,7 @@
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة -->
+    <!-- سكريبت البرمجة مع إصلاح دوال الحذف والتحديث -->
     <script>
         const products = [
             { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1599.99, img: "634.webp", category: "packs" },
@@ -1173,6 +1198,7 @@
                 qtyLabel: "الكمية:",
                 addCartBtn: "أضف للسلة 🛒",
                 cartModalTitle: "سلة المشتريات الخاصة بك",
+                clearCartBtn: "تفريغ السلة بالكامل 🗑️",
                 cartEmpty: "السلة فارغة حالياً",
                 whatsappCheckout: "إتمام الطلب عبر الواتساب",
                 footerDisclaimer: "جميع المنتجات والمكملات الغذائية المعروضة على هذا الموقع ليست دواءً، ولا يُستخدم لتشخيص أو علاج أو منع أي مرض.",
@@ -1224,6 +1250,7 @@
                 qtyLabel: "Qty:",
                 addCartBtn: "Add to Cart 🛒",
                 cartModalTitle: "Your Shopping Cart",
+                clearCartBtn: "Clear Cart 🗑️",
                 cartEmpty: "Cart is currently empty",
                 whatsappCheckout: "Checkout via WhatsApp",
                 footerDisclaimer: "All products and dietary supplements displayed on this website are not medicines and are not used to diagnose, treat, cure, or prevent any disease.",
@@ -1304,15 +1331,16 @@
 
             document.getElementById('products-grid').textContent = t.productsSectionTitle;
             document.getElementById('cart-modal-title').textContent = t.cartModalTitle;
+            document.getElementById('btnClearCartText').textContent = t.clearCartBtn;
             document.getElementById('footer-disclaimer').textContent = t.footerDisclaimer;
             document.getElementById('footer-rights').innerHTML = t.footerRights;
         }
 
-        /* دوال الانتقال السلس عبر الأقسام (محدثة لتعمل بفعالية تامة على اللابتوب والجوال) */
+        /* دوال الانتقال السلس عبر الأقسام */
         function scrollToSection(sectionId) {
             if (sectionId === 'home') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                renderProducts(products); // إعادة عرض كل المنتجات عند العودة للرئيسية
+                renderProducts(products);
                 document.querySelectorAll('.sub-nav a').forEach(el => el.classList.remove('active-cat'));
                 const allCat = document.getElementById('cat-all');
                 if(allCat) allCat.classList.add('active-cat');
@@ -1451,8 +1479,19 @@
             }, 2000);
         }
 
+        /* دالة حفظ السلة وتحديث الواجهة (تمت مراجعتها وإصلاحها) */
+        function saveCart() {
+            localStorage.setItem('forever_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
         function removeFromCart(index) {
             cart.splice(index, 1);
+            saveCart();
+        }
+
+        function clearCart() {
+            cart = [];
             saveCart();
         }
 
