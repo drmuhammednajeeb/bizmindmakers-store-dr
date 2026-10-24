@@ -727,26 +727,7 @@
             margin-bottom: 12px;
         }
 
-        .quantity-box {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 12px;
-        }
-
-        .quantity-box input {
-            width: 45px;
-            padding: 4px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            outline: none;
-            font-weight: 600;
-        }
-
-        /* زر أضف للسلة الواضح والبارز */
+        /* زر أضف للسلة العادي مع تأثير الضغط الشفاف */
         .btn-add-cart {
             display: block;
             width: 100%;
@@ -757,7 +738,7 @@
             border-radius: 8px;
             font-weight: 800;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-size: 13px;
             box-shadow: 0 4px 12px rgba(22, 61, 43, 0.25);
         }
@@ -766,6 +747,61 @@
             background: linear-gradient(135deg, #0e2a1d, #071710);
             box-shadow: 0 6px 15px rgba(22, 61, 43, 0.35);
             transform: translateY(-1px);
+        }
+
+        .btn-add-cart:active {
+            transform: scale(0.96);
+            opacity: 0.85;
+            background-color: var(--accent-color);
+        }
+
+        /* عداد الكمية المتداخل في نفس مساحة الزر مع تأثير الضغط والتغيير الشفاف اللوني */
+        .product-qty-stepper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--primary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 38px;
+            box-shadow: 0 4px 12px rgba(22, 61, 43, 0.25);
+            transition: background 0.2s;
+        }
+
+        .stepper-btn {
+            background: transparent;
+            color: #ffffff;
+            border: none;
+            width: 35px;
+            height: 100%;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stepper-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* تأثير التفاعل والوميض الشفاف عند الضغط على أزرار العداد */
+        .stepper-btn:active {
+            background: rgba(212, 160, 23, 0.6);
+            transform: scale(0.9);
+        }
+
+        .stepper-input {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            text-align: center;
+            width: 45px;
+            outline: none;
         }
 
         /* إشعار الإضافة العائم (Toast Notification) */
@@ -1215,7 +1251,6 @@
                 promo2Desc: "باقة متكاملة لبداية صحية – العناية بالبشرة + المكملات<br><b>السعر: 1,599.99 ر.س</b> (بدلاً من 1,738.41 ر.س)",
                 promo2Btn: "اطلبه الآن",
                 productsSectionTitle: "قائمة المنتجات الكاملة",
-                qtyLabel: "الكمية:",
                 addCartBtn: "أضف للسلة 🛒",
                 cartPageTitle: "سلة المشتريات الخاصة بك",
                 clearCartBtn: "تفريغ السلة بالكامل 🗑️",
@@ -1268,7 +1303,6 @@
                 promo2Desc: "An integrated package for a healthy start – Skin Care + Supplements<br><b>Price: 1,599.99 SAR</b> (Instead of 1,738.41 SAR)",
                 promo2Btn: "Order Now",
                 productsSectionTitle: "Complete Product List",
-                qtyLabel: "Qty:",
                 addCartBtn: "Add to Cart 🛒",
                 cartPageTitle: "Your Shopping Cart",
                 clearCartBtn: "Clear Cart 🗑️",
@@ -1392,6 +1426,11 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function getProductQtyInCart(productName) {
+            const item = cart.find(i => i.name === productName);
+            return item ? item.qty : 0;
+        }
+
         function renderProducts(productsArray) {
             const grid = document.getElementById('products-container');
             if (!grid) return;
@@ -1406,7 +1445,24 @@
             let html = '';
             productsArray.forEach(p => {
                 const name = currentLang === 'ar' ? p.arName : p.enName;
+                const safeName = name.replace(/'/g, "\\'");
                 const imgTag = p.img ? `<img src="${p.img}" alt="${name}" loading="lazy" onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">` : `<div style="height:150px; display:flex; align-items:center; justify-content:center; background:#f0f4f8; border-radius:8px; font-size:35px; margin-bottom:12px; cursor:pointer;" onclick="goToProductDetail(${p.id})">📦</div>`;
+                
+                const qtyInCart = getProductQtyInCart(name);
+
+                let actionArea = '';
+                if (qtyInCart === 0) {
+                    actionArea = `<button class="btn-add-cart" onclick="addToCartDirect('${safeName}', ${p.price})">${t.addCartBtn}</button>`;
+                } else {
+                    actionArea = `
+                        <div class="product-qty-stepper">
+                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, ${qtyInCart - 1})">-</button>
+                            <input type="text" class="stepper-input" value="${qtyInCart}" readonly>
+                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, ${qtyInCart + 1})">+</button>
+                        </div>
+                    `;
+                }
+
                 html += `
                     <div class="product-card">
                         ${imgTag}
@@ -1414,13 +1470,7 @@
                             <h3 onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">${name}</h3>
                             <div class="price">${p.price} ${t.sar}</div>
                         </div>
-                        <div>
-                            <div class="quantity-box">
-                                <label>${t.qtyLabel}</label>
-                                <input type="number" id="qty-${p.id}" value="1" min="1">
-                            </div>
-                            <button class="btn-add-cart" onclick="addToCart('${name.replace(/'/g, "\\'")}', ${p.price}, 'qty-${p.id}')">${t.addCartBtn}</button>
-                        </div>
+                        ${actionArea}
                     </div>
                 `;
             });
@@ -1509,21 +1559,59 @@
             renderProducts(filtered);
         }
 
-        function addToCart(productName, price, qtyInputId) {
-            const qtyInput = document.getElementById(qtyInputId);
-            const qty = qtyInput ? parseInt(qtyInput.value) : 1;
-
-            if (isNaN(qty) || qty <= 0) return;
-
+        function addToCartDirect(productName, price) {
             const existingItem = cart.find(item => item.name === productName);
             if (existingItem) {
-                existingItem.qty += qty;
+                existingItem.qty += 1;
             } else {
-                cart.push({ name: productName, price: price, qty: qty });
+                cart.push({ name: productName, price: price, qty: 1 });
             }
 
             saveCart();
+            renderProducts(getCurrentActiveFilteredProducts());
             showToast(translations[currentLang].toastAdded);
+        }
+
+        function updateItemQty(productName, price, newQty) {
+            const index = cart.findIndex(item => item.name === productName);
+            if (index !== -1) {
+                if (newQty <= 0) {
+                    cart.splice(index, 1);
+                } else {
+                    cart[index].qty = newQty;
+                }
+            } else if (newQty > 0) {
+                cart.push({ name: productName, price: price, qty: newQty });
+            }
+
+            saveCart();
+            renderProducts(getCurrentActiveFilteredProducts());
+        }
+
+        function getCurrentActiveFilteredProducts() {
+            const searchVal = document.getElementById('search-input').value.trim().toLowerCase();
+            if (searchVal) {
+                const queryTerms = searchVal.split(/\s+/);
+                return products.filter(p => {
+                    const arName = p.arName.toLowerCase();
+                    const enName = p.enName.toLowerCase();
+                    const category = p.category.toLowerCase();
+                    const keywords = p.keywords || [];
+                    return queryTerms.every(term => arName.includes(term) || enName.includes(term) || category.includes(term) || keywords.some(kw => kw.toLowerCase().includes(term)));
+                });
+            }
+
+            const activeCatEl = document.querySelector('.sub-nav a.active-cat');
+            if (activeCatEl) {
+                const id = activeCatEl.id;
+                if (id === 'cat-drinks') return products.filter(p => p.category === 'drinks');
+                if (id === 'cat-supplements') return products.filter(p => p.category === 'supplements');
+                if (id === 'cat-care') return products.filter(p => p.category === 'care');
+                if (id === 'cat-personal-care') return products.filter(p => p.category === 'personal-care');
+                if (id === 'cat-weight') return products.filter(p => p.category === 'weight');
+                if (id === 'cat-packs') return products.filter(p => p.category === 'packs');
+            }
+            return products;
         }
 
         function showToast(message) {
@@ -1547,11 +1635,13 @@
         function removeFromCart(index) {
             cart.splice(index, 1);
             saveCart();
+            renderProducts(getCurrentActiveFilteredProducts());
         }
 
         function clearCart() {
             cart = [];
             saveCart();
+            renderProducts(getCurrentActiveFilteredProducts());
         }
 
         function updateCartUI() {
