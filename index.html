@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpg" href="falcon-logo.jpg">
 
-    <!-- تنسيقات التصميم العالمي الفاخر والتجاوبي -->
+    <!-- تنسيقات التصميم الفاخر والتجاوبي -->
     <style>
         :root {
             --primary-color: #163d2b;
@@ -333,7 +333,7 @@
             padding-bottom: 2px;
         }
 
-        /* السلايدر العلوي المتحرك (للمنتجات المميزة فقط) */
+        /* السلايدر العلوي المتحرك */
         .hero-slider {
             position: relative;
             background: rgba(255, 255, 255, 0.85);
@@ -521,7 +521,7 @@
             max-width: 110px;
         }
 
-        /* قسم البنرات الترويجية المنفصلة تحت الفئات وفوق المنتجات */
+        /* قسم البنرات الترويجية المنفصلة */
         .promo-section {
             max-width: 1200px;
             margin: 30px auto;
@@ -594,15 +594,15 @@
             scroll-margin-top: 90px;
         }
 
-        /* صفحة السلة المستقلة والثابتة */
+        /* 1. صفحة وقسم السلة المستقلة والثابتة */
         .cart-page-container {
-            max-width: 1000px;
-            margin: 40px auto;
+            max-width: 1100px;
+            margin: 30px auto;
             padding: 30px;
             background: #ffffff;
             border-radius: 14px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             display: none;
         }
 
@@ -648,7 +648,7 @@
             background: var(--bg-section);
             color: var(--primary-color);
             border: 1px solid var(--border-color);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 13px;
@@ -662,7 +662,7 @@
             color: #fff;
         }
 
-        /* شبكة المنتجات الثنائية للجوال والمتجاوبة للابتوب */
+        /* شبكة المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -727,18 +727,18 @@
             margin-bottom: 12px;
         }
 
-        /* زر أضف للسلة العادي مع تأثير الضغط الشفاف */
+        /* 3. زر أضف للسلة والتأثير البصري المتحول للون الأبيض (White Flash Effect) */
         .btn-add-cart {
             display: block;
             width: 100%;
             background: linear-gradient(135deg, var(--primary-color), #0e2a1d);
             color: #ffffff;
             padding: 10px 0;
-            border: none;
+            border: 1px solid var(--primary-color);
             border-radius: 8px;
             font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             font-size: 13px;
             box-shadow: 0 4px 12px rgba(22, 61, 43, 0.25);
         }
@@ -749,13 +749,16 @@
             transform: translateY(-1px);
         }
 
-        .btn-add-cart:active {
-            transform: scale(0.96);
-            opacity: 0.85;
-            background-color: var(--accent-color);
+        /* كلاس التفاعل البصري المتحول للون الأبيض عند الضغط */
+        .btn-add-cart.white-active {
+            background: #ffffff !important;
+            color: var(--primary-color) !important;
+            border: 2px solid var(--primary-color) !important;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.9), inset 0 0 8px rgba(22, 61, 43, 0.2) !important;
+            transform: scale(0.96) !important;
         }
 
-        /* عداد الكمية المتداخل في نفس مساحة الزر مع تأثير الضغط والتغيير الشفاف اللوني */
+        /* 2. عداد الكمية المتداخل في نفس مساحة الزر */
         .product-qty-stepper {
             display: flex;
             align-items: center;
@@ -765,7 +768,7 @@
             overflow: hidden;
             height: 38px;
             box-shadow: 0 4px 12px rgba(22, 61, 43, 0.25);
-            transition: background 0.2s;
+            transition: all 0.2s;
         }
 
         .stepper-btn {
@@ -784,12 +787,11 @@
         }
 
         .stepper-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        /* تأثير التفاعل والوميض الشفاف عند الضغط على أزرار العداد */
         .stepper-btn:active {
-            background: rgba(212, 160, 23, 0.6);
+            background: rgba(212, 160, 23, 0.7);
             transform: scale(0.9);
         }
 
@@ -804,7 +806,38 @@
             outline: none;
         }
 
-        /* إشعار الإضافة العائم (Toast Notification) */
+        /* أزرار الكمية المصغرة داخل جدول السلة المستقلة */
+        .cart-table-stepper {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--bg-section);
+        }
+
+        .cart-table-stepper button {
+            background: #ffffff;
+            border: none;
+            width: 28px;
+            height: 28px;
+            font-weight: 800;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: background 0.2s;
+        }
+
+        .cart-table-stepper button:hover {
+            background: #e2e8f0;
+        }
+
+        .cart-table-stepper span {
+            padding: 0 10px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* إشعار الإضافة العائم */
         .toast-notification {
             position: fixed;
             bottom: 30px;
@@ -835,7 +868,7 @@
         .cart-table-wrapper {
             margin: 20px 0;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow-x: auto;
         }
 
@@ -844,7 +877,7 @@
             border-collapse: collapse;
             font-size: 14px;
             text-align: right;
-            min-width: 500px;
+            min-width: 600px;
         }
 
         html[dir="ltr"] .cart-table {
@@ -854,16 +887,31 @@
         .cart-table th {
             background-color: var(--bg-section);
             color: var(--primary-color);
-            padding: 12px 15px;
+            padding: 14px;
             font-weight: 700;
             border-bottom: 2px solid var(--border-color);
             white-space: nowrap;
         }
 
         .cart-table td {
-            padding: 12px 15px;
+            padding: 14px;
             border-bottom: 1px solid var(--border-color);
             vertical-align: middle;
+        }
+
+        .cart-product-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-product-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: #fff;
         }
 
         .btn-remove {
@@ -884,7 +932,7 @@
 
         .cart-total {
             font-weight: 800;
-            font-size: 18px;
+            font-size: 19px;
             margin: 20px 0;
             color: var(--primary-color);
             text-align: left;
@@ -1039,7 +1087,7 @@
         <a onclick="filterByCategory('packs')" id="cat-packs">المجموعات</a>
     </nav>
 
-    <!-- محتوى المتجر الرئيسي (السلايدر، الفئات، والمنتجات) -->
+    <!-- محتوى المتجر الرئيسي -->
     <div id="mainShopContent">
         <!-- 1. سلايدر البنرات العلوي -->
         <section class="hero-slider" id="home-section">
@@ -1116,7 +1164,7 @@
             </div>
         </section>
 
-        <!-- 2. بانر "لماذا الألوفيرا؟" وبانر "ابدأ رحلتك" -->
+        <!-- بانرات ترويجية -->
         <section class="promo-section">
             <div class="promo-card">
                 <div>
@@ -1143,7 +1191,7 @@
         </main>
     </div>
 
-    <!-- صفحة السلة المستقلة والثابتة (Cart Page) -->
+    <!-- 1. صفحة وقسم السلة المستقلة والتفصيلية -->
     <div class="cart-page-container" id="cartPageContainer">
         <button class="cart-back-btn" onclick="showMainShop()" id="cartBackBtnText">← العودة للتسوق</button>
         <div class="cart-page-header">
@@ -1157,7 +1205,7 @@
         <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر الواتساب 📱</a>
     </div>
 
-    <!-- إشعار الإضافة العائم (Toast Notification) -->
+    <!-- إشعار الإضافة العائم -->
     <div id="toastNotification" class="toast-notification">
         <span>✨</span> <span id="toastText">تمت إضافة المنتج إلى السلة بنجاح!</span>
     </div>
@@ -1263,10 +1311,10 @@
                 deleteBtn: "حذف",
                 sar: "ر.س",
                 total: "الإجمالي",
-                thProduct: "اسم المنتج",
+                thProduct: "المنتج",
                 thQty: "الكمية",
                 thPrice: "سعر القطعة",
-                thTotal: "الإجمالي",
+                thTotal: "المجموع الفرعي",
                 thAction: "إجراء"
             },
             en: {
@@ -1315,10 +1363,10 @@
                 deleteBtn: "Delete",
                 sar: "SAR",
                 total: "Total",
-                thProduct: "Product Name",
-                thQty: "Qty",
+                thProduct: "Product",
+                thQty: "Quantity",
                 thPrice: "Unit Price",
-                thTotal: "Total",
+                thTotal: "Subtotal",
                 thAction: "Action"
             }
         };
@@ -1393,7 +1441,6 @@
             document.getElementById('footer-rights').innerHTML = t.footerRights;
         }
 
-        /* الانتقال لصفحة تفاصيل المنتج (أو الفلترة التلقائية عند النقر) */
         function goToProductDetail(productId) {
             const product = products.find(p => p.id === productId);
             if (product) {
@@ -1402,7 +1449,7 @@
             }
         }
 
-        /* دوال الانتقال بين المتجر الرئيسي وصفحة السلة المستقلة */
+        /* 1. أسلوب عرض صفحة وقسم السلة المستقلة */
         function showMainShop() {
             document.getElementById('mainShopContent').style.display = 'block';
             document.getElementById('subNavBar').style.display = 'flex';
@@ -1426,8 +1473,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function getProductInCart(productName) {
+            return cart.find(i => i.name === productName);
+        }
+
         function getProductQtyInCart(productName) {
-            const item = cart.find(i => i.name === productName);
+            const item = getProductInCart(productName);
             return item ? item.qty : 0;
         }
 
@@ -1452,13 +1503,13 @@
 
                 let actionArea = '';
                 if (qtyInCart === 0) {
-                    actionArea = `<button class="btn-add-cart" onclick="addToCartDirect('${safeName}', ${p.price})">${t.addCartBtn}</button>`;
+                    actionArea = `<button class="btn-add-cart" id="btn-add-${p.id}" onclick="addToCartDirectWithFlash(this, '${safeName}', ${p.price}, '${p.img}')">${t.addCartBtn}</button>`;
                 } else {
                     actionArea = `
                         <div class="product-qty-stepper">
-                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, ${qtyInCart - 1})">-</button>
+                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, '${p.img}', ${qtyInCart - 1})">-</button>
                             <input type="text" class="stepper-input" value="${qtyInCart}" readonly>
-                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, ${qtyInCart + 1})">+</button>
+                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, '${p.img}', ${qtyInCart + 1})">+</button>
                         </div>
                     `;
                 }
@@ -1475,6 +1526,47 @@
                 `;
             });
             grid.innerHTML = html;
+        }
+
+        /* 3. دالة إضافة المنتج مع تأثير الوميض البصري باللون الأبيض للزر والأيقونة */
+        function addToCartDirectWithFlash(buttonElem, productName, price, img) {
+            if (buttonElem) {
+                buttonElem.classList.add('white-active');
+            }
+
+            setTimeout(() => {
+                addToCartDirect(productName, price, img);
+            }, 180);
+        }
+
+        function addToCartDirect(productName, price, img) {
+            const existingItem = cart.find(item => item.name === productName);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name: productName, price: price, img: img, qty: 1 });
+            }
+
+            saveCart();
+            renderProducts(getCurrentActiveFilteredProducts());
+            showToast(translations[currentLang].toastAdded);
+        }
+
+        /* 2. التحديث الفوري المباشر للكميات وإلغاء المنتج تلقائياً عند الصفر */
+        function updateItemQty(productName, price, img, newQty) {
+            const index = cart.findIndex(item => item.name === productName);
+            if (index !== -1) {
+                if (newQty <= 0) {
+                    cart.splice(index, 1);
+                } else {
+                    cart[index].qty = newQty;
+                }
+            } else if (newQty > 0) {
+                cart.push({ name: productName, price: price, img: img, qty: newQty });
+            }
+
+            saveCart();
+            renderProducts(getCurrentActiveFilteredProducts());
         }
 
         function filterByCategory(category) {
@@ -1559,35 +1651,6 @@
             renderProducts(filtered);
         }
 
-        function addToCartDirect(productName, price) {
-            const existingItem = cart.find(item => item.name === productName);
-            if (existingItem) {
-                existingItem.qty += 1;
-            } else {
-                cart.push({ name: productName, price: price, qty: 1 });
-            }
-
-            saveCart();
-            renderProducts(getCurrentActiveFilteredProducts());
-            showToast(translations[currentLang].toastAdded);
-        }
-
-        function updateItemQty(productName, price, newQty) {
-            const index = cart.findIndex(item => item.name === productName);
-            if (index !== -1) {
-                if (newQty <= 0) {
-                    cart.splice(index, 1);
-                } else {
-                    cart[index].qty = newQty;
-                }
-            } else if (newQty > 0) {
-                cart.push({ name: productName, price: price, qty: newQty });
-            }
-
-            saveCart();
-            renderProducts(getCurrentActiveFilteredProducts());
-        }
-
         function getCurrentActiveFilteredProducts() {
             const searchVal = document.getElementById('search-input').value.trim().toLowerCase();
             if (searchVal) {
@@ -1644,6 +1707,7 @@
             renderProducts(getCurrentActiveFilteredProducts());
         }
 
+        /* 1 & 2. بناء الواجهة المستقلة لجدول السلة مع الصور والأزرار الفورية */
         function updateCartUI() {
             const cartCount = document.getElementById('cart-count');
             const cartTableContainer = document.getElementById('cartTableContainer');
@@ -1665,8 +1729,8 @@
                         <thead>
                             <tr>
                                 <th>${t.thProduct}</th>
-                                <th>${t.thQty}</th>
                                 <th>${t.thPrice}</th>
+                                <th>${t.thQty}</th>
                                 <th>${t.thTotal}</th>
                                 <th>${t.thAction}</th>
                             </tr>
@@ -1679,12 +1743,26 @@
                     let itemTotal = item.price * item.qty;
                     totalPrice += itemTotal;
 
+                    const safeName = item.name.replace(/'/g, "\\'");
+                    const imgTag = item.img ? `<img src="${item.img}" class="cart-product-img" alt="${item.name}">` : `<div style="width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:#eee;border-radius:6px;font-size:20px;">📦</div>`;
+
                     tableHtml += `
                         <tr>
-                            <td><b>${item.name}</b></td>
-                            <td>${item.qty}</td>
+                            <td>
+                                <div class="cart-product-cell">
+                                    ${imgTag}
+                                    <b>${item.name}</b>
+                                </div>
+                            </td>
                             <td>${item.price} ${t.sar}</td>
-                            <td><b>${itemTotal} ${t.sar}</b></td>
+                            <td>
+                                <div class="cart-table-stepper">
+                                    <button onclick="updateItemQty('${safeName}', ${item.price}, '${item.img}', ${item.qty - 1})">-</button>
+                                    <span>${item.qty}</span>
+                                    <button onclick="updateItemQty('${safeName}', ${item.price}, '${item.img}', ${item.qty + 1})">+</button>
+                                </div>
+                            </td>
+                            <td><b>${itemTotal.toFixed(2)} ${t.sar}</b></td>
                             <td><button class="btn-remove" onclick="removeFromCart(${index})">${t.deleteBtn}</button></td>
                         </tr>
                     `;
@@ -1697,17 +1775,17 @@
                 let rawMessage = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
                 
                 cart.forEach((item, index) => {
-                    rawMessage += (index + 1) + ". " + item.name + " (الكمية: " + item.qty + " - السعر: " + (item.price * item.qty) + " " + t.sar + ")\n";
+                    rawMessage += (index + 1) + ". " + item.name + " (الكمية: " + item.qty + " - السعر: " + (item.price * item.qty).toFixed(2) + " " + t.sar + ")\n";
                 });
                 
-                rawMessage += "\n" + t.total + ": " + totalPrice + " " + t.sar;
+                rawMessage += "\n" + t.total + ": " + totalPrice.toFixed(2) + " " + t.sar;
 
                 const phone = "966546723820";
                 checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(rawMessage);
             }
 
             cartCount.textContent = totalCount;
-            cartTotal.textContent = `${t.total}: ${totalPrice} ${t.sar}`;
+            cartTotal.textContent = `${t.total}: ${totalPrice.toFixed(2)} ${t.sar}`;
             checkoutBtn.textContent = t.whatsappCheckout;
         }
 
