@@ -594,7 +594,7 @@
             scroll-margin-top: 90px;
         }
 
-        /* 1. صفحة وقسم السلة المستقلة والثابتة */
+        /* صفحة وقسم السلة المستقلة والثابتة */
         .cart-page-container {
             max-width: 1100px;
             margin: 30px auto;
@@ -727,7 +727,7 @@
             margin-bottom: 12px;
         }
 
-        /* 3. زر أضف للسلة والتأثير البصري المتحول للون الأبيض (White Flash Effect) */
+        /* زر أضف للسلة والتأثير البصري المتحول للون الأبيض (White Flash Effect) */
         .btn-add-cart {
             display: block;
             width: 100%;
@@ -749,7 +749,6 @@
             transform: translateY(-1px);
         }
 
-        /* كلاس التفاعل البصري المتحول للون الأبيض عند الضغط */
         .btn-add-cart.white-active {
             background: #ffffff !important;
             color: var(--primary-color) !important;
@@ -758,7 +757,7 @@
             transform: scale(0.96) !important;
         }
 
-        /* 2. عداد الكمية المتداخل في نفس مساحة الزر */
+        /* عداد الكمية المتداخل في نفس مساحة الزر */
         .product-qty-stepper {
             display: flex;
             align-items: center;
@@ -806,7 +805,6 @@
             outline: none;
         }
 
-        /* أزرار الكمية المصغرة داخل جدول السلة المستقلة */
         .cart-table-stepper {
             display: inline-flex;
             align-items: center;
@@ -1071,7 +1069,7 @@
         <div class="header-left">
             <span class="brand-badge">BizmindMakers</span>
             <button class="cart-icon-btn" onclick="showCartPage()">
-                🛒 <span id="cart-btn-text">السلة</span> <span class="cart-count" id="cart-count">0</span>
+                🛒 <span id="cart-btn-text">سلة المشتريات</span> <span class="cart-count" id="cart-count">0</span>
             </button>
         </div>
     </header>
@@ -1191,7 +1189,7 @@
         </main>
     </div>
 
-    <!-- 1. صفحة وقسم السلة المستقلة والتفصيلية -->
+    <!-- صفحة وقسم السلة المستقلة والتفصيلية -->
     <div class="cart-page-container" id="cartPageContainer">
         <button class="cart-back-btn" onclick="showMainShop()" id="cartBackBtnText">← العودة للتسوق</button>
         <div class="cart-page-header">
@@ -1274,7 +1272,7 @@
                 home: "الرئيسية",
                 products: "المنتجات",
                 searchPlaceholder: "ابحث في المتجر (عصير، مكملات، صبار...)",
-                cartBtn: "السلة",
+                cartBtn: "سلة المشتريات",
                 catAll: "كل المنتجات",
                 catDrinks: "عصير الصبار",
                 catSupplements: "المكملات",
@@ -1326,7 +1324,7 @@
                 home: "Home",
                 products: "Products",
                 searchPlaceholder: "Search store (juice, supplements, aloe...)",
-                cartBtn: "Cart",
+                cartBtn: "Shopping Cart",
                 catAll: "All Products",
                 catDrinks: "Aloe Drinks",
                 catSupplements: "Supplements",
@@ -1449,7 +1447,6 @@
             }
         }
 
-        /* 1. أسلوب عرض صفحة وقسم السلة المستقلة */
         function showMainShop() {
             document.getElementById('mainShopContent').style.display = 'block';
             document.getElementById('subNavBar').style.display = 'flex';
@@ -1528,7 +1525,6 @@
             grid.innerHTML = html;
         }
 
-        /* 3. دالة إضافة المنتج مع تأثير الوميض البصري باللون الأبيض للزر والأيقونة */
         function addToCartDirectWithFlash(buttonElem, productName, price, img) {
             if (buttonElem) {
                 buttonElem.classList.add('white-active');
@@ -1552,7 +1548,6 @@
             showToast(translations[currentLang].toastAdded);
         }
 
-        /* 2. التحديث الفوري المباشر للكميات وإلغاء المنتج تلقائياً عند الصفر */
         function updateItemQty(productName, price, img, newQty) {
             const index = cart.findIndex(item => item.name === productName);
             if (index !== -1) {
@@ -1707,7 +1702,6 @@
             renderProducts(getCurrentActiveFilteredProducts());
         }
 
-        /* 1 & 2. بناء الواجهة المستقلة لجدول السلة مع الصور والأزرار الفورية */
         function updateCartUI() {
             const cartCount = document.getElementById('cart-count');
             const cartTableContainer = document.getElementById('cartTableContainer');
