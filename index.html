@@ -62,21 +62,18 @@
         html[dir="ltr"] .slide-content,
         html[dir="ltr"] .promo-section,
         html[dir="ltr"] .legal-disclaimer,
-        html[dir="ltr"] footer {
+        html[dir="ltr"] footer,
+        html[dir="ltr"] .cart-page-container {
             text-align: left;
         }
 
         html[dir="ltr"] .categories-section h3,
-        html[dir="ltr"] .section-title {
+        html[dir="ltr"] .section-title,
+        html[dir="ltr"] .cart-page-header {
             border-right: none;
             border-left: 4px solid var(--accent-color);
             padding-right: 0;
             padding-left: 12px;
-        }
-
-        html[dir="ltr"] .cart-close {
-            left: auto;
-            right: 20px;
         }
 
         html[dir="ltr"] .cart-total {
@@ -399,6 +396,12 @@
             height: 160px;
             object-fit: contain;
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .slide-img-box img:hover {
+            transform: scale(1.03);
         }
 
         .slide-btn {
@@ -591,6 +594,74 @@
             scroll-margin-top: 90px;
         }
 
+        /* صفحة السلة المستقلة والثابتة */
+        .cart-page-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        .cart-page-container.active {
+            display: block;
+        }
+
+        .cart-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-right: 4px solid var(--accent-color);
+            padding-right: 12px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .cart-page-header h2 {
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .btn-clear-cart {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .btn-clear-cart:hover {
+            background: #fecaca;
+        }
+
+        .cart-back-btn {
+            background: var(--bg-section);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.2s;
+            margin-bottom: 20px;
+        }
+
+        .cart-back-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
         /* شبكة المنتجات الثنائية للجوال والمتجاوبة للابتوب */
         .products-grid {
             display: grid;
@@ -627,6 +698,12 @@
             height: 150px;
             object-fit: contain;
             margin-bottom: 12px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.04);
         }
 
         .product-card h3 {
@@ -634,6 +711,13 @@
             color: var(--text-color);
             margin-bottom: 8px;
             font-weight: 700;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .product-card h3:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
         }
 
         .price {
@@ -712,88 +796,19 @@
             transform: translateY(0);
         }
 
-        /* نافذة السلة المنبثقة */
-        .cart-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .cart-content {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 14px;
-            width: 100%;
-            max-width: 800px;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .cart-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn-clear-cart {
-            background: #fee2e2;
-            color: #dc2626;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 700;
-            transition: background 0.2s;
-        }
-
-        .btn-clear-cart:hover {
-            background: #fecaca;
-        }
-
-        .cart-close {
-            position: absolute;
-            top: 20px;
-            left: 25px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #888;
-            transition: color 0.2s;
-        }
-
-        .cart-close:hover {
-            color: #000;
-        }
-
         .cart-table-wrapper {
             margin: 20px 0;
-            max-height: 350px;
-            overflow-x: auto;
-            overflow-y: auto;
             border: 1px solid var(--border-color);
             border-radius: 8px;
+            overflow-x: auto;
         }
 
         .cart-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
+            font-size: 14px;
             text-align: right;
-            min-width: 450px;
+            min-width: 500px;
         }
 
         html[dir="ltr"] .cart-table {
@@ -834,7 +849,7 @@
         .cart-total {
             font-weight: 800;
             font-size: 18px;
-            margin-bottom: 20px;
+            margin: 20px 0;
             color: var(--primary-color);
             text-align: left;
         }
@@ -855,6 +870,10 @@
             font-weight: 700;
             font-size: 15px;
             transition: opacity 0.3s;
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.9;
         }
 
         .whatsapp-float {
@@ -930,8 +949,8 @@
             .slide-content {
                 text-align: center;
             }
-            .cart-content {
-                width: 100%;
+            .cart-page-container {
+                margin: 15px;
                 padding: 15px;
             }
         }
@@ -951,30 +970,30 @@
     <!-- الهيدر الرئيسي -->
     <header>
         <div class="header-right">
-            <div class="logo-area" onclick="scrollToSection('home')">
+            <div class="logo-area" onclick="showMainShop()">
                 <img src="falcon-logo.jpg" alt="شعار صقر فوريفر">
                 <div class="logo-text"><span id="store-title-prefix">متجر</span> <span id="store-owner">د. محمد النبهاني</span></div>
             </div>
             <nav class="nav-links">
-                <button class="nav-btn" onclick="scrollToSection('home')" id="nav-home">الرئيسية</button>
-                <button class="nav-btn" onclick="scrollToSection('products')" id="nav-products">المنتجات</button>
+                <button class="nav-btn" onclick="showMainShop()" id="nav-home">الرئيسية</button>
+                <button class="nav-btn" onclick="showMainShopProducts()" id="nav-products">المنتجات</button>
             </nav>
         </div>
 
         <div class="header-search">
-            <input type="text" id="search-input" placeholder="ابحث في المتجر عن منتج..." oninput="filterProducts()">
+            <input type="text" id="search-input" placeholder="ابحث في المتجر (عصير، مكملات، صبار...)" oninput="filterProducts()">
         </div>
 
         <div class="header-left">
             <span class="brand-badge">BizmindMakers</span>
-            <button class="cart-icon-btn" onclick="toggleCartModal()">
+            <button class="cart-icon-btn" onclick="showCartPage()">
                 🛒 <span id="cart-btn-text">السلة</span> <span class="cart-count" id="cart-count">0</span>
             </button>
         </div>
     </header>
 
     <!-- شريط التصنيفات الفرعي -->
-    <nav class="sub-nav">
+    <nav class="sub-nav" id="subNavBar">
         <a onclick="filterByCategory('all')" class="active-cat" id="cat-all">كل المنتجات</a>
         <a onclick="filterByCategory('drinks')" id="cat-drinks">عصير الصبار</a>
         <a onclick="filterByCategory('supplements')" id="cat-supplements">المكملات</a>
@@ -984,126 +1003,127 @@
         <a onclick="filterByCategory('packs')" id="cat-packs">المجموعات</a>
     </nav>
 
-    <!-- 1. سلايدر البنرات العلوي -->
-    <section class="hero-slider" id="home-section">
-        <div class="slide active">
-            <div class="slide-content">
-                <h1 id="slide1-title">الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
-                <p id="slide1-desc">متوفر الآن في السوق السعودي! تصميم جديد وعصري، بنفس الفوائد الغذائية الأصلية التي تثق بها.</p>
-                <button class="slide-btn" onclick="filterByProductSearch('Forever Aloe Vera Gel')" id="slide1-btn">اطلب الآن</button>
+    <!-- محتوى المتجر الرئيسي (السلايدر، الفئات، والمنتجات) -->
+    <div id="mainShopContent">
+        <!-- 1. سلايدر البنرات العلوي -->
+        <section class="hero-slider" id="home-section">
+            <div class="slide active">
+                <div class="slide-content">
+                    <h1 id="slide1-title">الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
+                    <p id="slide1-desc">متوفر الآن في السوق السعودي! تصميم جديد وعصري، بنفس الفوائد الغذائية الأصلية التي تثق بها.</p>
+                    <button class="slide-btn" onclick="filterByProductSearch('Forever Aloe Vera Gel')" id="slide1-btn">اطلب الآن</button>
+                </div>
+                <div class="slide-img-box">
+                    <img src="815.webp" alt="عصير الألوفيرا جل" onclick="goToProductDetail(31)">
+                </div>
             </div>
-            <div class="slide-img-box">
-                <img src="815.webp" alt="عصير الألوفيرا جل">
+            <div class="slide">
+                <div class="slide-content">
+                    <h1 id="slide2-title">متوفر الآن - مزيل العرق <span>ألو إيفر-شيلد</span></h1>
+                    <p id="slide2-desc">عاد للتوفر – بدون أملاح الألومنيوم، بخلاصة الألوفيرا، الكود 067.</p>
+                    <button class="slide-btn" onclick="filterByProductSearch('067')" id="slide2-btn">اطلبه الآن</button>
+                </div>
+                <div class="slide-img-box">
+                    <img src="067.webp" alt="مزيل العرق ألو إيفر شيلد" onclick="goToProductDetail(25)">
+                </div>
             </div>
-        </div>
-        <div class="slide">
-            <div class="slide-content">
-                <h1 id="slide2-title">متوفر الآن - مزيل العرق <span>ألو إيفر-شيلد</span></h1>
-                <p id="slide2-desc">عاد للتوفر – بدون أملاح الألومنيوم، بخلاصة الألوفيرا، الكود 067.</p>
-                <button class="slide-btn" onclick="filterByProductSearch('067')" id="slide2-btn">اطلبه الآن</button>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1 id="slide3-title">ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
+                    <p id="slide3-desc">جل الأسنان المفضل بالصبار والعكبر (البروبوليس) لتنظيف عميق وحماية فائقة.</p>
+                    <button class="slide-btn" onclick="filterByProductSearch('Forever Bright Toothgel')" id="slide3-btn">تسوق الآن</button>
+                </div>
+                <div class="slide-img-box">
+                    <img src="028.webp" alt="فوريفر برايت جل الأسنان" onclick="goToProductDetail(17)">
+                </div>
             </div>
-            <div class="slide-img-box">
-                <img src="067.webp" alt="مزيل العرق ألو إيفر شيلد">
-            </div>
-        </div>
-        <div class="slide">
-            <div class="slide-content">
-                <h1 id="slide3-title">ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
-                <p id="slide3-desc">جل الأسنان المفضل بالصبار والعكبر (البروبوليس) لتنظيف عميق وحماية فائقة.</p>
-                <button class="slide-btn" onclick="filterByProductSearch('Forever Bright Toothgel')" id="slide3-btn">تسوق الآن</button>
-            </div>
-            <div class="slide-img-box">
-                <img src="028.webp" alt="فوريفر برايت جل الأسنان">
-            </div>
-        </div>
 
-        <div class="slider-dots">
-            <span class="dot active" onclick="currentSlide(0)"></span>
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-        </div>
-    </section>
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </section>
 
-    <!-- قسم تسوق حسب الفئة -->
-    <section class="categories-section">
-        <h3 id="cat-section-title">تسوق حسب الفئة</h3>
-        <div class="categories-grid">
-            <div class="category-item" onclick="filterByCategory('all')">
-                <div class="category-circle">🛍️</div>
-                <div class="category-title" id="cat-title-all">كل المنتجات</div>
+        <!-- قسم تسوق حسب الفئة -->
+        <section class="categories-section">
+            <h3 id="cat-section-title">تسوق حسب الفئة</h3>
+            <div class="categories-grid">
+                <div class="category-item" onclick="filterByCategory('all')">
+                    <div class="category-circle">🛍️</div>
+                    <div class="category-title" id="cat-title-all">كل المنتجات</div>
+                </div>
+                <div class="category-item" onclick="filterByCategory('drinks')">
+                    <div class="category-circle">🌿</div>
+                    <div class="category-title" id="cat-title-drinks">عصير الصبار</div>
+                </div>
+                <div class="category-item" onclick="filterByCategory('supplements')">
+                    <div class="category-circle">💊</div>
+                    <div class="category-title" id="cat-title-supplements">المكملات</div>
+                </div>
+                <div class="category-item" onclick="filterByCategory('care')">
+                    <div class="category-circle">✨</div>
+                    <div class="category-title" id="cat-title-care">العناية بالشعر والبشرة</div>
+                </div>
+                <div class="category-item" onclick="filterByCategory('personal-care')">
+                    <div class="category-circle">🧴</div>
+                    <div class="category-title" id="cat-title-personal-care">العناية الشخصية</div>
+                </div>
+                <div class="category-item" onclick="filterByCategory('weight')">
+                    <div class="category-circle">⚖️</div>
+                    <div class="category-title" id="cat-title-weight">التخسيس ونزول الوزن</div>
+                </div>
+                <div class="category-item" onclick="filterByCategory('packs')">
+                    <div class="category-circle">🎁</div>
+                    <div class="category-title" id="cat-title-packs">المجموعات</div>
+                </div>
             </div>
-            <div class="category-item" onclick="filterByCategory('drinks')">
-                <div class="category-circle">🌿</div>
-                <div class="category-title" id="cat-title-drinks">عصير الصبار</div>
-            </div>
-            <div class="category-item" onclick="filterByCategory('supplements')">
-                <div class="category-circle">💊</div>
-                <div class="category-title" id="cat-title-supplements">المكملات</div>
-            </div>
-            <div class="category-item" onclick="filterByCategory('care')">
-                <div class="category-circle">✨</div>
-                <div class="category-title" id="cat-title-care">العناية بالشعر والبشرة</div>
-            </div>
-            <div class="category-item" onclick="filterByCategory('personal-care')">
-                <div class="category-circle">🧴</div>
-                <div class="category-title" id="cat-title-personal-care">العناية الشخصية</div>
-            </div>
-            <div class="category-item" onclick="filterByCategory('weight')">
-                <div class="category-circle">⚖️</div>
-                <div class="category-title" id="cat-title-weight">التخسيس ونزول الوزن</div>
-            </div>
-            <div class="category-item" onclick="filterByCategory('packs')">
-                <div class="category-circle">🎁</div>
-                <div class="category-title" id="cat-title-packs">المجموعات</div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 2. بانر "لماذا الألوفيرا؟" وبانر "ابدأ رحلتك" -->
-    <section class="promo-section">
-        <div class="promo-card">
-            <div>
-                <h3 id="promo1-title">لماذا الألوفيرا؟</h3>
-                <p id="promo1-desc">للآلوفيرا فوائد قوية تساعدك على الشعور والظهور بأفضل حال من الداخل والخارج، نصنع منتجاتنا المعتمدة من IASC من جل ورق الألوفيرا الداخلي.</p>
+        <!-- 2. بانر "لماذا الألوفيرا؟" وبانر "ابدأ رحلتك" -->
+        <section class="promo-section">
+            <div class="promo-card">
+                <div>
+                    <h3 id="promo1-title">لماذا الألوفيرا؟</h3>
+                    <p id="promo1-desc">للآلوفيرا فوائد قوية تساعدك على الشعور والظهور بأفضل حال من الداخل والخارج، نصنع منتجاتنا المعتمدة من IASC من جل ورق الألوفيرا الداخلي.</p>
+                </div>
+                <a href="https://foreverliving.com/are/ar-ae/our-aloe" target="_blank" class="promo-btn" id="promo1-btn">اعرف المزيد</a>
             </div>
-            <a href="https://foreverliving.com/are/ar-ae/our-aloe" target="_blank" class="promo-btn" id="promo1-btn">اعرف المزيد</a>
-        </div>
-        <div class="promo-card" style="background: linear-gradient(rgba(22,61,43,0.9), rgba(13,37,26,0.95)), url('634.webp') center/cover;">
-            <div>
-                <h3 id="promo2-title">ابدأ رحلتك (باقة متكاملة)</h3>
-                <p id="promo2-desc">باقة متكاملة لبداية صحية – العناية بالبشرة + المكملات<br><b>السعر: 1,599.99 ر.س</b> (بدلاً من 1,738.41 ر.س)</p>
+            <div class="promo-card" style="background: linear-gradient(rgba(22,61,43,0.9), rgba(13,37,26,0.95)), url('634.webp') center/cover;">
+                <div>
+                    <h3 id="promo2-title">ابدأ رحلتك (باقة متكاملة)</h3>
+                    <p id="promo2-desc">باقة متكاملة لبداية صحية – العناية بالبشرة + المكملات<br><b>السعر: 1,599.99 ر.س</b> (بدلاً من 1,738.41 ر.س)</p>
+                </div>
+                <button class="promo-btn" onclick="filterByProductSearch('Start Your Journey Pack')" id="promo2-btn">اطلبه الآن</button>
             </div>
-            <button class="promo-btn" onclick="filterByProductSearch('Start Your Journey Pack')" id="promo2-btn">اطلبه الآن</button>
-        </div>
-    </section>
+        </section>
 
-    <!-- عرض المنتجات -->
-    <main class="container">
-        <h2 class="section-title" id="products-grid">قائمة المنتجات الكاملة</h2>
-        <div class="products-grid" id="products-container">
-            <!-- يتم تعبئة المنتجات تلقائياً عبر الجافاسكريبت -->
+        <!-- عرض المنتجات -->
+        <main class="container">
+            <h2 class="section-title" id="products-grid">قائمة المنتجات الكاملة</h2>
+            <div class="products-grid" id="products-container">
+                <!-- يتم تعبئة المنتجات تلقائياً عبر الجافاسكريبت -->
+            </div>
+        </main>
+    </div>
+
+    <!-- صفحة السلة المستقلة والثابتة (Cart Page) -->
+    <div class="cart-page-container" id="cartPageContainer">
+        <button class="cart-back-btn" onclick="showMainShop()" id="cartBackBtnText">← العودة للتسوق</button>
+        <div class="cart-page-header">
+            <h2 id="cart-page-title">سلة المشتريات الخاصة بك</h2>
+            <button class="btn-clear-cart" onclick="clearCart()" id="btnClearCartText">تفريغ السلة بالكامل 🗑️</button>
         </div>
-    </main>
+        
+        <div class="cart-table-wrapper" id="cartTableContainer"></div>
+
+        <div class="cart-total" id="cartTotal">الإجمالي: 0 ر.س</div>
+        <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر الواتساب 📱</a>
+    </div>
 
     <!-- إشعار الإضافة العائم (Toast Notification) -->
     <div id="toastNotification" class="toast-notification">
         <span>✨</span> <span id="toastText">تمت إضافة المنتج إلى السلة بنجاح!</span>
-    </div>
-
-    <!-- نافذة السلة المنبثقة -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-content">
-            <span class="cart-close" onclick="toggleCartModal()">&times;</span>
-            <div class="cart-header-row">
-                <h3 style="color: var(--primary-color); margin: 0;" id="cart-modal-title">سلة المشتريات الخاصة بك</h3>
-                <button class="btn-clear-cart" onclick="clearCart()" id="btnClearCartText">تفريغ السلة بالكامل 🗑️</button>
-            </div>
-            
-            <div class="cart-table-wrapper" id="cartTableContainer"></div>
-
-            <div class="cart-total" id="cartTotal">الإجمالي: 0 ر.س</div>
-            <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر الواتساب 📱</a>
-        </div>
     </div>
 
     <!-- زر الواتساب العائم -->
@@ -1124,40 +1144,40 @@
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
 
-    <!-- سكريبت البرمجة مع إصلاح دوال الحذف والتحديث -->
+    <!-- سكريبت البرمجة -->
     <script>
         const products = [
-            { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1599.99, img: "634.webp", category: "packs" },
-            { id: 2, arName: "فوريفر رويال جيلي (Forever Royal Jelly)", enName: "Forever Royal Jelly", price: 168, img: "036.webp", category: "supplements" },
-            { id: 3, arName: "سيروم المرطب (Hydrating Serum)", enName: "Hydrating Serum", price: 163, img: "618.webp", category: "care" },
-            { id: 4, arName: "فيتولايز (Vitolize Women)", enName: "Vitolize Women", price: 159, img: "374.webp", category: "supplements" },
-            { id: 5, arName: "فوريفر أكتيك سي (Forever Arctic Sea)", enName: "Forever Arctic Sea", price: 168, img: "376.webp", category: "supplements" },
-            { id: 6, arName: "فوريفر فايبر (Forever Fiber)", enName: "Forever Fiber", price: 153, img: "464.webp", category: "weight" },
-            { id: 7, arName: "كريم المرطب العميق (Deep Moisturizing Cream)", enName: "Deep Moisturizing Cream", price: 153, img: "651.webp", category: "care" },
-            { id: 8, arName: "فوريفر غارسينيا بلس (Forever Garcinia Plus)", enName: "Forever Garcinia Plus", price: 146, img: "071.webp", category: "weight" },
-            { id: 9, arName: "ألو بيو-سللوز ماسك (Aloe Bio-cellulose Mask)", enName: "Aloe Bio-cellulose Mask", price: 144, img: "664.webp", category: "care" },
-            { id: 10, arName: "ألو إم إس إم جل (Aloe MSM Gel)", enName: "Aloe MSM Gel", price: 123, img: "205.webp", category: "care" },
-            { id: 11, arName: "زيت الشعر المغذي (Nourishing Hair Oil)", enName: "Nourishing Hair Oil", price: 126, img: "642.webp", category: "care" },
-            { id: 12, arName: "شامبو ألو جوجوبا (Aloe Jojoba Shampoo)", enName: "Aloe Jojoba Shampoo", price: 102, img: "640.webp", category: "care" },
-            { id: 13, arName: "فوريفر دايلي (Forever Daily)", enName: "Forever Daily", price: 93, img: "439.png", category: "supplements" },
-            { id: 14, arName: "ألوفيرا جيلي (Aloe Vera Gelly)", enName: "Aloe Vera Gelly", price: 76, img: "061.webp", category: "care" },
-            { id: 15, arName: "ألو هيت لوشن (Aloe Heat Lotion)", enName: "Aloe Heat Lotion", price: 76, img: "063.webp", category: "care" },
-            { id: 16, arName: "ألو بروبوليس كريم (Aloe Propolis Creme)", enName: "Aloe Propolis Creme", price: 101, img: "051.webp", category: "care" },
-            { id: 17, arName: "فوريفر برايت جل الأسنان (Forever Bright Toothgel)", enName: "Forever Bright Toothgel", price: 39, img: "028.webp", category: "personal-care" },
-            { id: 18, arName: "ألو لبس مع جوجوبا (Aloe Lips with Jojoba)", enName: "Aloe Lips with Jojoba", price: 18, img: "022.webp", category: "personal-care" },
-            { id: 19, arName: "فوريفر جارليك-ثايم (Forever Garlic-Thyme)", enName: "Forever Garlic-Thyme", price: 93, img: "065.webp", category: "supplements" },
-            { id: 20, arName: "فوريفر ثيرم (Forever Therm)", enName: "Forever Therm", price: 146, img: "463.webp", category: "weight" },
-            { id: 21, arName: "ألو أكتيفيتور (Aloe Activator)", enName: "Aloe Activator", price: 77, img: "612.webp", category: "care" },
-            { id: 22, arName: "فوريفر ألو سكراب (Forever Aloe Scrub)", enName: "Forever Aloe Scrub", price: 80, img: "238.webp", category: "care" },
-            { id: 23, arName: "ألو فيرست (Aloe First)", enName: "Aloe First", price: 101, img: "040.webp", category: "care" },
-            { id: 24, arName: "ألو موسترايزينغ لوشن (Aloe Moisturizing Lotion)", enName: "Aloe Moisturizing Lotion", price: 76, img: "063.webp", category: "care" },
-            { id: 25, arName: "ألو إيفر-شيلد (Aloe Ever-Shield Deodorant)", enName: "Aloe Ever-Shield Deodorant", price: 38, img: "067.webp", category: "personal-care" },
-            { id: 26, arName: "ألو أفوكادو فايس آند بودي صوب (Aloe Avocado Face & Body Soap)", enName: "Aloe Avocado Face & Body Soap", price: 39, img: "284.webp", category: "personal-care" },
-            { id: 27, arName: "فوريفر ألُوفا (Forever Alofa)", enName: "Forever Alofa", price: 152, img: "643.webp", category: "care" },
-            { id: 28, arName: "فوريفر مالوسي (Forever Malosi)", enName: "Forever Malosi", price: 152, img: "644.webp", category: "care" },
-            { id: 29, arName: "ألو بودي واش (Aloe Body Wash)", enName: "Aloe Body Wash", price: 122, img: "646.webp", category: "care" },
-            { id: 30, arName: "ألو بودي لوشن (Aloe Body Lotion)", enName: "Aloe Body Lotion", price: 122, img: "647.webp", category: "care" },
-            { id: 31, arName: "فوريفر ألو فيرا جل (Forever Aloe Vera Gel)", enName: "Forever Aloe Vera Gel", price: 133, img: "815.webp", category: "weight" }
+            { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1599.99, img: "634.webp", category: "packs", keywords: ["باقة", "مجموعة", "رحلتك", "pack", "journey"] },
+            { id: 2, arName: "فوريفر رويال جيلي (Forever Royal Jelly)", enName: "Forever Royal Jelly", price: 168, img: "036.webp", category: "supplements", keywords: ["رويال", "جيلي", "عكبر", "مكمل", "royal", "jelly"] },
+            { id: 3, arName: "سيروم المرطب (Hydrating Serum)", enName: "Hydrating Serum", price: 163, img: "618.webp", category: "care", keywords: ["سيروم", "مرطب", "بشرة", "serum", "hydrating"] },
+            { id: 4, arName: "فيتولايز (Vitolize Women)", enName: "Vitolize Women", price: 159, img: "374.webp", category: "supplements", keywords: ["فيتولايز", "نساء", "مكمل", "vitolize"] },
+            { id: 5, arName: "فوريفر أكتيك سي (Forever Arctic Sea)", enName: "Forever Arctic Sea", price: 168, img: "376.webp", category: "supplements", keywords: ["أكتيك", "أوميغا", "سمك", "arctic", "sea", "omega"] },
+            { id: 6, arName: "فوريفر فايبر (Forever Fiber)", enName: "Forever Fiber", price: 153, img: "464.webp", category: "weight", keywords: ["فايبر", "ألياف", "تخسيس", "fiber", "weight"] },
+            { id: 7, arName: "كريم المرطب العميق (Deep Moisturizing Cream)", enName: "Deep Moisturizing Cream", price: 153, img: "651.webp", category: "care", keywords: ["كريم", "مرطب", "عميق", "cream", "moisturizing"] },
+            { id: 8, arName: "فوريفر غارسينيا بلس (Forever Garcinia Plus)", enName: "Forever Garcinia Plus", price: 146, img: "071.webp", category: "weight", keywords: ["غارسينيا", "تخسيس", "حرق", "garcinia"] },
+            { id: 9, arName: "ألو بيو-سللوز ماسك (Aloe Bio-cellulose Mask)", enName: "Aloe Bio-cellulose Mask", price: 144, img: "664.webp", category: "care", keywords: ["ماسك", "قناع", "بشرة", "mask", "cellulose"] },
+            { id: 10, arName: "ألو إم إس إم جل (Aloe MSM Gel)", enName: "Aloe MSM Gel", price: 123, img: "205.webp", category: "care", keywords: ["إم إس إم", "مفاصل", "جل", "msm", "gel"] },
+            { id: 11, arName: "زيت الشعر المغذي (Nourishing Hair Oil)", enName: "Nourishing Hair Oil", price: 126, img: "642.webp", category: "care", keywords: ["زيت", "شعر", "مغذي", "oil", "hair"] },
+            { id: 12, arName: "شامبو ألو جوجوبا (Aloe Jojoba Shampoo)", enName: "Aloe Jojoba Shampoo", price: 102, img: "640.webp", category: "care", keywords: ["شامبو", "جوجوبا", "شعر", "shampoo", "jojoba"] },
+            { id: 13, arName: "فوريفر دايلي (Forever Daily)", enName: "Forever Daily", price: 93, img: "439.png", category: "supplements", keywords: ["دايلي", "فيتامينات", "daily", "vitamins"] },
+            { id: 14, arName: "ألوفيرا جيلي (Aloe Vera Gelly)", enName: "Aloe Vera Gelly", price: 76, img: "061.webp", category: "care", keywords: ["جيلي", "صبار", "ألوفيرا", "gelly", "aloe"] },
+            { id: 15, arName: "ألو هيت لوشن (Aloe Heat Lotion)", enName: "Aloe Heat Lotion", price: 76, img: "063.webp", category: "care", keywords: ["هيت", "لوشن", "مساج", "heat", "lotion"] },
+            { id: 16, arName: "ألو بروبوليس كريم (Aloe Propolis Creme)", enName: "Aloe Propolis Creme", price: 101, img: "051.webp", category: "care", keywords: ["بروبوليس", "عكبر", "كريم", "propolis", "creme"] },
+            { id: 17, arName: "فوريفر برايت جل الأسنان (Forever Bright Toothgel)", enName: "Forever Bright Toothgel", price: 39, img: "028.webp", category: "personal-care", keywords: ["أسنان", "برايت", "معجون", "toothgel", "bright"] },
+            { id: 18, arName: "ألو لبس مع جوجوبا (Aloe Lips with Jojoba)", enName: "Aloe Lips with Jojoba", price: 18, img: "022.webp", category: "personal-care", keywords: ["لبس", "شفاه", "مرطب", "lips", "jojoba"] },
+            { id: 19, arName: "فوريفر جارليك-ثايم (Forever Garlic-Thyme)", enName: "Forever Garlic-Thyme", price: 93, img: "065.webp", category: "supplements", keywords: ["ثوم", "زعتر", "جارليك", "garlic", "thyme"] },
+            { id: 20, arName: "فوريفر ثيرم (Forever Therm)", enName: "Forever Therm", price: 146, img: "463.webp", category: "weight", keywords: ["ثيرم", "حرق", "طاقة", "therm", "energy"] },
+            { id: 21, arName: "ألو أكتيفيتور (Aloe Activator)", enName: "Aloe Activator", price: 77, img: "612.webp", category: "care", keywords: ["أكتيفيتور", "منشط", "activator"] },
+            { id: 22, arName: "فوريفر ألو سكراب (Forever Aloe Scrub)", enName: "Forever Aloe Scrub", price: 80, img: "238.webp", category: "care", keywords: ["سكراب", "مقشر", "scrub"] },
+            { id: 23, arName: "ألو فيرست (Aloe First)", enName: "Aloe First", price: 101, img: "040.webp", category: "care", keywords: ["فيرست", "بخاخ", "first"] },
+            { id: 24, arName: "ألو موسترايزينغ لوشن (Aloe Moisturizing Lotion)", enName: "Aloe Moisturizing Lotion", price: 76, img: "063.webp", category: "care", keywords: ["لوشن", "مرطب", "moisturizing"] },
+            { id: 25, arName: "ألو إيفر-شيلد (Aloe Ever-Shield Deodorant)", enName: "Aloe Ever-Shield Deodorant", price: 38, img: "067.webp", category: "personal-care", keywords: ["مزيل", "عرق", "إيفرشيلد", "deodorant", "shield", "067"] },
+            { id: 26, arName: "ألو أفوكادو فايس آند بودي صوب (Aloe Avocado Face & Body Soap)", enName: "Aloe Avocado Face & Body Soap", price: 39, img: "284.webp", category: "personal-care", keywords: ["صابون", "أفوكادو", "soap", "avocado"] },
+            { id: 27, arName: "فوريفر ألُوفا (Forever Alofa)", enName: "Forever Alofa", price: 152, img: "643.webp", category: "care", keywords: ["ألُوفا", "عطر", "parfum", "alofa"] },
+            { id: 28, arName: "فوريفر مالوسي (Forever Malosi)", enName: "Forever Malosi", price: 152, img: "644.webp", category: "care", keywords: ["مالوسي", "عطر", "parfum", "malosi"] },
+            { id: 29, arName: "ألو بودي واش (Aloe Body Wash)", enName: "Aloe Body Wash", price: 122, img: "646.webp", category: "care", keywords: ["بودي", "واش", "استحمام", "body", "wash"] },
+            { id: 30, arName: "ألو بودي لوشن (Aloe Body Lotion)", enName: "Aloe Body Lotion", price: 122, img: "647.webp", category: "care", keywords: ["بودي", "لوشن", "مرطب", "body", "lotion"] },
+            { id: 31, arName: "فوريفر ألو فيرا جل (Forever Aloe Vera Gel)", enName: "Forever Aloe Vera Gel", price: 133, img: "815.webp", category: "weight", keywords: ["عصير", "صبار", "ألوفيرا", "جل", "aloe", "vera", "gel", "drink", "815"] }
         ];
 
         const translations = {
@@ -1169,7 +1189,7 @@
                 storePrefix: "متجر",
                 home: "الرئيسية",
                 products: "المنتجات",
-                searchPlaceholder: "ابحث في المتجر عن منتج...",
+                searchPlaceholder: "ابحث في المتجر (عصير، مكملات، صبار...)",
                 cartBtn: "السلة",
                 catAll: "كل المنتجات",
                 catDrinks: "عصير الصبار",
@@ -1197,8 +1217,9 @@
                 productsSectionTitle: "قائمة المنتجات الكاملة",
                 qtyLabel: "الكمية:",
                 addCartBtn: "أضف للسلة 🛒",
-                cartModalTitle: "سلة المشتريات الخاصة بك",
+                cartPageTitle: "سلة المشتريات الخاصة بك",
                 clearCartBtn: "تفريغ السلة بالكامل 🗑️",
+                cartBackBtn: "← العودة للتسوق",
                 cartEmpty: "السلة فارغة حالياً",
                 whatsappCheckout: "إتمام الطلب عبر الواتساب",
                 footerDisclaimer: "جميع المنتجات والمكملات الغذائية المعروضة على هذا الموقع ليست دواءً، ولا يُستخدم لتشخيص أو علاج أو منع أي مرض.",
@@ -1221,7 +1242,7 @@
                 storePrefix: "Store of",
                 home: "Home",
                 products: "Products",
-                searchPlaceholder: "Search store for a product...",
+                searchPlaceholder: "Search store (juice, supplements, aloe...)",
                 cartBtn: "Cart",
                 catAll: "All Products",
                 catDrinks: "Aloe Drinks",
@@ -1249,8 +1270,9 @@
                 productsSectionTitle: "Complete Product List",
                 qtyLabel: "Qty:",
                 addCartBtn: "Add to Cart 🛒",
-                cartModalTitle: "Your Shopping Cart",
+                cartPageTitle: "Your Shopping Cart",
                 clearCartBtn: "Clear Cart 🗑️",
+                cartBackBtn: "← Back to Shopping",
                 cartEmpty: "Cart is currently empty",
                 whatsappCheckout: "Checkout via WhatsApp",
                 footerDisclaimer: "All products and dietary supplements displayed on this website are not medicines and are not used to diagnose, treat, cure, or prevent any disease.",
@@ -1330,26 +1352,44 @@
             document.getElementById('promo2-btn').textContent = t.promo2Btn;
 
             document.getElementById('products-grid').textContent = t.productsSectionTitle;
-            document.getElementById('cart-modal-title').textContent = t.cartModalTitle;
+            document.getElementById('cart-page-title').textContent = t.cartPageTitle;
             document.getElementById('btnClearCartText').textContent = t.clearCartBtn;
+            document.getElementById('cartBackBtnText').textContent = t.cartBackBtn;
             document.getElementById('footer-disclaimer').textContent = t.footerDisclaimer;
             document.getElementById('footer-rights').innerHTML = t.footerRights;
         }
 
-        /* دوال الانتقال السلس عبر الأقسام */
-        function scrollToSection(sectionId) {
-            if (sectionId === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                renderProducts(products);
-                document.querySelectorAll('.sub-nav a').forEach(el => el.classList.remove('active-cat'));
-                const allCat = document.getElementById('cat-all');
-                if(allCat) allCat.classList.add('active-cat');
-            } else if (sectionId === 'products') {
-                const target = document.getElementById('products-grid');
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        /* الانتقال لصفحة تفاصيل المنتج (أو الفلترة التلقائية عند النقر) */
+        function goToProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const keyword = currentLang === 'ar' ? product.arName : product.enName;
+                filterByProductSearch(keyword);
             }
+        }
+
+        /* دوال الانتقال بين المتجر الرئيسي وصفحة السلة المستقلة */
+        function showMainShop() {
+            document.getElementById('mainShopContent').style.display = 'block';
+            document.getElementById('subNavBar').style.display = 'flex';
+            document.getElementById('cartPageContainer').classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showMainShopProducts() {
+            showMainShop();
+            const target = document.getElementById('products-grid');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function showCartPage() {
+            document.getElementById('mainShopContent').style.display = 'none';
+            document.getElementById('subNavBar').style.display = 'none';
+            document.getElementById('cartPageContainer').classList.add('active');
+            updateCartUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderProducts(productsArray) {
@@ -1366,12 +1406,12 @@
             let html = '';
             productsArray.forEach(p => {
                 const name = currentLang === 'ar' ? p.arName : p.enName;
-                const imgTag = p.img ? `<img src="${p.img}" alt="${name}" loading="lazy">` : `<div style="height:150px; display:flex; align-items:center; justify-content:center; background:#f0f4f8; border-radius:8px; font-size:35px; margin-bottom:12px;">📦</div>`;
+                const imgTag = p.img ? `<img src="${p.img}" alt="${name}" loading="lazy" onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">` : `<div style="height:150px; display:flex; align-items:center; justify-content:center; background:#f0f4f8; border-radius:8px; font-size:35px; margin-bottom:12px; cursor:pointer;" onclick="goToProductDetail(${p.id})">📦</div>`;
                 html += `
                     <div class="product-card">
                         ${imgTag}
                         <div>
-                            <h3>${name}</h3>
+                            <h3 onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">${name}</h3>
                             <div class="price">${p.price} ${t.sar}</div>
                         </div>
                         <div>
@@ -1388,6 +1428,7 @@
         }
 
         function filterByCategory(category) {
+            showMainShop();
             document.querySelectorAll('.sub-nav a').forEach(el => el.classList.remove('active-cat'));
             
             if (category === 'all') {
@@ -1427,10 +1468,11 @@
         }
 
         function filterByProductSearch(keyword) {
+            showMainShop();
             const filtered = products.filter(p => {
                 return p.arName.toLowerCase().includes(keyword.toLowerCase()) || 
                        p.enName.toLowerCase().includes(keyword.toLowerCase()) || 
-                       (p.id === 1 && keyword === 'Start Your Journey Pack');
+                       (p.keywords && p.keywords.some(kw => kw.toLowerCase().includes(keyword.toLowerCase())));
             });
             renderProducts(filtered);
 
@@ -1442,10 +1484,28 @@
 
         function filterProducts() {
             const query = document.getElementById('search-input').value.trim().toLowerCase();
+            if (!query) {
+                renderProducts(products);
+                return;
+            }
+
+            showMainShop();
+            const queryTerms = query.split(/\s+/);
+
             const filtered = products.filter(p => {
-                const n = (currentLang === 'ar' ? p.arName : p.enName).toLowerCase();
-                return n.includes(query);
+                const arName = p.arName.toLowerCase();
+                const enName = p.enName.toLowerCase();
+                const category = p.category.toLowerCase();
+                const keywords = p.keywords || [];
+
+                return queryTerms.every(term => {
+                    return arName.includes(term) ||
+                           enName.includes(term) ||
+                           category.includes(term) ||
+                           keywords.some(kw => kw.toLowerCase().includes(term));
+                });
             });
+
             renderProducts(filtered);
         }
 
@@ -1479,7 +1539,6 @@
             }, 2000);
         }
 
-        /* دالة حفظ السلة وتحديث الواجهة (تمت مراجعتها وإصلاحها) */
         function saveCart() {
             localStorage.setItem('forever_cart', JSON.stringify(cart));
             updateCartUI();
@@ -1508,7 +1567,7 @@
             let totalPrice = 0;
 
             if (cart.length === 0) {
-                cartTableContainer.innerHTML = `<p style="text-align: center; color: #888; padding: 25px;">${t.cartEmpty}</p>`;
+                cartTableContainer.innerHTML = `<p style="text-align: center; color: #888; padding: 35px;">${t.cartEmpty}</p>`;
                 checkoutBtn.style.display = 'none';
             } else {
                 let tableHtml = `
@@ -1560,13 +1619,6 @@
             cartCount.textContent = totalCount;
             cartTotal.textContent = `${t.total}: ${totalPrice} ${t.sar}`;
             checkoutBtn.textContent = t.whatsappCheckout;
-        }
-
-        function toggleCartModal() {
-            const modal = document.getElementById('cartModal');
-            if (modal) {
-                modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-            }
         }
 
         let slideIndex = 0;
