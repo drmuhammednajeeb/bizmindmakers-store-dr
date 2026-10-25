@@ -1084,9 +1084,12 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-    <!-- الشريط العلوي -->
+    <!-- الشريط العلوي (تم نقل شارة BizmindMakers إلى أقصى اليمين/الزاوية العليا) -->
     <div class="top-bar dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700">
-        <span id="topbar-email">البريد الإلكتروني: <a href="mailto:drmuhammed.najeeb2020@gmail.com" class="text-primary dark:text-emerald-400">drmuhammed.najeeb2020@gmail.com</a> ✉️</span>
+        <div class="flex items-center gap-3">
+            <span class="brand-badge dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 font-bold px-2 py-0.5 rounded">BizmindMakers</span>
+            <span id="topbar-email">البريد الإلكتروني: <a href="mailto:drmuhammed.najeeb2020@gmail.com" class="text-primary dark:text-emerald-400">drmuhammed.najeeb2020@gmail.com</a> ✉️</span>
+        </div>
         <div class="flex items-center gap-3">
             <span id="topbar-country">🇸🇦 السعودية</span> | 
             <!-- زر الوضع الداكن الفوري -->
@@ -1112,13 +1115,11 @@
                 <div class="logo-text-center dark:text-gray-100"><span id="store-title-prefix">متجر</span> <span id="store-owner" class="text-accent">د. محمد النبهاني</span></div>
             </a>
 
-            <!-- اليسار: BizmindMakers، زر تسجيل عضو جديد، وسلة المشتريات -->
+            <!-- اليسار: زر تسجيل عضو جديد برقم العضوية وسلة المشتريات -->
             <div class="header-left-actions">
-                <span class="brand-badge dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">BizmindMakers</span>
-                
-                <!-- زر تسجيل عضو جديد برابط الإحالة المباشر ولون متباين بارز -->
+                <!-- زر تسجيل عضو جديد برابط الإحالة المباشر ورقم العضوية المطلوب -->
                 <a href="https://foreverliving.com/join/sau/en-us/checkout/personalinfo" target="_blank" class="btn-register-member" id="nav-register-btn" title="تسجيل عضو جديد في فريقك">
-                    <span>👤+</span> <span id="register-btn-text">تسجيل عضو جديد</span>
+                    <span>👤+</span> <span id="register-btn-text">تسجيل عضو جديد</span><br><span style="font-size: 11px; direction: ltr; unicode-bidi: isolate; display: inline-block;">رقم العضوية: 971001726361</span>
                 </a>
 
                 <!-- زر سلة المشتريات -->
@@ -1475,7 +1476,7 @@
             { id: 28, arName: "فوريفر مالوسي (Forever Malosi)", enName: "Forever Malosi", price: 152, img: "644.webp", category: "care", keywords: ["مالوسي", "عطر", "parfum", "malosi"] },
             { id: 29, arName: "ألو بودي واش (Aloe Body Wash)", enName: "Aloe Body Wash", price: 122, img: "646.webp", category: "care", keywords: ["بودي", "واش", "استحمام", "body", "wash"] },
             { id: 30, arName: "ألو بودي لوشن (Aloe Body Lotion)", enName: "Aloe Body Lotion", price: 122, img: "647.webp", category: "care", keywords: ["بودي", "لوشن", "مرطب", "body", "lotion"] },
-            { id: 31, arName: "فوريفر ألو فيرا جل (Forever Aloe Vera Gel)", enName: "Forever Aloe Vera Gel", price: 133, img: "815.webp", category: "weight", keywords: ["عصير", "صبار", "ألوفيرا", "جل", "aloe", "vera", "gel", "drink", "815"] }
+            { id: 31, arName: "فوريفر ألو فيرا جل (Forever Aloe Vera Gel)", enName: "Forever Aloe Vera Gel", price: 133, img: "815.webp", category: "drinks", keywords: ["عصير", "صبار", "ألوفيرا", "جل", "aloe", "vera", "gel", "drink", "815"] }
         ];
 
         const translations = {
