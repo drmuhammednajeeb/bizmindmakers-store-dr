@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" id="html-root" class="light">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title id="meta-title">متجر د. محمد النبهاني | منتجات فوريفر ليفنق الرسمية</title>
-    <meta name="description" content="متجر د. محمد النبهاني الرسمي لمنتجات فوريفر ليفنق في السعودية. عصير الصبار، المكملات الغذائية والعناية الشخصية.">
+    <meta name="description"
+        content="اكتشف منتجات فوريفر ليفينج للعناية والصحة في متجر د. محمد النبهاني. تصفح المنتجات، أضف للسلة، وأكمل طلبك بسهولة عبر واتساب.">
+    <meta name="theme-color" content="#123d2b">
+    <meta name="color-scheme" content="light dark">
 
     <!-- وسوم المعاينة لوسائل التواصل الاجتماعي (Open Graph) -->
     <meta property="og:title" content="متجر د. محمد النبهاني | منتجات فوريفر ليفنق الرسمية">
-    <meta property="og:description" content="تسوق أفضل منتجات فوريفر ليفنق الأصلية في السعودية مع شحن سريع وتواصل مباشر عبر الواتساب.">
+    <meta property="og:description"
+        content="تسوق أفضل منتجات فوريفر ليفنق الأصلية في السعودية مع شحن سريع وتواصل مباشر عبر الواتساب.">
     <meta property="og:image" content="falcon-logo.jpg">
     <meta property="og:url" content="https://drmuhammednajeeb.github.io/bizmindmakers-store-dr/">
     <meta property="og:type" content="website">
@@ -67,11 +72,25 @@
         }
 
         /* ربط عناصر التنسيق بمتغيرات الألوان الحية */
-        .text-primary { color: var(--primary-color) !important; }
-        .bg-primary { background-color: var(--primary-color) !important; }
-        .border-primary { border-color: var(--primary-color) !important; }
-        .text-accent { color: var(--accent-color) !important; }
-        .bg-accent { background-color: var(--accent-color) !important; }
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+
+        .border-primary {
+            border-color: var(--primary-color) !important;
+        }
+
+        .text-accent {
+            color: var(--accent-color) !important;
+        }
+
+        .bg-accent {
+            background-color: var(--accent-color) !important;
+        }
 
         /* دعم اتجاهات اللغات */
         html[dir="rtl"] body {
@@ -325,7 +344,7 @@
             box-shadow: 0 6px 15px rgba(217, 119, 6, 0.45);
         }
 
-        /* تصميم قسم رقم عضوية السپونسر وزر النسخ المنفصل تحته مباشرة بخلفية واضحة ورقم ذهبي ساطع */
+        /* تصميم قسم رقم عضوية السبونسر وزر النسخ المنفصل تحته مباشرة بخلفية واضحة ورقم ذهبي ساطع */
         .sponsor-info-bar {
             display: inline-flex;
             align-items: center;
@@ -337,7 +356,7 @@
             font-size: 11.5px;
             font-weight: 700;
             color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
             white-space: nowrap;
         }
 
@@ -347,7 +366,7 @@
             color: var(--accent-color);
             font-weight: 800;
             font-size: 13px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .btn-copy-sponsor {
@@ -439,7 +458,8 @@
             padding: 2px 4px;
         }
 
-        .sub-nav a:hover, .sub-nav a.active-cat {
+        .sub-nav a:hover,
+        .sub-nav a.active-cat {
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 2px;
@@ -499,15 +519,16 @@
         }
 
         .slide-img-box {
-            flex: 0 0 200px;
-            text-align: center;
+            flex: 1;
+            width: 100%;
+            height: 100%;
         }
 
         .slide-img-box img {
             width: 100%;
-            height: 160px;
+            height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
             cursor: pointer;
             transition: transform 0.2s;
         }
@@ -537,8 +558,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0.3; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0.3;
+                transform: scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .slider-dots {
@@ -643,18 +671,21 @@
             gap: 20px;
         }
 
+
         .promo-card {
-            background: linear-gradient(rgba(22,61,43,0.85), rgba(13,37,26,0.9)), url('815.webp') center/cover;
+            background: linear-gradient(rgba(22,61,43,0.58)), rgba(13,37,26,0.9) url('10.jpg') center/cover;
             border-radius: 12px;
             padding: 30px 20px;
             color: #ffffff;
-            min-height: 180px;
+            min-height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid rgba(212, 160, 23, 0.3);
         }
+
+    
 
         .promo-card h3 {
             font-size: 18px;
@@ -695,6 +726,7 @@
             margin: 20px auto;
             padding: 0 20px;
         }
+
         .section-title {
             margin-bottom: 20px;
             color: var(--primary-color);
@@ -713,7 +745,7 @@
             background: #ffffff;
             border-radius: 14px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
             display: none;
         }
 
@@ -812,6 +844,7 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
+
         .product-card img:hover {
             transform: scale(1.04);
         }
@@ -858,6 +891,7 @@
             box-shadow: 0 6px 15px rgba(22, 61, 43, 0.35);
             transform: translateY(-1px);
         }
+
         .btn-add-cart.white-active {
             background: #ffffff !important;
             color: var(--primary-color) !important;
@@ -953,7 +987,7 @@
             color: #ffffff;
             padding: 12px 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
             z-index: 3000;
             font-size: 13px;
             font-weight: 700;
@@ -1115,45 +1149,513 @@
                 flex-direction: column;
                 gap: 10px;
             }
-            .header-left-actions, .header-right-links {
+
+            .header-left-actions,
+            .header-right-links {
                 width: 100%;
                 justify-content: center;
             }
+
             .sponsor-box-container {
                 align-items: center;
             }
+
             .top-bar {
                 flex-direction: column;
                 gap: 3px;
                 text-align: center;
             }
+
             .slide.active {
                 flex-direction: column-reverse;
                 text-align: center;
             }
+
             .slide-content {
                 text-align: center;
             }
+
             .cart-page-container {
                 margin: 15px;
                 padding: 15px;
             }
         }
+
+
+        /* ===== واجهة المتجر الجديدة: تصميم تحريري فاخر ومتجاوب ===== */
+        :root {
+            --primary-color: #123d2b;
+            --accent-color: #c9a34e;
+            --bg-light: #fbfcfa;
+            --bg-section: #f1f5f0;
+            --text-color: #202a24;
+            --border-color: #e3e9e2;
+            --store-radius: 22px;
+            --store-shadow: 0 18px 50px rgba(18, 61, 43, .09);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-color);
+        }
+
+        button,
+        a,
+        input,
+        select,
+        textarea {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid rgba(201, 163, 78, .8);
+            outline-offset: 3px;
+        }
+
+        .top-bar {
+            padding: 9px clamp(16px, 4vw, 64px);
+            min-height: 38px;
+            background: #102f23;
+            color: #f4f7f2;
+            border: 0;
+            font-size: 12px;
+        }
+
+        .top-bar a {
+            color: #f0d48e !important;
+        }
+
+        header {
+            padding: 14px clamp(16px, 4vw, 64px);
+            gap: 14px;
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(18, 61, 43, .09);
+            box-shadow: 0 5px 24px rgba(15, 45, 30, .035);
+        }
+
+        .header-top-row {
+            gap: 18px;
+        }
+
+        .header-right-links,
+        .header-left-actions {
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            border-radius: 999px;
+            padding: 10px 15px;
+            font-weight: 700;
+            transition: background .2s, color .2s, transform .2s;
+        }
+
+        .nav-btn:hover {
+            background: #edf3ed;
+            transform: translateY(-1px);
+        }
+
+        .logo-area-center {
+            border-radius: 16px;
+            border-color: #e8ede7;
+            padding: 8px 14px;
+        }
+
+        .logo-area-center img {
+            object-fit: contain;
+        }
+
+        .sub-nav {
+            position: sticky;
+            top: 0;
+            z-index: 80;
+            padding: 12px clamp(16px, 4vw, 64px);
+            gap: 10px;
+            background: rgba(250, 252, 249, .96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-color);
+            scrollbar-width: none;
+        }
+
+        .sub-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sub-nav a {
+            padding: 9px 15px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .sub-nav a:hover,
+        .sub-nav a.active-cat {
+            background: #e9f1e9;
+            border-color: #d7e5d7;
+            color: var(--primary-color) !important;
+        }
+
+        .hero-slider {
+            margin: clamp(18px, 3vw, 38px) auto;
+            width: min(1320px, calc(100% - clamp(28px, 7vw, 100px)));
+            min-height: 350px;
+            border: 0;
+            border-radius: 30px;
+            color: #fff;
+            background: radial-gradient(circle at 14% 12%, rgba(201, 163, 78, .23), transparent 32%),
+                linear-gradient(120deg, #0e3022 0%, #174a34 54%, #285d42 100%);
+            box-shadow: 0 25px 65px rgba(18, 61, 43, .19);
+        }
+
+        .slide {
+            padding: clamp(28px, 5vw, 70px);
+        }
+
+        .slide.active {
+            gap: clamp(24px, 5vw, 76px);
+        }
+
+        .slide-content {
+            max-width: 650px;
+        }
+
+        .slide-content h1 {
+            color: #fff;
+            font-size: clamp(29px, 4vw, 49px);
+            line-height: 1.22;
+            letter-spacing: -.6px;
+            margin-bottom: 18px;
+        }
+
+        .slide-content h1 span {
+            color: #e7c66f;
+        }
+
+        .slide-content p {
+            max-width: 550px;
+            color: rgba(255, 255, 255, .82);
+            font-size: clamp(15px, 1.4vw, 18px);
+            line-height: 1.9;
+            margin-bottom: 26px;
+        }
+
+        .slide-btn {
+            padding: 13px 25px;
+            border-radius: 999px;
+            background: #e2bd62;
+            color: #173a29;
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, .14);
+        }
+
+        .slide-btn:hover {
+            background: #f0d68e;
+            transform: translateY(-2px);
+        }
+
+        .slide-img-box {
+            flex-basis: min(34%, 320px);
+        }
+
+        .slide-img-box img {
+            height: clamp(190px, 25vw, 290px);
+            filter: drop-shadow(0 24px 28px rgba(0, 0, 0, .22));
+        }
+
+        .slider-dots {
+            bottom: 18px;
+        }
+
+        .slider-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .42);
+        }
+
+        .slider-dots span.active {
+            width: 25px;
+            background: #e2bd62;
+        }
+
+        #mainShopContent>section:not(.hero-slider) {
+            margin-top: clamp(32px, 5vw, 70px);
+            margin-bottom: clamp(32px, 5vw, 70px);
+        }
+
+        .section-title,
+        #why-title {
+            letter-spacing: -.3px;
+        }
+
+        #products-container,
+        .products-grid {
+            gap: 18px;
+        }
+
+        .product-card {
+            border-radius: 20px;
+            padding: 18px;
+            border-color: #e7ece6;
+            box-shadow: 0 5px 18px rgba(18, 61, 43, .035);
+            min-width: 0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 38px rgba(18, 61, 43, .11);
+            border-color: #d6e2d5;
+        }
+
+        .product-card img {
+            border-radius: 14px;
+        }
+
+        footer {
+            margin-top: 60px;
+        }
+
+        .toast-notification {
+            border-radius: 14px;
+            box-shadow: var(--store-shadow);
+        }
+
+        #cartPageContainer,
+        #adminDashboardContainer {
+            max-width: 1320px;
+        }
+
+        .dark body {
+            background: #101a15;
+        }
+
+        .dark header,
+        .dark .sub-nav {
+            background: rgba(22, 35, 28, .96);
+        }
+
+        .dark .hero-slider {
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .22);
+        }
+
+        .dark .product-card {
+            background: #1b2921;
+            border-color: #304238;
+        }
+
+        @media (min-width: 1100px) {
+            .hero-slider {
+                min-height: 390px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            header {
+                position: relative;
+            }
+
+            .header-top-row {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header-right-links {
+                order: 2;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo-area-center {
+                order: 1;
+            }
+
+            .header-left-actions {
+                order: 3;
+                justify-content: center;
+            }
+
+            .hero-slider {
+                width: calc(100% - 28px);
+                border-radius: 23px;
+                min-height: 300px;
+            }
+
+            .slide {
+                padding: 30px 24px 45px;
+            }
+
+            .slide.active {
+                gap: 20px;
+            }
+
+            .slide-content h1 {
+                font-size: clamp(25px, 4.5vw, 36px);
+            }
+
+            .slide-img-box {
+                flex-basis: 32%;
+            }
+
+            .slide-img-box img {
+                height: 190px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar {
+                align-items: flex-start;
+                gap: 8px;
+                flex-wrap: wrap;
+                padding: 8px 14px;
+            }
+
+            #topbar-email {
+                display: none;
+            }
+
+            header {
+                padding: 12px 14px;
+                gap: 10px;
+            }
+
+            .header-top-row {
+                gap: 10px;
+            }
+
+            .nav-btn {
+                padding: 8px 11px;
+                font-size: 12px;
+            }
+
+            .sub-nav {
+                top: 0;
+                padding: 9px 12px;
+                gap: 7px;
+            }
+
+            .sub-nav a {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .hero-slider {
+                margin: 14px auto 24px;
+                width: calc(100% - 24px);
+                min-height: 0;
+            }
+
+            .slide,
+            .slide.active {
+                padding: 26px 20px 42px;
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .slide-content h1 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            .slide-content p {
+                font-size: 14px;
+                margin-bottom: 17px;
+            }
+
+            .slide-img-box {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+
+            .slide-img-box img {
+                height: 145px;
+                max-width: 190px;
+            }
+
+            .slide-btn {
+                padding: 12px 22px;
+            }
+
+            .slider-dots {
+                bottom: 13px;
+            }
+
+            #products-container,
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .product-card {
+                padding: 10px;
+                border-radius: 15px;
+            }
+
+            #mainShopContent>section:not(.hero-slider) {
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 360px) {
+
+            #products-container,
+            .products-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .header-right-links {
+                gap: 4px;
+            }
+
+            .nav-btn {
+                padding: 8px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
     </style>
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
     <!-- الشريط العلوي (BizmindMakers في أقصى اليمين/الزاوية العليا) -->
     <div class="top-bar dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700">
         <div class="flex items-center gap-3">
-            <span class="brand-badge dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 font-bold px-2 py-0.5 rounded">BizmindMakers</span>
-            <span id="topbar-email">البريد الإلكتروني: <a href="mailto:drmuhammed.najeeb2020@gmail.com" class="text-primary dark:text-emerald-400">drmuhammed.najeeb2020@gmail.com</a> ✉️</span>
+            <span
+                class="brand-badge dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 font-bold px-2 py-0.5 rounded">BizmindMakers</span>
+            <span id="topbar-email">البريد الإلكتروني: <a href="mailto:drmuhammed.najeeb2020@gmail.com"
+                    class="text-primary dark:text-emerald-400">drmuhammed.najeeb2020@gmail.com</a> ✉️</span>
         </div>
         <div class="flex items-center gap-3">
-            <span id="topbar-country">🇸🇦 السعودية</span> | 
+            <span id="topbar-country">🇸🇦 السعودية</span> |
             <!-- زر الوضع الداكن الفوري -->
-            <button onclick="toggleDarkMode()" class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-bold shadow-sm hover:opacity-80">🌙/☀️</button>
-            <button class="lang-toggle-btn dark:border-gray-600 dark:text-emerald-400" id="langToggleBtn" onclick="toggleLanguage()">Eng</button>
+            <button onclick="toggleDarkMode()"
+                class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-bold shadow-sm hover:opacity-80">🌙/☀️</button>
+            <button class="lang-toggle-btn dark:border-gray-600 dark:text-emerald-400" id="langToggleBtn"
+                onclick="toggleLanguage()">Eng</button>
         </div>
     </div>
 
@@ -1163,15 +1665,20 @@
         <div class="header-top-row">
             <!-- اليمين: روابط التنقل السريعة (الرئيسية، المنتجات، لوحة التحكم) -->
             <div class="header-right-links">
-                <button class="nav-btn dark:text-gray-300 dark:hover:bg-gray-700" onclick="showMainShop()" id="nav-home">الرئيسية</button>
-                <button class="nav-btn dark:text-gray-300 dark:hover:bg-gray-700" onclick="showMainShopProducts()" id="nav-products">المنتجات</button>
-                <button class="nav-btn text-accent font-bold" onclick="showAdminDashboard()" id="nav-admin">📊 لوحة التحكم</button>
+                <button class="nav-btn dark:text-gray-300 dark:hover:bg-gray-700" onclick="showMainShop()"
+                    id="nav-home">الرئيسية</button>
+                <button class="nav-btn dark:text-gray-300 dark:hover:bg-gray-700" onclick="showMainShopProducts()"
+                    id="nav-products">المنتجات</button>
+                <button class="nav-btn text-accent font-bold" onclick="showAdminDashboard()" id="nav-admin">📊 لوحة
+                    التحكم</button>
             </div>
 
             <!-- المنتصف: الشعار واسم المتجر البارز -->
-            <a class="logo-area-center dark:bg-gray-700 dark:border-gray-600" onclick="showMainShop()">
+            <a href="#home-section" class="logo-area-center dark:bg-gray-700 dark:border-gray-600"
+                onclick="showMainShop()">
                 <img src="falcon-logo.jpg" alt="شعار صقر فوريفر">
-                <div class="logo-text-center dark:text-gray-100"><span id="store-title-prefix">متجر</span> <span id="store-owner" class="text-accent">د. محمد النبهاني</span></div>
+                <div class="logo-text-center dark:text-gray-100"><span id="store-title-prefix">متجر</span> <span
+                        id="store-owner" class="text-accent">د. محمد النبهاني</span></div>
             </a>
 
             <!-- اليسار: زر تسجيل عضو جديد وتحته رقم العضوية والنسخ منفصلين، وسلة المشتريات -->
@@ -1179,13 +1686,14 @@
                 <!-- حاوية منفصلة لتكون الأزرار تحت بعضها -->
                 <div class="sponsor-box-container">
                     <!-- زر تسجيل عضو جديد -->
-                    <a href="https://foreverliving.com/join/sau/en-us/checkout/personalinfo" target="_blank" class="btn-register-member" id="nav-register-btn" title="تسجيل عضو جديد في فريقك">
+                    <a href="https://foreverliving.com/join/sau/en-us/checkout/personalinfo" target="_blank"
+                        class="btn-register-member" id="nav-register-btn" title="تسجيل عضو جديد في فريقك">
                         <span>👤+</span> <span id="register-btn-text">تسجيل عضو جديد</span>
                     </a>
 
                     <!-- رقم عضوية الاسبونسر مع زر نسخ رقم العضوية (بلون ذهبي ساطع واضح) -->
                     <div class="sponsor-info-bar">
-                        <span>رقم السپونسر: <b class="sponsor-code-text" id="sponsorCodeText">971001726361</b></span>
+                        <span>رقم السبونسر: <b class="sponsor-code-text" id="sponsorCodeText">971-001-726-361</b></span>
                         <button class="btn-copy-sponsor" onclick="copySponsorCode()" id="copyBtnText">نسخ</button>
                     </div>
                 </div>
@@ -1199,7 +1707,8 @@
 
         <!-- الصف الثاني: شريط البحث الواسع في المنتصف -->
         <div class="header-search">
-            <input type="text" id="search-input" placeholder="ابحث في المتجر (عصير، مكملات، صبار...)" oninput="filterProducts()" class="dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600">
+            <input type="text" id="search-input" placeholder="ابحث في المتجر (عصير، مكملات، صبار...)"
+                oninput="filterProducts()" class="dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600">
         </div>
     </header>
 
@@ -1209,7 +1718,8 @@
         <a onclick="filterByCategory('drinks')" class="dark:text-gray-300" id="cat-drinks">عصير الصبار</a>
         <a onclick="filterByCategory('supplements')" class="dark:text-gray-300" id="cat-supplements">المكملات</a>
         <a onclick="filterByCategory('care')" class="dark:text-gray-300" id="cat-care">العناية بالشعر والبشرة</a>
-        <a onclick="filterByCategory('personal-care')" class="dark:text-gray-300" id="cat-personal-care">العناية الشخصية</a>
+        <a onclick="filterByCategory('personal-care')" class="dark:text-gray-300" id="cat-personal-care">العناية
+            الشخصية</a>
         <a onclick="filterByCategory('weight')" class="dark:text-gray-300" id="cat-weight">التخسيس ونزول الوزن</a>
         <a onclick="filterByCategory('packs')" class="dark:text-gray-300" id="cat-packs">المجموعات</a>
     </nav>
@@ -1220,32 +1730,39 @@
         <section class="hero-slider dark:bg-gray-800/90 dark:border-gray-700" id="home-section">
             <div class="slide active">
                 <div class="slide-content">
-                    <h1 id="slide1-title" class="dark:text-emerald-400">الشكل الجديد لعصير <span>الألوفيرا جل</span></h1>
-                    <p id="slide1-desc" class="dark:text-gray-300">متوفر الآن في السوق السعودي! تصميم جديد وعصري، بنفس الفوائد الغذائية الأصلية التي تثق بها.</p>
-                    <button class="slide-btn" onclick="filterByProductSearch('Forever Aloe Vera Gel')" id="slide1-btn">اطلب الآن</button>
+                    <h1 id="slide1-title" class="dark:text-emerald-400">الشكل الجديد لعصير <span>الألوفيرا جل</span>
+                    </h1>
+                    <p id="slide1-desc" class="dark:text-gray-300">متوفر الآن في السوق السعودي! تصميم جديد وعصري، بنفس
+                        الفوائد الغذائية الأصلية التي تثق بها.</p>
+                    <button class="slide-btn" onclick="filterByProductSearch('Forever Aloe Vera Gel')"
+                        id="slide1-btn">اطلب الآن</button>
                 </div>
                 <div class="slide-img-box">
-                    <img src="815.webp" alt="عصير الألوفيرا جل" onclick="goToProductDetail(31)">
+                    <img src="1.jpg" alt="عصير الألوفيرا جل" onclick="goToProductDetail(31)">
                 </div>
             </div>
             <div class="slide">
                 <div class="slide-content">
-                    <h1 id="slide2-title" class="dark:text-emerald-400">متوفر الآن - مزيل العرق <span>ألو إيفر-شيلد</span></h1>
-                    <p id="slide2-desc" class="dark:text-gray-300">عاد للتوفر – بدون أملاح الألومنيوم، بخلاصة الألوفيرا، الكود 067.</p>
+                    <h1 id="slide2-title" class="dark:text-emerald-400">متوفر الآن - مزيل العرق <span>ألو
+                            إيفر-شيلد</span></h1>
+                    <p id="slide2-desc" class="dark:text-gray-300">عاد للتوفر – بدون أملاح الألومنيوم، بخلاصة الألوفيرا،
+                        الكود 067.</p>
                     <button class="slide-btn" onclick="filterByProductSearch('067')" id="slide2-btn">اطلبه الآن</button>
                 </div>
                 <div class="slide-img-box">
-                    <img src="067.webp" alt="مزيل العرق ألو إيفر شيلد" onclick="goToProductDetail(25)">
+                    <img src="2.jpg" alt="مزيل العرق ألو إيفر شيلد" onclick="goToProductDetail(25)">
                 </div>
             </div>
             <div class="slide">
                 <div class="slide-content">
                     <h1 id="slide3-title" class="dark:text-emerald-400">ابتسامة مشرقة مع <span>فوريفر برايت</span></h1>
-                    <p id="slide3-desc" class="dark:text-gray-300">جل الأسنان المفضل بالصبار والعكبر (البروبوليس) لتنظيف عميق وحماية فائقة.</p>
-                    <button class="slide-btn" onclick="filterByProductSearch('Forever Bright Toothgel')" id="slide3-btn">تسوق الآن</button>
+                    <p id="slide3-desc" class="dark:text-gray-300">جل الأسنان المفضل بالصبار والعكبر (البروبوليس) لتنظيف
+                        عميق وحماية فائقة.</p>
+                    <button class="slide-btn" onclick="filterByProductSearch('Forever Bright Toothgel')"
+                        id="slide3-btn">تسوق الآن</button>
                 </div>
                 <div class="slide-img-box">
-                    <img src="028.webp" alt="فوريفر برايت جل الأسنان" onclick="goToProductDetail(17)">
+                    <img src="3.jpg" alt="فوريفر برايت جل الأسنان" onclick="goToProductDetail(17)">
                 </div>
             </div>
 
@@ -1296,16 +1813,21 @@
             <div class="promo-card">
                 <div>
                     <h3 id="promo1-title">لماذا الألوفيرا؟</h3>
-                    <p id="promo1-desc">للآلوفيرا فوائد قوية تساعدك على الشعور والظهور بأفضل حال من الداخل والخارج، نصنع منتجاتنا المعتمدة من IASC من جل ورق الألوفيرا الداخلي.</p>
+                    <p id="promo1-desc">للآلوفيرا فوائد قوية تساعدك على الشعور والظهور بأفضل حال من الداخل والخارج، نصنع
+                        منتجاتنا المعتمدة من IASC من جل ورق الألوفيرا الداخلي.</p>
                 </div>
-                <a href="https://foreverliving.com/are/ar-ae/our-aloe" target="_blank" class="promo-btn" id="promo1-btn">اعرف المزيد</a>
+                <a href="https://foreverliving.com/are/ar-ae/our-aloe" target="_blank" class="promo-btn"
+                    id="promo1-btn">اعرف المزيد</a>
             </div>
-            <div class="promo-card" style="background: linear-gradient(rgba(22,61,43,0.9), rgba(13,37,26,0.95)), url('634.webp') center/cover;">
+            <div class="promo-card"
+                style="background: linear-gradient(rgba(22,61,43,0.9), rgba(13,37,26,0.95)), url('634.webp') center/cover;">
                 <div>
                     <h3 id="promo2-title">ابدأ رحلتك (باقة متكاملة)</h3>
-                    <p id="promo2-desc">باقة متكاملة لبداية صحية – العناية بالبشرة + المكملات<br><b>السعر: 1,599.99 ر.س</b> (بدلاً من 1,738.41 ر.س)</p>
+                    <p id="promo2-desc">باقة متكاملة لبداية صحية – العناية بالبشرة + المكملات<br><b>السعر: 1,599.99
+                            ر.س</b> (بدلاً من 1,738.41 ر.س)</p>
                 </div>
-                <button class="promo-btn" onclick="filterByProductSearch('Start Your Journey Pack')" id="promo2-btn">اطلبه الآن</button>
+                <button class="promo-btn" onclick="filterByProductSearch('Start Your Journey Pack')"
+                    id="promo2-btn">اطلبه الآن</button>
             </div>
         </section>
 
@@ -1313,7 +1835,9 @@
         <main class="container">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="section-title dark:text-emerald-400 mb-0" id="products-grid">قائمة المنتجات الكاملة</h2>
-                <button onclick="showAdminDashboard()" class="bg-gray-200 dark:bg-gray-700 text-xs px-3.5 py-2 rounded-lg font-bold hover:bg-primary hover:text-white transition shadow-sm">⚙️ إدارة المنتجات</button>
+                <button onclick="showAdminDashboard()"
+                    class="bg-gray-200 dark:bg-gray-700 text-xs px-3.5 py-2 rounded-lg font-bold hover:bg-primary hover:text-white transition shadow-sm">⚙️
+                    إدارة المنتجات</button>
             </div>
             <div class="products-grid" id="products-container">
                 <!-- يتم تعبئة المنتجات تلقائياً عبر الجافاسكريبت -->
@@ -1322,52 +1846,86 @@
 
         <!-- قسم لماذا تختارنا (Why Choose Us) -->
         <section class="max-w-[1200px] mx-auto px-5 my-16 text-center">
-            <h2 class="text-3xl font-extrabold text-primary dark:text-emerald-400 mb-2" id="why-title">لماذا تختارنا</h2>
+            <h2 class="text-3xl font-extrabold text-primary dark:text-emerald-400 mb-2" id="why-title">لماذا تختارنا
+            </h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-2 rounded-full"></div>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-10" id="why-subtitle">التزام بالجودة منذ أكثر من 45 عاماً</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-10" id="why-subtitle">التزام بالجودة منذ أكثر من 45
+                عاماً</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- العنصر 1: اعتماد IASC -->
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
+                    <div
+                        class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card1-title">اعتماد IASC</h4>
-                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card1-desc">ختم المجلس الدولي للألوفيرا</p>
+                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card1-title">
+                            اعتماد IASC</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card1-desc">ختم المجلس الدولي
+                            للألوفيرا</p>
                     </div>
                 </div>
 
                 <!-- العنصر 2: ثقة عالمية -->
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
+                    <div
+                        class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card2-title">ثقة عالمية</h4>
-                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card2-desc">أكثر من 160 دولة وملايين العملاء</p>
+                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card2-title">
+                            ثقة عالمية</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card2-desc">أكثر من 160 دولة وملايين
+                            العملاء</p>
                     </div>
                 </div>
 
                 <!-- العنصر 3: مختبر علمياً -->
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
+                    <div
+                        class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card3-title">مختبر علمياً</h4>
-                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card3-desc">جودة معتمدة في كل دفعة إنتاج</p>
+                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card3-title">
+                            مختبر علمياً</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card3-desc">جودة معتمدة في كل دفعة
+                            إنتاج</p>
                     </div>
                 </div>
 
                 <!-- العنصر 4: مكونات طبيعية -->
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
+                    <div
+                        class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card4-title">مكونات طبيعية</h4>
-                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card4-desc">ألوفيرا وأعشاب نقية مزروعة بعناية</p>
+                        <h4 class="font-extrabold text-base text-gray-800 dark:text-gray-100 mb-1" id="why-card4-title">
+                            مكونات طبيعية</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400" id="why-card4-desc">ألوفيرا وأعشاب نقية
+                            مزروعة بعناية</p>
                     </div>
                 </div>
             </div>
@@ -1378,30 +1936,43 @@
     <div id="adminDashboardContainer" class="max-w-[1250px] mx-auto px-[5%] my-8 hidden">
         <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
             <div>
-                <h2 class="text-2xl font-extrabold text-primary dark:text-emerald-400">لوحة التحكم والرسوم البيانية 📊</h2>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">متابعة المبيعات، إدارة المحتوى، وتصدير التقارير الإدارية.</p>
+                <h2 class="text-2xl font-extrabold text-primary dark:text-emerald-400">لوحة التحكم والرسوم البيانية 📊
+                </h2>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">متابعة المبيعات، إدارة المحتوى، وتصدير التقارير
+                    الإدارية.</p>
             </div>
-            <button onclick="showMainShop()" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary hover:text-white transition shadow-sm">← العودة للمتجر</button>
+            <button onclick="showMainShop()"
+                class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary hover:text-white transition shadow-sm">←
+                العودة للمتجر</button>
         </div>
 
         <!-- قسم تخصيص ألوان المتجر في لوحة التحكم (الإضافة الجديدة) -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
+        <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
             <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">🎨 تخصيص ألوان المتجر</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
                 <div>
-                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">اللون الرئيسي (Primary):</label>
-                    <input type="color" id="primaryColorPicker" value="#163d2b" class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
+                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">اللون الرئيسي
+                        (Primary):</label>
+                    <input type="color" id="primaryColorPicker" value="#163d2b"
+                        class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">لون التمييز (Accent / الذهبي):</label>
-                    <input type="color" id="accentColorPicker" value="#d4a017" class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
+                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">لون التمييز (Accent /
+                        الذهبي):</label>
+                    <input type="color" id="accentColorPicker" value="#d4a017"
+                        class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">لون النصوص (Text Color):</label>
-                    <input type="color" id="textColorPicker" value="#2b2b2b" class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
+                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">لون النصوص (Text
+                        Color):</label>
+                    <input type="color" id="textColorPicker" value="#2b2b2b"
+                        class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
                 </div>
             </div>
-            <button onclick="saveCustomColors()" class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition">حفظ وتطبيق الألوان فوراً</button>
+            <button onclick="saveCustomColors()"
+                class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition">حفظ
+                وتطبيق الألوان فوراً</button>
         </div>
 
         <!-- إحصائيات سريعة وتصدير البيانات -->
@@ -1417,8 +1988,12 @@
             <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
                 <div class="text-xs text-gray-500 font-semibold mb-1">تصدير بيانات التقارير</div>
                 <div class="flex gap-2 mt-2">
-                    <button onclick="exportData('csv')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">تصدير CSV 📄</button>
-                    <button onclick="exportData('json')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">تصدير JSON 🗂️</button>
+                    <button onclick="exportData('csv')"
+                        class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">تصدير
+                        CSV 📄</button>
+                    <button onclick="exportData('json')"
+                        class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">تصدير
+                        JSON 🗂️</button>
                 </div>
             </div>
         </div>
@@ -1426,11 +2001,13 @@
         <!-- الرسوم البيانية التفاعلية (Chart.js) -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                <h3 class="font-bold text-sm mb-4 text-primary dark:text-emerald-400">مخطط مبيعات الأقسام (Sales Analytics)</h3>
+                <h3 class="font-bold text-sm mb-4 text-primary dark:text-emerald-400">مخطط مبيعات الأقسام (Sales
+                    Analytics)</h3>
                 <canvas id="salesChart" height="140"></canvas>
             </div>
             <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                <h3 class="font-bold text-sm mb-4 text-primary dark:text-emerald-400">مخطط نشاط زوار المتجر (Traffic)</h3>
+                <h3 class="font-bold text-sm mb-4 text-primary dark:text-emerald-400">مخطط نشاط زوار المتجر (Traffic)
+                </h3>
                 <canvas id="trafficChart" height="140"></canvas>
             </div>
         </div>
@@ -1439,7 +2016,9 @@
         <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="font-bold text-lg text-primary dark:text-emerald-400">إدارة محتوى المنتجات (CMS)</h3>
-                <button onclick="openProductModal()" class="bg-primary hover:bg-emerald-900 text-white text-xs font-bold px-4 py-2 rounded-lg transition">+ إضافة منتج جديد</button>
+                <button onclick="openProductModal()"
+                    class="bg-primary hover:bg-emerald-900 text-white text-xs font-bold px-4 py-2 rounded-lg transition">+
+                    إضافة منتج جديد</button>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-right text-sm dark:text-gray-200">
@@ -1462,48 +2041,62 @@
 
     <!-- صفحة وقسم السلة المستقلة والتفصيلية -->
     <div class="cart-page-container dark:bg-gray-800 dark:border-gray-700" id="cartPageContainer">
-        <button class="cart-back-btn dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" onclick="showMainShop()" id="cartBackBtnText">← العودة للتسوق</button>
+        <button class="cart-back-btn dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" onclick="showMainShop()"
+            id="cartBackBtnText">← العودة للتسوق</button>
         <div class="cart-page-header dark:border-gray-700">
             <h2 id="cart-page-title" class="dark:text-emerald-400">سلة المشتريات الخاصة بك</h2>
             <button class="btn-clear-cart" onclick="clearCart()" id="btnClearCartText">تفريغ السلة بالكامل 🗑️</button>
         </div>
-        
+
         <div class="cart-table-wrapper dark:border-gray-700" id="cartTableContainer"></div>
 
         <div class="cart-total dark:text-emerald-400" id="cartTotal">الإجمالي: 0 ر.س</div>
-        <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر الواتساب 📱</a>
+        <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر
+            الواتساب 📱</a>
     </div>
 
     <!-- نافذة منبثقة (Modal) لإضافة/تعديل منتج من لوحة التحكم -->
     <div id="productModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl max-w-md w-full shadow-2xl border border-gray-200 dark:border-gray-700">
-            <h3 class="font-extrabold text-lg text-primary dark:text-emerald-400 mb-4" id="modalTitle">إضافة منتج جديد</h3>
+        <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-2xl max-w-md w-full shadow-2xl border border-gray-200 dark:border-gray-700">
+            <h3 class="font-extrabold text-lg text-primary dark:text-emerald-400 mb-4" id="modalTitle">إضافة منتج جديد
+            </h3>
             <input type="hidden" id="editProductId">
             <div class="space-y-3 dark:text-gray-200">
                 <div>
                     <label class="text-xs font-bold block mb-1">اسم المنتج بالعربية</label>
-                    <input type="text" id="modalArName" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                    <input type="text" id="modalArName"
+                        class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
                 </div>
                 <div>
                     <label class="text-xs font-bold block mb-1">اسم المنتج بالإنجليزية</label>
-                    <input type="text" id="modalEnName" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                    <input type="text" id="modalEnName"
+                        class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
                 </div>
                 <div>
                     <label class="text-xs font-bold block mb-1">السعر (ر.س)</label>
-                    <input type="number" id="modalPrice" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                    <input type="number" id="modalPrice"
+                        class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
                 </div>
                 <div>
-                    <label class="text-xs font-bold block mb-1">التصنيف (drinks, supplements, care, personal-care, weight, packs)</label>
-                    <input type="text" id="modalCategory" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
+                    <label class="text-xs font-bold block mb-1">التصنيف (drinks, supplements, care, personal-care,
+                        weight, packs)</label>
+                    <input type="text" id="modalCategory"
+                        class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600">
                 </div>
                 <div>
                     <label class="text-xs font-bold block mb-1">صورة المنتج (مثل 815.webp)</label>
-                    <input type="text" id="modalImg" class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600" value="815.webp">
+                    <input type="text" id="modalImg"
+                        class="w-full p-2 border rounded text-sm dark:bg-gray-700 dark:border-gray-600"
+                        value="815.webp">
                 </div>
             </div>
             <div class="flex gap-3 mt-6">
-                <button onclick="saveProductFromModal()" class="flex-1 bg-primary hover:bg-emerald-900 text-white py-2 rounded-lg font-bold text-sm transition">حفظ المنتج</button>
-                <button onclick="closeProductModal()" class="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm transition">إلغاء</button>
+                <button onclick="saveProductFromModal()"
+                    class="flex-1 bg-primary hover:bg-emerald-900 text-white py-2 rounded-lg font-bold text-sm transition">حفظ
+                    المنتج</button>
+                <button onclick="closeProductModal()"
+                    class="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm transition">إلغاء</button>
             </div>
         </div>
     </div>
@@ -1514,19 +2107,19 @@
     </div>
 
     <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/966546723820?text=السلام%20عليكم،%20أرغب%20بالاستفسار%20عن%20منتجات%20فوريفر" 
-       target="_blank" 
-       class="whatsapp-float" 
-       title="تواصل معنا عبر واتساب">
+    <a href="https://wa.me/966546723820?text=السلام%20عليكم،%20أرغب%20بالاستفسار%20عن%20منتجات%20فوريفر" target="_blank"
+        class="whatsapp-float" title="تواصل معنا عبر واتساب">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="#ffffff">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            <path
+                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
         </svg>
     </a>
 
     <!-- الفوتر والتنبيه الطبي -->
     <footer class="dark:bg-gray-900 dark:border-t dark:border-gray-800">
         <div class="legal-disclaimer" id="footer-disclaimer">
-            جميع المنتجات والمكملات الغذائية المعروضة على هذا الموقع ليست دواءً، ولا يُستخدم لتشخيص أو علاج أو منع أي مرض.
+            جميع المنتجات والمكملات الغذائية المعروضة على هذا الموقع ليست دواءً، ولا يُستخدم لتشخيص أو علاج أو منع أي
+            مرض.
         </div>
         <p id="footer-rights">جميع الحقوق محفوظة © شركة د. محمد النبهاني 2026 | تصميم وتطوير <b>BizmindMakers</b></p>
     </footer>
@@ -1796,7 +2389,7 @@
             document.getElementById('topbar-email').innerHTML = `${t.emailText} <a href="mailto:drmuhammed.najeeb2020@gmail.com" class="text-primary dark:text-emerald-400">drmuhammed.najeeb2020@gmail.com</a> ✉️`;
             document.getElementById('topbar-country').textContent = t.country;
             document.getElementById('langToggleBtn').textContent = t.langBtn;
-            
+
             document.getElementById('store-title-prefix').textContent = t.storePrefix;
             document.getElementById('nav-home').textContent = t.home;
             document.getElementById('nav-products').textContent = t.products;
@@ -1841,7 +2434,7 @@
             document.getElementById('promo2-btn').textContent = t.promo2Btn;
 
             document.getElementById('products-grid').textContent = t.productsSectionTitle;
-            
+
             // ترجمة قسم لماذا تختارنا
             document.getElementById('why-title').textContent = t.whyTitle;
             document.getElementById('why-subtitle').textContent = t.whySubtitle;
@@ -1894,21 +2487,34 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // لوحة التحكم الإدارية المحمية
-        function showAdminDashboard() {
-            const password = prompt("يرجى إدخال كلمة مرور لوحة التحكم الخاصة بالمدير:");
-            if (password !== "12345") {
-                alert("كلمة المرور غير صحيحة! الوصول مرفوض.");
-                return;
-            }
+        // لوحة الإدارة: لا توجد كلمة مرور داخل كود المتصفح.
+        // يتطلب الإطلاق ربط هذا المسار بجلسة موثقة من الخادم (HttpOnly Secure Cookie).
+        async function showAdminDashboard() {
+            const adminButton = document.getElementById('nav-admin');
+            if (adminButton) adminButton.disabled = true;
+            try {
+                const response = await fetch('/api/admin/session', {
+                    method: 'GET',
+                    credentials: 'same-origin',
+                    cache: 'no-store',
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (!response.ok) throw new Error('ADMIN_SESSION_UNAVAILABLE');
+                const session = await response.json();
+                if (session.authenticated !== true) throw new Error('ADMIN_UNAUTHENTICATED');
 
-            document.getElementById('mainShopContent').style.display = 'none';
-            document.getElementById('subNavBar').style.display = 'none';
-            document.getElementById('cartPageContainer').classList.remove('active');
-            document.getElementById('adminDashboardContainer').classList.remove('hidden');
-            renderAdminProductsTable();
-            renderCharts();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.getElementById('mainShopContent').style.display = 'none';
+                document.getElementById('subNavBar').style.display = 'none';
+                document.getElementById('cartPageContainer').classList.remove('active');
+                document.getElementById('adminDashboardContainer').classList.remove('hidden');
+                renderAdminProductsTable();
+                renderCharts();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (error) {
+                alert('لوحة الإدارة غير متاحة بأمان حالياً. يجب إعداد خدمة مصادقة على الخادم للمسار /api/admin/session قبل تفعيلها. لم يتم إرسال أو تخزين كلمة مرور في المتصفح.');
+            } finally {
+                if (adminButton) adminButton.disabled = false;
+            }
         }
 
         function getProductInCart(productName) {
@@ -1936,7 +2542,7 @@
                 const name = currentLang === 'ar' ? p.arName : p.enName;
                 const safeName = name.replace(/'/g, "\\'");
                 const imgTag = p.img ? `<img src="${p.img}" alt="${name}" loading="lazy" onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">` : `<div style="height:150px; display:flex; align-items:center; justify-content:center; background:#f0f4f8; border-radius:8px; font-size:35px; margin-bottom:12px; cursor:pointer;" onclick="goToProductDetail(${p.id})">📦</div>`;
-                
+
                 const qtyInCart = getProductQtyInCart(name);
 
                 let actionArea = '';
@@ -2008,34 +2614,34 @@
         function filterByCategory(category) {
             showMainShop();
             document.querySelectorAll('.sub-nav a').forEach(el => el.classList.remove('active-cat'));
-            
+
             if (category === 'all') {
                 const el = document.getElementById('cat-all');
-                if(el) el.classList.add('active-cat');
+                if (el) el.classList.add('active-cat');
                 renderProducts(products);
             } else if (category === 'drinks') {
                 const el = document.getElementById('cat-drinks');
-                if(el) el.classList.add('active-cat');
+                if (el) el.classList.add('active-cat');
                 renderProducts(products.filter(p => p.category === 'drinks'));
             } else if (category === 'supplements') {
                 const el = document.getElementById('cat-supplements');
-                if(el) el.classList.add('active-cat');
+                if (el) el.classList.add('active-cat');
                 renderProducts(products.filter(p => p.category === 'supplements'));
             } else if (category === 'care') {
                 const el = document.getElementById('cat-care');
-                if(el) el.classList.add('active-cat');
+                if (el) el.classList.add('active-cat');
                 renderProducts(products.filter(p => p.category === 'care'));
             } else if (category === 'personal-care') {
                 const el = document.getElementById('cat-personal-care');
-                if(el) el.classList.add('active-cat');
+                if (el) el.classList.add('active-cat');
                 renderProducts(products.filter(p => p.category === 'personal-care'));
             } else if (category === 'weight') {
                 const el = document.getElementById('cat-weight');
-                if(el) el.classList.add('active-cat');
+                if (el) el.classList.add('active-cat');
                 renderProducts(products.filter(p => p.category === 'weight'));
             } else if (category === 'packs') {
                 const el = document.getElementById('cat-packs');
-                if(el) el.classList.add('active-cat');
+                if (el) el.classList.add('active-cat');
                 renderProducts(products.filter(p => p.category === 'packs'));
             }
 
@@ -2048,9 +2654,9 @@
         function filterByProductSearch(keyword) {
             showMainShop();
             const filtered = products.filter(p => {
-                return p.arName.toLowerCase().includes(keyword.toLowerCase()) || 
-                       p.enName.toLowerCase().includes(keyword.toLowerCase()) || 
-                       (p.keywords && p.keywords.some(kw => kw.toLowerCase().includes(keyword.toLowerCase())));
+                return p.arName.toLowerCase().includes(keyword.toLowerCase()) ||
+                    p.enName.toLowerCase().includes(keyword.toLowerCase()) ||
+                    (p.keywords && p.keywords.some(kw => kw.toLowerCase().includes(keyword.toLowerCase())));
             });
             renderProducts(filtered);
 
@@ -2078,9 +2684,9 @@
 
                 return queryTerms.every(term => {
                     return arName.includes(term) ||
-                           enName.includes(term) ||
-                           category.includes(term) ||
-                           keywords.some(kw => kw.toLowerCase().includes(term));
+                        enName.includes(term) ||
+                        category.includes(term) ||
+                        keywords.some(kw => kw.toLowerCase().includes(term));
                 });
             });
 
@@ -2208,11 +2814,11 @@
                 checkoutBtn.style.display = 'block';
 
                 let rawMessage = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
-                
+
                 cart.forEach((item, index) => {
                     rawMessage += (index + 1) + ". " + item.name + " (الكمية: " + item.qty + " - السعر: " + (item.price * item.qty).toFixed(2) + " " + t.sar + ")\n";
                 });
-                
+
                 rawMessage += "\n" + t.total + ": " + totalPrice.toFixed(2) + " " + t.sar;
 
                 const phone = "966546723820";
@@ -2390,7 +2996,7 @@
         function showSlides() {
             let slides = document.getElementsByClassName("slide");
             let dots = document.getElementsByClassName("dot");
-            
+
             if (slides.length === 0) return;
 
             for (let i = 0; i < slides.length; i++) {
@@ -2399,15 +3005,15 @@
             for (let i = 0; i < dots.length; i++) {
                 dots[i].classList.remove("active");
             }
-            
+
             slideIndex++;
             if (slideIndex > slides.length) { slideIndex = 1; }
-            
+
             if (slides[slideIndex - 1]) {
                 slides[slideIndex - 1].classList.add("active");
                 dots[slideIndex - 1].classList.add("active");
             }
-            
+
             slideTimer = setTimeout(showSlides, 5000);
         }
 
@@ -2415,7 +3021,7 @@
             clearTimeout(slideTimer);
             let slides = document.getElementsByClassName("slide");
             let dots = document.getElementsByClassName("dot");
-            
+
             slideIndex = n;
             for (let i = 0; i < slides.length; i++) {
                 slides[i].classList.remove("active");
@@ -2423,16 +3029,16 @@
             for (let i = 0; i < dots.length; i++) {
                 dots[i].classList.remove("active");
             }
-            
+
             if (slides[slideIndex]) {
                 slides[slideIndex].classList.add("active");
                 dots[slideIndex].classList.add("active");
             }
-            
+
             slideTimer = setTimeout(showSlides, 5000);
         }
 
-        window.onload = function() {
+        window.onload = function () {
             applyLanguage();
             renderProducts(products);
             showSlides();
@@ -2440,4 +3046,5 @@
         };
     </script>
 </body>
+
 </html>
