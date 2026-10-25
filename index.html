@@ -180,6 +180,14 @@
             gap: 8px;
         }
 
+        /* حاوية الأزرار اليمين (تسجيل عضو جديد + رقم العضوية وزر النسخ تحته مباشرة منفصلين) */
+        .sponsor-box-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: flex-start;
+        }
+
         /* الشعار واسم المتجر في المنتصف بشكل فخم وأنيق */
         .logo-area-center {
             display: flex;
@@ -287,7 +295,7 @@
             white-space: nowrap;
         }
 
-        /* زر تسجيل عضو جديد بلون متباين بارز ومربوط برابط الإحالة المباشر */
+        /* زر تسجيل عضو جديد بارز ومربوط برابط الإحالة المباشر */
         .btn-register-member {
             background: linear-gradient(135deg, #d97706, #b45309);
             color: #ffffff;
@@ -308,6 +316,47 @@
             background: linear-gradient(135deg, #b45309, #92400e);
             transform: translateY(-1px);
             box-shadow: 0 6px 15px rgba(217, 119, 6, 0.45);
+        }
+
+        /* تصميم قسم رقم عضوية السپونسر وزر النسخ المنفصل تحته مباشرة بخلفية واضحة ورقم ذهبي ساطع */
+        .sponsor-info-bar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0d251a;
+            border: 1px solid #d4a017;
+            padding: 4px 10px;
+            border-radius: 14px;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            white-space: nowrap;
+        }
+
+        .sponsor-code-text {
+            direction: ltr;
+            unicode-bidi: isolate;
+            color: #ffcc00;
+            font-weight: 800;
+            font-size: 13px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .btn-copy-sponsor {
+            background: #d4a017;
+            color: #ffffff;
+            border: none;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-copy-sponsor:hover {
+            background: #b45309;
         }
 
         .cart-icon-btn {
@@ -1063,6 +1112,9 @@
                 width: 100%;
                 justify-content: center;
             }
+            .sponsor-box-container {
+                align-items: center;
+            }
             .top-bar {
                 flex-direction: column;
                 gap: 3px;
@@ -1084,7 +1136,7 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-    <!-- الشريط العلوي (تم نقل شارة BizmindMakers إلى أقصى اليمين/الزاوية العليا) -->
+    <!-- الشريط العلوي (BizmindMakers في أقصى اليمين/الزاوية العليا) -->
     <div class="top-bar dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700">
         <div class="flex items-center gap-3">
             <span class="brand-badge dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 font-bold px-2 py-0.5 rounded">BizmindMakers</span>
@@ -1115,12 +1167,21 @@
                 <div class="logo-text-center dark:text-gray-100"><span id="store-title-prefix">متجر</span> <span id="store-owner" class="text-accent">د. محمد النبهاني</span></div>
             </a>
 
-            <!-- اليسار: زر تسجيل عضو جديد برقم العضوية وسلة المشتريات -->
+            <!-- اليسار: زر تسجيل عضو جديد وتحته رقم العضوية والنسخ منفصلين، وسلة المشتريات -->
             <div class="header-left-actions">
-                <!-- زر تسجيل عضو جديد برابط الإحالة المباشر ورقم العضوية المطلوب -->
-                <a href="https://foreverliving.com/join/sau/en-us/checkout/personalinfo" target="_blank" class="btn-register-member" id="nav-register-btn" title="تسجيل عضو جديد في فريقك">
-                    <span>👤+</span> <span id="register-btn-text">تسجيل عضو جديد</span><br><span style="font-size: 11px; direction: ltr; unicode-bidi: isolate; display: inline-block;">رقم عضوية الاسبونسر : 971001726361</span>
-                </a>
+                <!-- حاوية منفصلة لتكون الأزرار تحت بعضها -->
+                <div class="sponsor-box-container">
+                    <!-- زر تسجيل عضو جديد -->
+                    <a href="https://foreverliving.com/join/sau/en-us/checkout/personalinfo" target="_blank" class="btn-register-member" id="nav-register-btn" title="تسجيل عضو جديد في فريقك">
+                        <span>👤+</span> <span id="register-btn-text">تسجيل عضو جديد</span>
+                    </a>
+
+                    <!-- رقم عضوية الاسبونسر مع زر نسخ رقم العضوية (بلون ذهبي ساطع واضح) -->
+                    <div class="sponsor-info-bar">
+                        <span>رقم السپونسر: <b class="sponsor-code-text" id="sponsorCodeText">971001726361</b></span>
+                        <button class="btn-copy-sponsor" onclick="copySponsorCode()" id="copyBtnText">نسخ</button>
+                    </div>
+                </div>
 
                 <!-- زر سلة المشتريات -->
                 <button class="cart-icon-btn" onclick="showCartPage()">
@@ -1445,6 +1506,16 @@
 
     <!-- سكريبت البرمجة المطور والشامل -->
     <script>
+        // وظيفة نسخ رقم العضوية مع إشعار نجاح النسخ
+        function copySponsorCode() {
+            const code = document.getElementById('sponsorCodeText').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                showToast(currentLang === 'ar' ? 'تم نسخ رقم العضوية بنجاح!' : 'Sponsor code copied successfully!');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
         let products = JSON.parse(localStorage.getItem('store_custom_products')) || [
             { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1599.99, img: "634.webp", category: "packs", keywords: ["باقة", "مجموعة", "رحلتك", "pack", "journey"] },
             { id: 2, arName: "فوريفر رويال جيلي (Forever Royal Jelly)", enName: "Forever Royal Jelly", price: 168, img: "036.webp", category: "supplements", keywords: ["رويال", "جيلي", "عكبر", "مكمل", "royal", "jelly"] },
@@ -1490,6 +1561,8 @@
                 products: "المنتجات",
                 adminNav: "📊 لوحة التحكم",
                 registerBtn: "تسجيل عضو جديد",
+                sponsorLabel: "رقم السپونسر:",
+                copyBtn: "نسخ",
                 searchPlaceholder: "ابحث في المتجر (عصير، مكملات، صبار...)",
                 cartBtn: "سلة المشتريات",
                 catAll: "كل المنتجات",
@@ -1554,6 +1627,8 @@
                 products: "Products",
                 adminNav: "📊 Dashboard",
                 registerBtn: "Register New Member",
+                sponsorLabel: "Sponsor ID:",
+                copyBtn: "Copy",
                 searchPlaceholder: "Search store (juice, supplements, aloe...)",
                 cartBtn: "Shopping Cart",
                 catAll: "All Products",
@@ -1655,6 +1730,7 @@
             document.getElementById('nav-products').textContent = t.products;
             document.getElementById('nav-admin').textContent = t.adminNav;
             document.getElementById('register-btn-text').textContent = t.registerBtn;
+            document.getElementById('copyBtnText').textContent = t.copyBtn;
             document.getElementById('search-input').placeholder = t.searchPlaceholder;
             document.getElementById('cart-btn-text').textContent = t.cartBtn;
 
