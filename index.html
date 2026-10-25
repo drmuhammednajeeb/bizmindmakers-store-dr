@@ -39,7 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpg" href="falcon-logo.jpg">
 
-    <!-- تنسيقات التصميم الفاخر والتجاوبي -->
+    <!-- تنسيقات التصميم الفاخر والتجاوبي (تعتمد على المتغيرات الحية) -->
     <style>
         :root {
             --primary-color: #163d2b;
@@ -65,6 +65,13 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
+
+        /* ربط عناصر التنسيق بمتغيرات الألوان الحية */
+        .text-primary { color: var(--primary-color) !important; }
+        .bg-primary { background-color: var(--primary-color) !important; }
+        .border-primary { border-color: var(--primary-color) !important; }
+        .text-accent { color: var(--accent-color) !important; }
+        .bg-accent { background-color: var(--accent-color) !important; }
 
         /* دعم اتجاهات اللغات */
         html[dir="rtl"] body {
@@ -324,7 +331,7 @@
             align-items: center;
             gap: 8px;
             background: #0d251a;
-            border: 1px solid #d4a017;
+            border: 1px solid var(--accent-color);
             padding: 4px 10px;
             border-radius: 14px;
             font-size: 11.5px;
@@ -337,14 +344,14 @@
         .sponsor-code-text {
             direction: ltr;
             unicode-bidi: isolate;
-            color: #ffcc00;
+            color: var(--accent-color);
             font-weight: 800;
             font-size: 13px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
         .btn-copy-sponsor {
-            background: #d4a017;
+            background: var(--accent-color);
             color: #ffffff;
             border: none;
             padding: 2px 8px;
@@ -1315,14 +1322,14 @@
 
         <!-- قسم لماذا تختارنا (Why Choose Us) -->
         <section class="max-w-[1200px] mx-auto px-5 my-16 text-center">
-            <h2 class="text-3xl font-extrabold text-[#163d2b] dark:text-emerald-400 mb-2" id="why-title">لماذا تختارنا</h2>
-            <div class="w-16 h-1 bg-[#d4a017] mx-auto mb-2 rounded-full"></div>
+            <h2 class="text-3xl font-extrabold text-primary dark:text-emerald-400 mb-2" id="why-title">لماذا تختارنا</h2>
+            <div class="w-16 h-1 bg-accent mx-auto mb-2 rounded-full"></div>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-10" id="why-subtitle">التزام بالجودة منذ أكثر من 45 عاماً</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- العنصر 1: اعتماد IASC -->
                 <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-[#163d2b] dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
                     <div>
@@ -1333,7 +1340,7 @@
 
                 <!-- العنصر 2: ثقة عالمية -->
                 <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-[#163d2b] dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <div>
@@ -1344,7 +1351,7 @@
 
                 <!-- العنصر 3: مختبر علمياً -->
                 <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-[#163d2b] dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
                     </div>
                     <div>
@@ -1355,7 +1362,7 @@
 
                 <!-- العنصر 4: مكونات طبيعية -->
                 <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col items-center justify-between text-center">
-                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-[#163d2b] dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                    <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 text-primary dark:text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
                     </div>
                     <div>
@@ -1375,6 +1382,26 @@
                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">متابعة المبيعات، إدارة المحتوى، وتصدير التقارير الإدارية.</p>
             </div>
             <button onclick="showMainShop()" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary hover:text-white transition shadow-sm">← العودة للمتجر</button>
+        </div>
+
+        <!-- قسم تخصيص ألوان المتجر في لوحة التحكم (الإضافة الجديدة) -->
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
+            <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">🎨 تخصيص ألوان المتجر</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">اللون الرئيسي (Primary):</label>
+                    <input type="color" id="primaryColorPicker" value="#163d2b" class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">لون التمييز (Accent / الذهبي):</label>
+                    <input type="color" id="accentColorPicker" value="#d4a017" class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 dark:text-gray-300 mb-2">لون النصوص (Text Color):</label>
+                    <input type="color" id="textColorPicker" value="#2b2b2b" class="w-full h-10 rounded cursor-pointer border border-gray-300 p-1">
+                </div>
+            </div>
+            <button onclick="saveCustomColors()" class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition">حفظ وتطبيق الألوان فوراً</button>
         </div>
 
         <!-- إحصائيات سريعة وتصدير البيانات -->
@@ -1506,6 +1533,51 @@
 
     <!-- سكريبت البرمجة المطور والشامل -->
     <script>
+        // دالة حفظ وتطبيق الألوان المخصصة (الإضافة الجديدة)
+        function saveCustomColors() {
+            const primary = document.getElementById('primaryColorPicker').value;
+            const accent = document.getElementById('accentColorPicker').value;
+            const text = document.getElementById('textColorPicker').value;
+
+            // تطبيق الألوان على متغيرات الصفحة مباشرة
+            document.documentElement.style.setProperty('--primary-color', primary);
+            document.documentElement.style.setProperty('--accent-color', accent);
+            document.documentElement.style.setProperty('--text-color', text);
+
+            // حفظها في ذاكرة المتصفح (localStorage)
+            localStorage.setItem('custom_primary', primary);
+            localStorage.setItem('custom_accent', accent);
+            localStorage.setItem('custom_text', text);
+
+            alert("تم حفظ وتطبيق الألوان بنجاح! ✨");
+        }
+
+        // دالة تحميل الألوان المحفوظة تلقائياً عند فتح الموقع
+        function loadCustomColors() {
+            const primary = localStorage.getItem('custom_primary');
+            const accent = localStorage.getItem('custom_accent');
+            const text = localStorage.getItem('custom_text');
+
+            if (primary) {
+                document.documentElement.style.setProperty('--primary-color', primary);
+                const pPicker = document.getElementById('primaryColorPicker');
+                if (pPicker) pPicker.value = primary;
+            }
+            if (accent) {
+                document.documentElement.style.setProperty('--accent-color', accent);
+                const aPicker = document.getElementById('accentColorPicker');
+                if (aPicker) aPicker.value = accent;
+            }
+            if (text) {
+                document.documentElement.style.setProperty('--text-color', text);
+                const tPicker = document.getElementById('textColorPicker');
+                if (tPicker) tPicker.value = text;
+            }
+        }
+
+        // استدعاء دالة التحميل فور فتح الصفحة
+        window.addEventListener('DOMContentLoaded', loadCustomColors);
+
         // وظيفة نسخ رقم العضوية مع إشعار نجاح النسخ
         function copySponsorCode() {
             const code = document.getElementById('sponsorCodeText').innerText;
