@@ -2534,58 +2534,106 @@
                 return;
             }
 
-            let html = '';
-            productsArray.forEach(p => {
-                const name = currentLang === 'ar' ? p.arName : p.enName;
-                const safeName = name.replace(/'/g, "\\'");
-                const imgTag = p.img ? `<img src="${p.img}" alt="${name}" loading="lazy" onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">` : `<div style="height:150px; display:flex; align-items:center; justify-content:center; background:#f0f4f8; border-radius:8px; font-size:35px; margin-bottom:12px; cursor:pointer;" onclick="goToProductDetail(${p.id})">📦</div>`;
 
-                const qtyInCart = getProductQtyInCart(name);
+            // دالة عرض المنتجات بالكامل (بما فيها المفضلة، النقاط، وأزرار التحكم بالكمية والسلة)
+             function renderProducts(productsArray) {
+                   const grid = document.getElementById('productsGrid') || document.getElementById('grid');
+                   if (!grid) return;
 
-                let actionArea = '';
-                if (qtyInCart === 0) {
-                    actionArea = `<button class="btn-add-cart" id="btn-add-${p.id}" onclick="addToCartDirectWithFlash(this, '${safeName}', ${p.price}, '${p.img}')">${t.addCartBtn}</button>`;
-                } else {
-                    actionArea = `
-                        <div class="product-qty-stepper">
-                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, '${p.img}', ${qtyInCart - 1})">-</button>
-                            <input type="text" class="stepper-input" value="${qtyInCart}" readonly>
-                            <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, '${p.img}', ${qtyInCart + 1})">+</button>
-                        </div>
-                    `;
+                   let html = '';
+
+                   productsArray.forEach(p => {
+                   const name = currentLang === 'ar' ? p.arName : p.enName;
+                   const safeName = name.replace(/'/g, "\\'");
+          
+                   const imgTag = p.img 
+                       ? `<img src="${p.img}" alt="${name}" loading="lazy" onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج">` 
+                       : `<div style="height:150px; display:flex; align-items:center; justify-content:center; background:#f0f4f8; border-radius:8px; font-size:35px; margin-bottom:12px; cursor:pointer;" onclick="goToProductDetail(${p.id})">📦</div>`;
+
+                  const qtyInCart = getProductQtyInCart(name);
+
+                  let actionArea = '';
+                  if (qtyInCart === 0) {
+                     actionArea = `<button class="btn-add-cart" id="btn-add-${p.id}" onclick="addToCartDirectWithFlash(this, '${safeName}', ${p.price}, '${p.img}')">${t.addCartBtn}</button>`;
+                  } else {
+                      actionArea = `
+                          <div class="product-qty-stepper">
+                             <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, '${p.img}', ${qtyInCart - 1})">-</button>
+                             <input type="text" class="stepper-input" value="${qtyInCart}" readonly>
+                             <button class="stepper-btn" onclick="updateItemQty('${safeName}', ${p.price}, '${p.img}', ${qtyInCart + 1})">+</button>
+                          </div>
+                      `;
                 }
 
+                const isFavorite = favorites.includes(Number(p.id));
+                const points = Number(p.points) || 0;
+                const favoriteLabel = currentLang === 'ar'
+                    ? (isFavorite ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة')
+                    : (isFavorite ? 'Remove from favorites' : 'Add to favorites');
+
                 html += `
-                    <div class="product-card dark:bg-gray-800 dark:border-gray-700">
-                        ${imgTag}
-                        <div>
-                            <h3 onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج" class="dark:text-gray-200">${name}</h3>
-                            <div class="price dark:text-emerald-400">${p.price} ${t.sar}</div>
+                     <div class="product-card dark:bg-gray-800 dark:border-gray-700">
+                         <div class="product-card-topline">
+                             <button type="button" class="favorite-btn ${isFavorite ? 'is-favorite' : ''}" aria-label="${favoriteLabel}" title="${favoriteLabel}" aria-pressed="${isFavorite}" onclick="toggleFavorite(${Number(p.id)})">${isFavorite ? '♥' : '♡'}</button>
+                         </div>
+                         ${imgTag}
+                         <div>
+                              <h3 onclick="goToProductDetail(${p.id})" title="عرض تفاصيل المنتج" class="dark:text-gray-200">${name}</h3>
+                              <div class="price dark:text-emerald-400">${Number(p.price).toFixed(2)} ${t.sar}</div>
+                              <div class="product-points" title="${currentLang === 'ar' ? 'نقاط المنتج' : 'Product points'}">★ ${currentLang === 'ar' ? 'النقاط' : 'Points'}: ${points}</div>
                         </div>
                         ${actionArea}
-                    </div>
-                `;
-            });
-            grid.innerHTML = html;
-        }
+                 </div>
+              `;
+          });
 
+          grid.innerHTML = html;
+      }
+
+     // دالة التحكم بالمفضلة
+    function toggleFavorite(productId) {
+          const id = Number(productId);
+          if (!Number.isFinite(id)) return;
+    
+          if (favorites.includes(id)) {
+              favorites = favorites.filter(favoriteId => favoriteId !== id);
+              showToast(currentLang === 'ar' ? 'تمت إزالة المنتج من المفضلة' : 'Removed from favorites');
+          } else {
+               favorites.push(id);
+               showToast(currentLang === 'ar' ? 'تم حفظ المنتج في المفضلة' : 'Product saved to favorites');
+          }
+    
+               localStorage.setItem('forever_favorites', JSON.stringify(favorites));
+               renderProducts(getCurrentActiveFilteredProducts());
+         }
+
+         // دالة الإضافة السريعة للسلة مع ومضة الزر
         function addToCartDirectWithFlash(buttonElem, productName, price, img) {
-            if (buttonElem) {
-                buttonElem.classList.add('white-active');
+             if (buttonElem) {
+             buttonElem.classList.add('white-active');
             }
 
             setTimeout(() => {
-                addToCartDirect(productName, price, img);
-            }, 180);
-        }
+            addToCartDirect(productName, price, img);
+         }, 180);
+      }
 
-        function addToCartDirect(productName, price, img) {
-            const existingItem = cart.find(item => item.name === productName);
+     // دالة تحديث السلة وإضافة المنتج وعرض التنبيه
+     function addToCartDirect(productName, price, img) {
+     const existingItem = cart.find(item => item.name === productName);
+    
             if (existingItem) {
-                existingItem.qty += 1;
-            } else {
-                cart.push({ name: productName, price: price, img: img, qty: 1 });
-            }
+            existingItem.qty += 1;
+         } else {
+           cart.push({ name: productName, price: price, img: img, qty: 1 });
+      }
+
+            saveCart();
+            renderProducts(getCurrentActiveFilteredProducts());
+            showToast(translations[currentLang].toastAdded);
+      }
+
+        
 
             saveCart();
             renderProducts(getCurrentActiveFilteredProducts());
