@@ -2487,35 +2487,32 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // لوحة الإدارة: لا توجد كلمة مرور داخل كود المتصفح.
-        // يتطلب الإطلاق ربط هذا المسار بجلسة موثقة من الخادم (HttpOnly Secure Cookie).
-        async function showAdminDashboard() {
-            const adminButton = document.getElementById('nav-admin');
-            if (adminButton) adminButton.disabled = true;
-            try {
-                const response = await fetch('/api/admin/session', {
-                    method: 'GET',
-                    credentials: 'same-origin',
-                    cache: 'no-store',
-                    headers: { 'Accept': 'application/json' }
-                });
-                if (!response.ok) throw new Error('ADMIN_SESSION_UNAVAILABLE');
-                const session = await response.json();
-                if (session.authenticated !== true) throw new Error('ADMIN_UNAUTHENTICATED');
+        // لوحة التحكم الإدارية المحمية بكلمة مرور
+         async function showAdminDashboard() {
+             const adminButton = document.getElementById('nav-admin');
+             if (adminButton) adminButton.disabled = true;
 
-                document.getElementById('mainShopContent').style.display = 'none';
-                document.getElementById('subNavBar').style.display = 'none';
-                document.getElementById('cartPageContainer').classList.remove('active');
-                document.getElementById('adminDashboardContainer').classList.remove('hidden');
-                renderAdminProductsTable();
-                renderCharts();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } catch (error) {
-                alert('لوحة الإدارة غير متاحة بأمان حالياً. يجب إعداد خدمة مصادقة على الخادم للمسار /api/admin/session قبل تفعيلها. لم يتم إرسال أو تخزين كلمة مرور في المتصفح.');
-            } finally {
-                if (adminButton) adminButton.disabled = false;
+             try {
+             const password = prompt("يرجى إدخال كلمة مرور لوحة التحكم الخاصة بالمدير:");
+             if (password !== "12345") {
+                 alert("كلمة المرور غير صحيحة! الوصول مرفوض.");
+                 return;
             }
-        }
+
+             document.getElementById('mainShopContent').style.display = 'none';
+             document.getElementById('subNavBar').style.display = 'none';
+             document.getElementById('cartPageContainer').classList.remove('active');
+             document.getElementById('adminDashboardContainer').classList.remove('hidden');
+             renderAdminProductsTable();
+             renderCharts();
+             window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (error) {
+             console.error("خطأ:", error);
+        } finally {
+        if (adminButton) adminButton.disabled = false;
+       }
+      }
+
 
         function getProductInCart(productName) {
             return cart.find(i => i.name === productName);
