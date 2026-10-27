@@ -405,6 +405,80 @@
             background-color: #0e2a1d;
         }
 
+        .favorite-page-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 7px 13px;
+            border: 1px solid #e8b4bd;
+            border-radius: 20px;
+            background: #fff5f6;
+            color: #b4233c;
+            font-size: 13px;
+            font-weight: 800;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: transform .2s, box-shadow .2s, background .2s;
+        }
+        .favorite-page-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(180,35,60,.14); }
+        .favorite-page-count {
+            min-width: 20px;
+            height: 20px;
+            padding: 0 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background: #b4233c;
+            color: #fff;
+            font-size: 11px;
+        }
+        .dark .favorite-page-btn { background: #382027; border-color: #70404b; color: #ffc5cf; }
+        .dark .favorite-page-count { background: #a92d46; }
+        .favorites-page-container {
+            display: none;
+            max-width: 1320px;
+            min-height: 62vh;
+            margin: 28px auto 60px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background: var(--bg-section);
+            box-shadow: var(--store-shadow);
+        }
+        .favorites-page-container.active { display: block; }
+        .favorites-page-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 18px 0 26px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .favorites-page-heading h2 { margin: 0; color: var(--primary-color); font-size: clamp(23px, 3vw, 32px); font-weight: 900; }
+        .favorites-page-subtitle { margin: 7px 0 0; color: #777; font-size: 14px; }
+        .favorites-empty-state { padding: 60px 18px; text-align: center; border: 1px dashed var(--border-color); border-radius: 18px; }
+        .favorites-empty-icon { font-size: 54px; line-height: 1; margin-bottom: 18px; color: #c45a6b; }
+        .favorites-empty-state h3 { margin: 0 0 8px; font-size: 21px; font-weight: 900; color: var(--primary-color); }
+        .favorites-empty-state p { margin: 0 0 22px; color: #777; }
+        .favorites-back-btn { padding: 10px 18px; border: 0; border-radius: 10px; background: var(--primary-color); color: #fff; font-weight: 800; cursor: pointer; }
+        .favorites-product-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+        .favorites-product-actions .btn-add-cart { width: 100%; }
+        .favorite-remove-btn { padding: 8px 10px; border: 1px solid #f0c4cb; border-radius: 9px; background: #fff5f6; color: #b4233c; font-size: 12px; font-weight: 800; cursor: pointer; }
+        .dark .favorites-page-container { background: #17231c; }
+        .dark .favorites-page-heading h2, .dark .favorites-empty-state h3 { color: #b6e3c2; }
+        .dark .favorites-empty-state { border-color: #35483b; }
+        .dark .favorite-remove-btn { background: #382027; border-color: #70404b; color: #ffc5cf; }
+        @media (max-width: 640px) {
+            .favorites-page-container { margin: 16px 12px 40px; padding: 16px; }
+            .favorite-page-btn { padding: 7px 10px; font-size: 12px; }
+            .favorite-page-label { display: none; }
+        }
+
         .cart-count {
             background-color: var(--accent-color);
             color: #ffffff;
@@ -1858,6 +1932,11 @@
                     </div>
                 </div>
 
+                <!-- أيقونة المفضلة تفتح قسماً متكاملاً داخل المتجر -->
+                <button type="button" class="favorite-page-btn" onclick="showFavoritesPage()" aria-label="عرض المنتجات المفضلة" title="منتجاتي المفضلة">
+                    <span aria-hidden="true">♥</span><span class="favorite-page-label" id="favorites-btn-text">المفضلة</span><span class="favorite-page-count" id="favorites-count">0</span>
+                </button>
+
                 <!-- زر سلة المشتريات -->
                 <button class="cart-icon-btn" onclick="showCartPage()">
                     🛒 <span id="cart-btn-text">سلة المشتريات</span> <span class="cart-count" id="cart-count">0</span>
@@ -2216,6 +2295,19 @@
         <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر
             الواتساب 📱</a>
     </div>
+
+    <!-- قسم المفضلة المتكامل: يعرض بيانات المنتجات الأصلية دون نسخها -->
+    <section class="favorites-page-container dark:bg-gray-800 dark:border-gray-700" id="favoritesPageContainer" aria-labelledby="favorites-page-title">
+        <button class="cart-back-btn dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" onclick="showMainShop()" id="favoritesBackBtn">← العودة للتسوق</button>
+        <div class="favorites-page-heading">
+            <div>
+                <h2 id="favorites-page-title">♥ منتجاتي المفضلة</h2>
+                <p class="favorites-page-subtitle" id="favorites-page-subtitle">المنتجات التي حفظتها لتعود إليها وقتما تشاء</p>
+            </div>
+            <span class="favorite-page-count" id="favorites-page-count">0 منتج</span>
+        </div>
+        <div class="products-grid" id="favorites-products-container"></div>
+    </section>
 
     <!-- نافذة منبثقة (Modal) لإضافة/تعديل منتج من لوحة التحكم -->
     <div id="productModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
@@ -2645,8 +2737,56 @@
             document.getElementById('mainShopContent').style.display = 'block';
             document.getElementById('subNavBar').style.display = 'flex';
             document.getElementById('cartPageContainer').classList.remove('active');
+            document.getElementById('favoritesPageContainer').classList.remove('active');
             document.getElementById('adminDashboardContainer').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateFavoritesCount() {
+            const count = favorites.length;
+            const badge = document.getElementById('favorites-count');
+            const pageCount = document.getElementById('favorites-page-count');
+            if (badge) badge.textContent = String(count);
+            if (pageCount) pageCount.textContent = currentLang === 'ar' ? `${count} منتج` : `${count} product${count === 1 ? '' : 's'}`;
+        }
+
+        function showFavoritesPage() {
+            document.getElementById('mainShopContent').style.display = 'none';
+            document.getElementById('subNavBar').style.display = 'none';
+            document.getElementById('cartPageContainer').classList.remove('active');
+            document.getElementById('adminDashboardContainer').classList.add('hidden');
+            document.getElementById('favoritesPageContainer').classList.add('active');
+            renderFavoriteProducts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderFavoriteProducts() {
+            const grid = document.getElementById('favorites-products-container');
+            if (!grid) return;
+            updateFavoritesCount();
+            const favoriteProducts = products.filter(product => favorites.includes(Number(product.id)));
+            const title = document.getElementById('favorites-page-title');
+            const subtitle = document.getElementById('favorites-page-subtitle');
+            const backButton = document.getElementById('favoritesBackBtn');
+            if (title) title.textContent = currentLang === 'ar' ? '♥ منتجاتي المفضلة' : '♥ My Favorites';
+            if (subtitle) subtitle.textContent = currentLang === 'ar' ? 'المنتجات التي حفظتها لتعود إليها وقتما تشاء' : 'Products you saved to revisit anytime';
+            if (backButton) backButton.textContent = currentLang === 'ar' ? '← العودة للتسوق' : '← Back to shopping';
+
+            if (!favoriteProducts.length) {
+                grid.innerHTML = `<div class="favorites-empty-state" style="grid-column:1/-1"><div class="favorites-empty-icon" aria-hidden="true">♡</div><h3>${currentLang === 'ar' ? 'قائمة المفضلة فارغة حالياً' : 'Your favorites list is empty'}</h3><p>${currentLang === 'ar' ? 'أضف المنتجات التي تعجبك إلى المفضلة لتجدها هنا بسهولة.' : 'Save products you like and they will appear here.'}</p><button type="button" class="favorites-back-btn" onclick="showMainShop()">${currentLang === 'ar' ? 'اكتشف المنتجات' : 'Explore products'}</button></div>`;
+                return;
+            }
+
+            grid.innerHTML = favoriteProducts.map(product => {
+                const name = currentLang === 'ar' ? product.arName : product.enName;
+                const safeName = String(name || '').replace(/'/g, "\\'");
+                const img = product.img ? `<img src="${product.img}" alt="${name}" loading="lazy" onclick="goToProductDetail(${Number(product.id)})" title="${currentLang === 'ar' ? 'عرض تفاصيل المنتج' : 'View product details'}">` : `<div style="height:150px;display:flex;align-items:center;justify-content:center;font-size:35px" onclick="goToProductDetail(${Number(product.id)})">📦</div>`;
+                const qty = getProductQtyInCart(name);
+                const cartAction = qty > 0
+                    ? `<button type="button" class="btn-add-cart" onclick="addToCartDirect('${safeName}', ${Number(product.price) || 0}, '${String(product.img || '').replace(/'/g, "\'")}')">${currentLang === 'ar' ? 'إضافة قطعة أخرى للسلة' : 'Add another to cart'}</button>`
+                    : `<button type="button" class="btn-add-cart" onclick="addToCartDirect('${safeName}', ${Number(product.price) || 0}, '${String(product.img || '').replace(/'/g, "\'")}')">${translations[currentLang].addCartBtn}</button>`;
+                return `<article class="product-card dark:bg-gray-800 dark:border-gray-700"><div class="product-card-topline"><button type="button" class="favorite-btn is-favorite" aria-label="${currentLang === 'ar' ? 'إزالة من المفضلة' : 'Remove from favorites'}" title="${currentLang === 'ar' ? 'إزالة من المفضلة' : 'Remove from favorites'}" aria-pressed="true" onclick="toggleFavorite(${Number(product.id)})">♥</button></div>${img}<div><h3 class="dark:text-gray-200" onclick="goToProductDetail(${Number(product.id)})">${name}</h3><div class="price dark:text-emerald-400">${(Number(product.price) || 0).toFixed(2)} ${translations[currentLang].sar}</div><div class="product-points">★ ${currentLang === 'ar' ? 'النقاط' : 'Points'}: ${Number(product.points) || 0}</div></div><div class="favorites-product-actions">${cartAction}<button type="button" class="favorite-remove-btn" onclick="toggleFavorite(${Number(product.id)})">${currentLang === 'ar' ? 'إزالة من المفضلة ✕' : 'Remove from favorites ✕'}</button></div></article>`;
+            }).join('');
         }
 
         function showMainShopProducts() {
@@ -2662,6 +2802,7 @@
             document.getElementById('subNavBar').style.display = 'none';
             document.getElementById('adminDashboardContainer').classList.add('hidden');
             document.getElementById('cartPageContainer').classList.add('active');
+            document.getElementById('favoritesPageContainer').classList.remove('active');
             updateCartUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -2681,6 +2822,7 @@
                 document.getElementById('mainShopContent').style.display = 'none';
                 document.getElementById('subNavBar').style.display = 'none';
                 document.getElementById('cartPageContainer').classList.remove('active');
+                document.getElementById('favoritesPageContainer').classList.remove('active');
                 document.getElementById('adminDashboardContainer').classList.remove('hidden');
                 renderAdminProductsTable();
                 renderCharts();
@@ -2769,7 +2911,10 @@
                 showToast(currentLang === 'ar' ? 'تم حفظ المنتج في المفضلة' : 'Product saved to favorites');
             }
             localStorage.setItem('forever_favorites', JSON.stringify(favorites));
+            updateFavoritesCount();
             renderProducts(getCurrentActiveFilteredProducts());
+            const favoritesPage = document.getElementById('favoritesPageContainer');
+            if (favoritesPage && favoritesPage.classList.contains('active')) renderFavoriteProducts();
         }
 
         function addToCartDirectWithFlash(buttonElem, productName, price, img) {
@@ -3158,6 +3303,8 @@
                 products = products.filter(p => p.id !== id);
                 favorites = favorites.filter(favoriteId => favoriteId !== Number(id));
                 localStorage.setItem('forever_favorites', JSON.stringify(favorites));
+                updateFavoritesCount();
+                if (document.getElementById('favoritesPageContainer')?.classList.contains('active')) renderFavoriteProducts();
                 localStorage.setItem('store_custom_products', JSON.stringify(products));
                 renderAdminProductsTable();
                 renderProducts(products);
@@ -3284,7 +3431,9 @@
             showSlides();
             updateCartUI();
         };
-    </script>
+            document.addEventListener('DOMContentLoaded', updateFavoritesCount);
+
+</script>
 </body>
 
 </html>
