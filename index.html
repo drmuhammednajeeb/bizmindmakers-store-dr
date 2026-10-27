@@ -3033,14 +3033,14 @@
             <div style="font-size: 13px; color: #;">المجموع الصافي للمنتجات: ${netSubtotal.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">ضريبة القيمة المضافة (15% مشمولة): ${vatAmount.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">رسوم الشحن الثابتة: ${shippingFee.toFixed(2)} ${t.sar}</div>
-            <div style="font-size: 16px; font-weight: 800; color: (--primary-color, #e74c3c); margin-top: 8px;">الإجمالي النهائي: ${finalTotal.toFixed(2)} ${t.sar}</div>
+            <div style="font-size: 16px; font-weight: 800; color: #e74c3c; margin-top: 8px;">الإجمالي النهائي: ${finalTotal.toFixed(2)} ${t.sar}</div>
         `;
     } else {
         cartTotal.innerHTML = `
             <div style="font-size: 13px; color: #;">Net Subtotal: ${netSubtotal.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">VAT (15% included): ${vatAmount.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">Shipping Fee: ${shippingFee.toFixed(2)} ${t.sar}</div>
-            <div style="font-size: 16px; font-weight: 800; color: (--primary-color, #e74c3c); margin-top: 8px;">Final Total: ${finalTotal.toFixed(2)} ${t.sar}</div>
+            <div style="font-size: 16px; font-weight: 800; color: #e74c3c; margin-top: 8px;">Final Total: ${finalTotal.toFixed(2)} ${t.sar}</div>
         `;
     }
 
