@@ -744,7 +744,7 @@
             gap: 20px;
         }
 
-       
+        
         .promo-card {
             background: linear-gradient(rgba(22, 61, 43, 0.85), rgba(13, 37, 26, 0.9)), url('10.jpg') center/cover;
             border-radius: 12px;
@@ -941,7 +941,7 @@
             margin-bottom: 12px;
         }
 
-        /* زر أضف للسلة والتأثير البصري المتحول للون الأبيض (White Flash Effect) */
+    /* زر أضف للسلة والتأثير البصري المتحول للون الأبيض (White Flash Effect) */
         .btn-add-cart {
             display: block;
             width: 100%;
@@ -1872,7 +1872,6 @@
         }
     </style>
 </head>
-
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
     <!-- الشريط العلوي (BizmindMakers في أقصى اليمين/الزاوية العليا) -->
@@ -2291,7 +2290,7 @@
         <div class="cart-table-wrapper dark:border-gray-700" id="cartTableContainer"></div>
 
         <div class="cart-total dark:text-emerald-400" id="cartTotal">الإجمالي: 0 ر.س</div>
-       
+        
         <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر
             الواتساب 📱</a>
     </div>
@@ -2361,7 +2360,7 @@
         </div>
     </div>
 
-    <!-- إشعار الإضافة العائم -->
+ <!-- إشعار الإضافة العائم -->
     <div id="toastNotification" class="toast-notification">
         <span>✨</span> <span id="toastText">تمت إضافة المنتج إلى السلة بنجاح!</span>
     </div>
@@ -3116,7 +3115,7 @@
         cartCount.textContent = '0';
         cartTotal.innerHTML = `${t.total}: 0.00 ${t.sar}`;
         return;
-    }
+    } 
 
     let tableHtml = `
         <table class="cart-table dark:text-gray-200">
@@ -3438,6 +3437,187 @@
             document.addEventListener('DOMContentLoaded', updateFavoritesCount);
 
 </script>
+<!-- BIZMINDMAKERS_INVOICE_FEATURE_V1: إضافة مستقلة لإدارة الطلبات وطباعة الفواتير دون تعديل الكود السابق -->
+<style id="bizmindmakers-invoice-styles">
+    .bm-orders-panel { background:#fff; color:#1f2937; border:1px solid #e5e7eb; border-radius:16px; padding:22px; margin:0 0 28px; box-shadow:0 4px 16px rgba(0,0,0,.04); }
+    .dark .bm-orders-panel { background:#1f2937; color:#f3f4f6; border-color:#374151; }
+    .bm-orders-heading { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; }
+    .bm-orders-heading h3 { font-size:20px; font-weight:900; color:#163d2b; }
+    .dark .bm-orders-heading h3 { color:#a7f3d0; }
+    .bm-orders-scroll { overflow-x:auto; }
+    .bm-orders-table { width:100%; border-collapse:collapse; min-width:720px; font-size:13px; }
+    .bm-orders-table th,.bm-orders-table td { border-bottom:1px solid #e5e7eb; padding:11px 9px; text-align:right; vertical-align:middle; }
+    .dark .bm-orders-table th,.dark .bm-orders-table td { border-color:#374151; }
+    .bm-orders-table th { background:#f3f4f6; color:#163d2b; font-weight:800; }
+    .dark .bm-orders-table th { background:#374151; color:#a7f3d0; }
+    .bm-print-invoice-btn { background:#163d2b; color:#fff; border:0; border-radius:8px; padding:8px 12px; font-weight:800; cursor:pointer; white-space:nowrap; }
+    .bm-print-invoice-btn:hover { background:#0e2a1d; }
+    .bm-order-empty { padding:24px 10px; text-align:center; color:#6b7280; }
+    .bm-order-status { display:inline-block; padding:4px 8px; border-radius:999px; background:#fef3c7; color:#92400e; font-size:11px; font-weight:800; }
+    @media print { .bm-no-print { display:none !important; } }
+</style>
+<script id="bizmindmakers-invoice-feature">
+(function () {
+    'use strict';
+    const ORDERS_STORAGE_KEY = 'bizmindmakers_saved_orders_v1';
+
+    function bmReadOrders() {
+        try {
+            const value = JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY) || '[]');
+            return Array.isArray(value) ? value : [];
+        } catch (error) {
+            console.error('تعذر قراءة سجل الطلبات المحفوظة:', error);
+            return [];
+        }
+    }
+
+    function bmSaveOrders(orders) {
+        try {
+            localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
+            return true;
+        } catch (error) {
+            console.error('تعذر حفظ الطلبات. قد تكون مساحة التخزين ممتلئة:', error);
+            alert('تعذر حفظ الطلب في هذا المتصفح. يرجى التأكد من تفعيل التخزين المحلي وتوفر مساحة كافية.');
+            return false;
+        }
+    }
+
+    function bmEscapeHtml(value) {
+        return String(value == null ? '' : value).replace(/[&<>"']/g, function (character) {
+            return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character];
+        });
+    }
+
+    function bmCurrency(value) {
+        return (Number(value) || 0).toFixed(2) + ' ر.س';
+    }
+
+    function bmCaptureCheckoutOrder() {
+        if (typeof cart === 'undefined' || !Array.isArray(cart) || cart.length === 0) return;
+        const items = cart.map(function (item) {
+            return {
+                id: item.id == null ? null : item.id,
+                name: String(item.name || 'منتج'),
+                price: Number(item.price) || 0,
+                qty: Math.max(1, Number(item.qty) || 1),
+                img: String(item.img || '')
+            };
+        });
+        const subtotal = items.reduce(function (sum, item) { return sum + item.price * item.qty; }, 0);
+        const netSubtotal = subtotal / 1.15;
+        const vatAmount = subtotal - netSubtotal;
+        const shippingFee = subtotal > 0 ? 30 : 0;
+        const now = new Date();
+        const order = {
+            id: 'BM-' + now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0') + '-' + now.getTime().toString().slice(-6),
+            createdAt: now.toISOString(),
+            createdAtLocal: now.toLocaleString('ar-SA', { dateStyle: 'medium', timeStyle: 'short' }),
+            currency: 'SAR',
+            items: items,
+            subtotal: subtotal,
+            netSubtotal: netSubtotal,
+            vatAmount: vatAmount,
+            shippingFee: shippingFee,
+            total: subtotal + shippingFee,
+            status: 'تم فتح رابط واتساب — بانتظار تأكيد الطلب'
+        };
+        const orders = bmReadOrders();
+        orders.unshift(order);
+        if (bmSaveOrders(orders)) {
+            // نسجل الطلب مرة واحدة عند الضغط على رابط إتمام الطلب، دون تغيير مسار واتساب الأصلي.
+            try { sessionStorage.setItem('bm_last_saved_checkout', order.id); } catch (_) { }
+        }
+    }
+
+    function bmEnsureOrdersPanel() {
+        const dashboard = document.getElementById('adminDashboardContainer');
+        if (!dashboard || document.getElementById('bmOrdersPanel')) return;
+        const panel = document.createElement('section');
+        panel.id = 'bmOrdersPanel';
+        panel.className = 'bm-orders-panel';
+        panel.innerHTML = '<div class="bm-orders-heading"><div><h3>🧾 الطلبات والفواتير</h3><p style="font-size:12px;color:#6b7280;margin-top:4px">الطلبات التي تم بدء إتمامها عبر واتساب، مع إمكانية طباعة كل فاتورة بشكل مستقل.</p></div><button type="button" class="bm-print-invoice-btn bm-no-print" id="bmRefreshOrdersBtn">تحديث سجل الطلبات ↻</button></div><div id="bmOrdersTableHost"></div>';
+        const dashboardHeader = dashboard.firstElementChild;
+        if (dashboardHeader && dashboardHeader.nextElementSibling) {
+            dashboard.insertBefore(panel, dashboardHeader.nextElementSibling);
+        } else {
+            dashboard.prepend(panel);
+        }
+        document.getElementById('bmRefreshOrdersBtn').addEventListener('click', bmRenderOrders);
+        bmRenderOrders();
+    }
+
+    function bmRenderOrders() {
+        const host = document.getElementById('bmOrdersTableHost');
+        if (!host) return;
+        const orders = bmReadOrders();
+        if (!orders.length) {
+            host.innerHTML = '<div class="bm-order-empty">لا توجد طلبات محفوظة حتى الآن. ستظهر الطلبات هنا عند الضغط على «إتمام الطلب عبر الواتساب» من السلة.</div>';
+            return;
+        }
+        host.innerHTML = '<div class="bm-orders-scroll"><table class="bm-orders-table"><thead><tr><th>رقم الطلب</th><th>التاريخ</th><th>عدد القطع</th><th>الإجمالي</th><th>الحالة</th><th class="bm-no-print">الإجراء</th></tr></thead><tbody>' + orders.map(function (order, index) {
+            const pieces = (order.items || []).reduce(function (sum, item) { return sum + (Number(item.qty) || 0); }, 0);
+            return '<tr><td><strong>' + bmEscapeHtml(order.id) + '</strong></td><td>' + bmEscapeHtml(order.createdAtLocal || order.createdAt || '') + '</td><td>' + pieces + '</td><td><strong>' + bmCurrency(order.total) + '</strong></td><td><span class="bm-order-status">' + bmEscapeHtml(order.status || 'محفوظ') + '</span></td><td class="bm-no-print"><button type="button" class="bm-print-invoice-btn" data-bm-print-order="' + index + '">🖨️ طباعة الفاتورة</button></td></tr>';
+        }).join('') + '</tbody></table></div>';
+        host.querySelectorAll('[data-bm-print-order]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const index = Number(button.getAttribute('data-bm-print-order'));
+                const latestOrders = bmReadOrders();
+                if (Number.isInteger(index) && latestOrders[index]) bmPrintInvoice(latestOrders[index]);
+            });
+        });
+    }
+
+    function bmPrintInvoice(order) {
+        const printWindow = window.open('', '_blank', 'width=900,height=750');
+        if (!printWindow) {
+            alert('يرجى السماح بالنوافذ المنبثقة لهذا الموقع حتى تتمكن من طباعة الفاتورة.');
+            return;
+        }
+        const itemRows = (order.items || []).map(function (item, index) {
+            return '<tr><td>' + (index + 1) + '</td><td>' + bmEscapeHtml(item.name) + '</td><td>' + (Number(item.qty) || 0) + '</td><td>' + bmCurrency(item.price) + '</td><td>' + bmCurrency((Number(item.price) || 0) * (Number(item.qty) || 0)) + '</td></tr>';
+        }).join('');
+        const invoiceHtml = '<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>فاتورة ' + bmEscapeHtml(order.id) + '</title><style>body{font-family:Tahoma,Arial,sans-serif;color:#222;margin:0;padding:28px;line-height:1.7}header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #163d2b;padding-bottom:18px;margin-bottom:22px;gap:20px}.brand{color:#163d2b;font-size:23px;font-weight:800}.muted{color:#666;font-size:12px}.invoice-title{font-size:24px;font-weight:800;margin:20px 0}.meta{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:15px 0 24px}.meta div{background:#f5f7f5;padding:10px 14px;border-radius:8px}table{width:100%;border-collapse:collapse;margin:18px 0}th,td{border:1px solid #ddd;padding:10px;text-align:right}th{background:#163d2b;color:#fff}.totals{width:min(100%,390px);margin-right:auto}.totals p{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #eee;padding:5px 0}.grand{font-size:19px;font-weight:800;color:#163d2b}.note{margin-top:26px;border-top:1px solid #ddd;padding-top:12px;font-size:12px;color:#666}.print-action{background:#163d2b;color:white;border:0;border-radius:7px;padding:10px 20px;font-weight:bold;cursor:pointer}@media print{body{padding:0}.print-action{display:none} }</style></head><body><header><div><div class="brand">متجر د. محمد النبهاني</div><div class="muted">BizmindMakers | منتجات فوريفر ليفينج</div></div><div><strong>فاتورة طلب</strong><br><span class="muted">Invoice</span></div></header><div class="invoice-title">فاتورة رقم: ' + bmEscapeHtml(order.id) + '</div><div class="meta"><div><strong>تاريخ الطلب:</strong><br>' + bmEscapeHtml(order.createdAtLocal || order.createdAt || '') + '</div><div><strong>حالة الطلب:</strong><br>' + bmEscapeHtml(order.status || 'محفوظ') + '</div></div><table><thead><tr><th>#</th><th>المنتج</th><th>الكمية</th><th>سعر الوحدة</th><th>الإجمالي</th></tr></thead><tbody>' + itemRows + '</tbody></table><div class="totals"><p><span>المجموع شامل الضريبة</span><strong>' + bmCurrency(order.subtotal) + '</strong></p><p><span>صافي المنتجات قبل الضريبة</span><strong>' + bmCurrency(order.netSubtotal) + '</strong></p><p><span>ضريبة القيمة المضافة (15% ضمن الأسعار)</span><strong>' + bmCurrency(order.vatAmount) + '</strong></p><p><span>رسوم الشحن</span><strong>' + bmCurrency(order.shippingFee) + '</strong></p><p class="grand"><span>الإجمالي النهائي</span><strong>' + bmCurrency(order.total) + '</strong></p></div><div class="note">هذه الفاتورة مستخرجة من تفاصيل السلة المحفوظة عند بدء إتمام الطلب. لا تُعد إثباتًا للدفع أو تأكيدًا نهائيًا للطلب ما لم يتم تأكيده بشكل مستقل.</div><p style="text-align:center;margin-top:22px"><button class="print-action" onclick="window.print()">طباعة الفاتورة</button></p><script>window.onload=function(){setTimeout(function(){window.print()},300)};<\/script></body></html>';
+        printWindow.document.open();
+        printWindow.document.write(invoiceHtml);
+        printWindow.document.close();
+    }
+
+    // حفظ نسخة من محتويات السلة عند بدء الانتقال إلى واتساب، مع الإبقاء على الرابط الأصلي كما هو.
+    document.addEventListener('click', function (event) {
+        const checkout = event.target && event.target.closest ? event.target.closest('#whatsappCheckoutBtn') : null;
+        if (!checkout) return;
+        try { bmCaptureCheckoutOrder(); }
+        catch (error) { console.error('حدث خطأ أثناء حفظ الطلب:', error); }
+    }, true);
+
+    // إتاحة الدوال للتشغيل من لوحة التحكم دون تغيير الدوال الأصلية.
+    window.bmRenderSavedOrders = bmRenderOrders;
+    window.bmPrintSavedInvoice = function (orderId) {
+        const order = bmReadOrders().find(function (item) { return item.id === orderId; });
+        if (order) bmPrintInvoice(order);
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        bmEnsureOrdersPanel();
+    });
+    const originalShowAdminDashboard = window.showAdminDashboard;
+    if (typeof originalShowAdminDashboard === 'function') {
+        window.showAdminDashboard = async function () {
+            const result = await originalShowAdminDashboard.apply(this, arguments);
+            bmEnsureOrdersPanel();
+            bmRenderOrders();
+            return result;
+        };
+    } else {
+        // في حال تحميل هذا السكربت قبل تعريف دالة لوحة التحكم، أضف القسم عند أول فتح للوحة.
+        document.addEventListener('click', function () {
+            if (document.getElementById('adminDashboardContainer') && !document.getElementById('adminDashboardContainer').classList.contains('hidden')) bmEnsureOrdersPanel();
+        });
+    }
+})();
+</script>
+<!-- نهاية إضافة نظام الطلبات والفواتير -->
+
 </body>
 
 </html>
