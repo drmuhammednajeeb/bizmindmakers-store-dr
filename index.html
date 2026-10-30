@@ -422,7 +422,12 @@
             cursor: pointer;
             transition: transform .2s, box-shadow .2s, background .2s;
         }
-        .favorite-page-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(180,35,60,.14); }
+
+        .favorite-page-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(180, 35, 60, .14);
+        }
+
         .favorite-page-count {
             min-width: 20px;
             height: 20px;
@@ -435,8 +440,17 @@
             color: #fff;
             font-size: 11px;
         }
-        .dark .favorite-page-btn { background: #382027; border-color: #70404b; color: #ffc5cf; }
-        .dark .favorite-page-count { background: #a92d46; }
+
+        .dark .favorite-page-btn {
+            background: #382027;
+            border-color: #70404b;
+            color: #ffc5cf;
+        }
+
+        .dark .favorite-page-count {
+            background: #a92d46;
+        }
+
         .favorites-page-container {
             display: none;
             max-width: 1320px;
@@ -448,7 +462,11 @@
             background: var(--bg-section);
             box-shadow: var(--store-shadow);
         }
-        .favorites-page-container.active { display: block; }
+
+        .favorites-page-container.active {
+            display: block;
+        }
+
         .favorites-page-heading {
             display: flex;
             align-items: center;
@@ -459,24 +477,111 @@
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
         }
-        .favorites-page-heading h2 { margin: 0; color: var(--primary-color); font-size: clamp(23px, 3vw, 32px); font-weight: 900; }
-        .favorites-page-subtitle { margin: 7px 0 0; color: #777; font-size: 14px; }
-        .favorites-empty-state { padding: 60px 18px; text-align: center; border: 1px dashed var(--border-color); border-radius: 18px; }
-        .favorites-empty-icon { font-size: 54px; line-height: 1; margin-bottom: 18px; color: #c45a6b; }
-        .favorites-empty-state h3 { margin: 0 0 8px; font-size: 21px; font-weight: 900; color: var(--primary-color); }
-        .favorites-empty-state p { margin: 0 0 22px; color: #777; }
-        .favorites-back-btn { padding: 10px 18px; border: 0; border-radius: 10px; background: var(--primary-color); color: #fff; font-weight: 800; cursor: pointer; }
-        .favorites-product-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-        .favorites-product-actions .btn-add-cart { width: 100%; }
-        .favorite-remove-btn { padding: 8px 10px; border: 1px solid #f0c4cb; border-radius: 9px; background: #fff5f6; color: #b4233c; font-size: 12px; font-weight: 800; cursor: pointer; }
-        .dark .favorites-page-container { background: #17231c; }
-        .dark .favorites-page-heading h2, .dark .favorites-empty-state h3 { color: #b6e3c2; }
-        .dark .favorites-empty-state { border-color: #35483b; }
-        .dark .favorite-remove-btn { background: #382027; border-color: #70404b; color: #ffc5cf; }
+
+        .favorites-page-heading h2 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: clamp(23px, 3vw, 32px);
+            font-weight: 900;
+        }
+
+        .favorites-page-subtitle {
+            margin: 7px 0 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .favorites-empty-state {
+            padding: 60px 18px;
+            text-align: center;
+            border: 1px dashed var(--border-color);
+            border-radius: 18px;
+        }
+
+        .favorites-empty-icon {
+            font-size: 54px;
+            line-height: 1;
+            margin-bottom: 18px;
+            color: #c45a6b;
+        }
+
+        .favorites-empty-state h3 {
+            margin: 0 0 8px;
+            font-size: 21px;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+
+        .favorites-empty-state p {
+            margin: 0 0 22px;
+            color: #777;
+        }
+
+        .favorites-back-btn {
+            padding: 10px 18px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .favorites-product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .favorites-product-actions .btn-add-cart {
+            width: 100%;
+        }
+
+        .favorite-remove-btn {
+            padding: 8px 10px;
+            border: 1px solid #f0c4cb;
+            border-radius: 9px;
+            background: #fff5f6;
+            color: #b4233c;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .dark .favorites-page-container {
+            background: #17231c;
+        }
+
+        .dark .favorites-page-heading h2,
+        .dark .favorites-empty-state h3 {
+            color: #b6e3c2;
+        }
+
+        .dark .favorites-empty-state {
+            border-color: #35483b;
+        }
+
+        .dark .favorite-remove-btn {
+            background: #382027;
+            border-color: #70404b;
+            color: #ffc5cf;
+        }
+
         @media (max-width: 640px) {
-            .favorites-page-container { margin: 16px 12px 40px; padding: 16px; }
-            .favorite-page-btn { padding: 7px 10px; font-size: 12px; }
-            .favorite-page-label { display: none; }
+            .favorites-page-container {
+                margin: 16px 12px 40px;
+                padding: 16px;
+            }
+
+            .favorite-page-btn {
+                padding: 7px 10px;
+                font-size: 12px;
+            }
+
+            .favorite-page-label {
+                display: none;
+            }
         }
 
         .cart-count {
@@ -744,7 +849,7 @@
             gap: 20px;
         }
 
-        
+
         .promo-card {
             background: linear-gradient(rgba(22, 61, 43, 0.85), rgba(13, 37, 26, 0.9)), url('10.jpg') center/cover;
             border-radius: 12px;
@@ -941,7 +1046,7 @@
             margin-bottom: 12px;
         }
 
-    /* زر أضف للسلة والتأثير البصري المتحول للون الأبيض (White Flash Effect) */
+        /* زر أضف للسلة والتأثير البصري المتحول للون الأبيض (White Flash Effect) */
         .btn-add-cart {
             display: block;
             width: 100%;
@@ -1872,6 +1977,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
     <!-- الشريط العلوي (BizmindMakers في أقصى اليمين/الزاوية العليا) -->
@@ -1926,14 +2032,18 @@
 
                     <!-- رقم عضوية الاسبونسر مع زر نسخ رقم العضوية (بلون ذهبي ساطع واضح) -->
                     <div class="sponsor-info-bar">
-                        <span><span id="sponsor-label">رقم الاسبونسر:</span> <b class="sponsor-code-text" id="sponsorCodeText">971001726361</b></span>
+                        <span><span id="sponsor-label">رقم الاسبونسر:</span> <b class="sponsor-code-text"
+                                id="sponsorCodeText">971001726361</b></span>
                         <button class="btn-copy-sponsor" onclick="copySponsorCode()" id="copyBtnText">نسخ</button>
                     </div>
                 </div>
 
                 <!-- أيقونة المفضلة تفتح قسماً متكاملاً داخل المتجر -->
-                <button type="button" class="favorite-page-btn" onclick="showFavoritesPage()" aria-label="عرض المنتجات المفضلة" title="منتجاتي المفضلة">
-                    <span aria-hidden="true">♥</span><span class="favorite-page-label" id="favorites-btn-text">المفضلة</span><span class="favorite-page-count" id="favorites-count">0</span>
+                <button type="button" class="favorite-page-btn" onclick="showFavoritesPage()"
+                    aria-label="عرض المنتجات المفضلة" title="منتجاتي المفضلة">
+                    <span aria-hidden="true">♥</span><span class="favorite-page-label"
+                        id="favorites-btn-text">المفضلة</span><span class="favorite-page-count"
+                        id="favorites-count">0</span>
                 </button>
 
                 <!-- زر سلة المشتريات -->
@@ -2290,18 +2400,21 @@
         <div class="cart-table-wrapper dark:border-gray-700" id="cartTableContainer"></div>
 
         <div class="cart-total dark:text-emerald-400" id="cartTotal">الإجمالي: 0 ر.س</div>
-        
+
         <a id="whatsappCheckoutBtn" href="#" target="_blank" class="btn-checkout" style="display:none;">إتمام الطلب عبر
             الواتساب 📱</a>
     </div>
 
     <!-- قسم المفضلة المتكامل: يعرض بيانات المنتجات الأصلية دون نسخها -->
-    <section class="favorites-page-container dark:bg-gray-800 dark:border-gray-700" id="favoritesPageContainer" aria-labelledby="favorites-page-title">
-        <button class="cart-back-btn dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" onclick="showMainShop()" id="favoritesBackBtn">← العودة للتسوق</button>
+    <section class="favorites-page-container dark:bg-gray-800 dark:border-gray-700" id="favoritesPageContainer"
+        aria-labelledby="favorites-page-title">
+        <button class="cart-back-btn dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600" onclick="showMainShop()"
+            id="favoritesBackBtn">← العودة للتسوق</button>
         <div class="favorites-page-heading">
             <div>
                 <h2 id="favorites-page-title">♥ منتجاتي المفضلة</h2>
-                <p class="favorites-page-subtitle" id="favorites-page-subtitle">المنتجات التي حفظتها لتعود إليها وقتما تشاء</p>
+                <p class="favorites-page-subtitle" id="favorites-page-subtitle">المنتجات التي حفظتها لتعود إليها وقتما
+                    تشاء</p>
             </div>
             <span class="favorite-page-count" id="favorites-page-count">0 منتج</span>
         </div>
@@ -2360,7 +2473,7 @@
         </div>
     </div>
 
- <!-- إشعار الإضافة العائم -->
+    <!-- إشعار الإضافة العائم -->
     <div id="toastNotification" class="toast-notification">
         <span>✨</span> <span id="toastText">تمت إضافة المنتج إلى السلة بنجاح!</span>
     </div>
@@ -2440,50 +2553,70 @@
             });
         }
 
-        let products = JSON.parse(localStorage.getItem('store_custom_products')) || [
-            { id: 1, arName: "مجموعة بداية رحلتك (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1599.99, img: "634.webp", category: "packs", keywords: ["باقة", "مجموعة", "رحلتك", "pack", "journey"] },
-            { id: 2, arName: "فوريفر رويال جيلي (Forever Royal Jelly)", enName: "Forever Royal Jelly", price: 168, img: "036.webp", category: "supplements", keywords: ["رويال", "جيلي", "عكبر", "مكمل", "royal", "jelly"] },
-            { id: 3, arName: "سيروم المرطب (Hydrating Serum)", enName: "Hydrating Serum", price: 163, img: "618.webp", category: "care", keywords: ["سيروم", "مرطب", "بشرة", "serum", "hydrating"] },
-            { id: 4, arName: "فيتولايز (Vitolize Women)", enName: "Vitolize Women", price: 159, img: "374.webp", category: "supplements", keywords: ["فيتولايز", "نساء", "مكمل", "vitolize"] },
-            { id: 5, arName: "فوريفر أكتيك سي (Forever Arctic Sea)", enName: "Forever Arctic Sea", price: 168, img: "376.webp", category: "supplements", keywords: ["أكتيك", "أوميغا", "سمك", "arctic", "sea", "omega"] },
-            { id: 6, arName: "فوريفر فايبر (Forever Fiber)", enName: "Forever Fiber", price: 153, img: "464.webp", category: "weight", keywords: ["فايبر", "ألياف", "تخسيس", "fiber", "weight"] },
-            { id: 7, arName: "كريم المرطب العميق (Deep Moisturizing Cream)", enName: "Deep Moisturizing Cream", price: 153, img: "651.webp", category: "care", keywords: ["كريم", "مرطب", "عميق", "cream", "moisturizing"] },
-            { id: 8, arName: "فوريفر غارسينيا بلس (Forever Garcinia Plus)", enName: "Forever Garcinia Plus", price: 146, img: "071.webp", category: "weight", keywords: ["غارسينيا", "تخسيس", "حرق", "garcinia"] },
-            { id: 9, arName: "ألو بيو-سللوز ماسك (Aloe Bio-cellulose Mask)", enName: "Aloe Bio-cellulose Mask", price: 144, img: "664.webp", category: "care", keywords: ["ماسك", "قناع", "بشرة", "mask", "cellulose"] },
-            { id: 10, arName: "ألو إم إس إم جل (Aloe MSM Gel)", enName: "Aloe MSM Gel", price: 123, img: "205.webp", category: "care", keywords: ["إم إس إم", "مفاصل", "جل", "msm", "gel"] },
-            { id: 11, arName: "زيت الشعر المغذي (Nourishing Hair Oil)", enName: "Nourishing Hair Oil", price: 126, img: "642.webp", category: "care", keywords: ["زيت", "شعر", "مغذي", "oil", "hair"] },
-            { id: 12, arName: "شامبو ألو جوجوبا (Aloe Jojoba Shampoo)", enName: "Aloe Jojoba Shampoo", price: 102, img: "640.webp", category: "care", keywords: ["شامبو", "جوجوبا", "شعر", "shampoo", "jojoba"] },
-            { id: 13, arName: "فوريفر دايلي (Forever Daily)", enName: "Forever Daily", price: 93, img: "439.png", category: "supplements", keywords: ["دايلي", "فيتامينات", "daily", "vitamins"] },
-            { id: 14, arName: "ألوفيرا جيلي (Aloe Vera Gelly)", enName: "Aloe Vera Gelly", price: 76, img: "061.webp", category: "care", keywords: ["جيلي", "صبار", "ألوفيرا", "gelly", "aloe"] },
-            { id: 15, arName: "ألو هيت لوشن (Aloe Heat Lotion)", enName: "Aloe Heat Lotion", price: 76, img: "064.jpg", category: "care", keywords: ["هيت", "لوشن", "مساج", "heat", "lotion"] },
-            { id: 16, arName: "ألو بروبوليس كريم (Aloe Propolis Creme)", enName: "Aloe Propolis Creme", price: 101, img: "051.webp", category: "care", keywords: ["بروبوليس", "عكبر", "كريم", "propolis", "creme"] },
-            { id: 17, arName: "فوريفر برايت جل الأسنان (Forever Bright Toothgel)", enName: "Forever Bright Toothgel", price: 39, img: "028.webp", category: "personal-care", keywords: ["أسنان", "برايت", "معجون", "toothgel", "bright"] },
-            { id: 18, arName: "ألو لبس مع جوجوبا (Aloe Lips with Jojoba)", enName: "Aloe Lips with Jojoba", price: 18, img: "022.webp", category: "personal-care", keywords: ["لبس", "شفاه", "مرطب", "lips", "jojoba"] },
-            { id: 19, arName: "فوريفر جارليك-ثايم (Forever Garlic-Thyme)", enName: "Forever Garlic-Thyme", price: 93, img: "065.webp", category: "supplements", keywords: ["ثوم", "زعتر", "جارليك", "garlic", "thyme"] },
-            { id: 20, arName: "فوريفر ثيرم (Forever Therm)", enName: "Forever Therm", price: 146, img: "463.webp", category: "weight", keywords: ["ثيرم", "حرق", "طاقة", "therm", "energy"] },
-            { id: 21, arName: "ألو أكتيفيتور (Aloe Activator)", enName: "Aloe Activator", price: 77, img: "612.webp", category: "care", keywords: ["أكتيفيتور", "منشط", "activator"] },
-            { id: 22, arName: "فوريفر ألو سكراب (Forever Aloe Scrub)", enName: "Forever Aloe Scrub", price: 80, img: "238.webp", category: "care", keywords: ["سكراب", "مقشر", "scrub"] },
-            { id: 23, arName: "ألو فيرست (Aloe First)", enName: "Aloe First", price: 101, img: "040.webp", category: "care", keywords: ["فيرست", "بخاخ", "first"] },
-            { id: 24, arName: "ألو موسترايزينغ لوشن (Aloe Moisturizing Lotion)", enName: "Aloe Moisturizing Lotion", price: 76, img: "063.webp", category: "care", keywords: ["لوشن", "مرطب", "moisturizing"] },
-            { id: 25, arName: "ألو إيفر-شيلد (Aloe Ever-Shield Deodorant)", enName: "Aloe Ever-Shield Deodorant", price: 38, img: "067.webp", category: "personal-care", keywords: ["مزيل", "عرق", "إيفرشيلد", "deodorant", "shield", "067"] },
-            { id: 26, arName: "ألو أفوكادو فايس آند بودي صوب (Aloe Avocado Face & Body Soap)", enName: "Aloe Avocado Face & Body Soap", price: 39, img: "284.webp", category: "personal-care", keywords: ["صابون", "أفوكادو", "soap", "avocado"] },
-            { id: 27, arName: "فوريفر ألُوفا (Forever Alofa)", enName: "Forever Alofa", price: 152, img: "643.webp", category: "care", keywords: ["ألُوفا", "عطر", "parfum", "alofa"] },
-            { id: 28, arName: "فوريفر مالوسي (Forever Malosi)", enName: "Forever Malosi", price: 152, img: "644.webp", category: "care", keywords: ["مالوسي", "عطر", "parfum", "malosi"] },
-            { id: 29, arName: "ألو بودي واش (Aloe Body Wash)", enName: "Aloe Body Wash", price: 122, img: "646.webp", category: "care", keywords: ["بودي", "واش", "استحمام", "body", "wash"] },
-            { id: 30, arName: "ألو بودي لوشن (Aloe Body Lotion)", enName: "Aloe Body Lotion", price: 122, img: "647.webp", category: "care", keywords: ["بودي", "لوشن", "مرطب", "body", "lotion"] },
-            { id: 31, arName: "فوريفر ألو فيرا جل (Forever Aloe Vera Gel)", enName: "Forever Aloe Vera Gel", price: 133, img: "815.webp", category: "drinks", keywords: ["عصير", "صبار", "ألوفيرا", "جل", "aloe", "vera", "gel", "drink", "815"] }
+
+
+        let products = JSON.parse(localStorage.getItem('store_custom_products_v2_2025')) || [
+            {id: 1, arName: "ابدأ رحلتك مع فوريفر (Start Your Journey Pack)", enName: "Start Your Journey Pack", price: 1738.42, points: 2640, img: "634.webp", category: "packs", keywords: ["باقة", "مجموعة", "رحلتك", "pack", "journey"]},
+            {id: 2, arName: "فوريفر ألوفيرا جل (Aloe Vera Gel)", enName: "Aloe Vera Gel", price: 129.21, points: 0.113, img: "815.webp", category: "drinks", keywords: ["عصير", "صبار", "ألوفيرا", "جل", "aloe", "vera", "gel", "drink"]},
+            {id: 3, arName: "ألو لبس (Aloe Lips)", enName: "Aloe Lips", price: 18.42, points: 0.016, img: "022.webp", category: "personal-care", keywords: ["لبس", "شفاه", "مرطب", "lips"]},
+            {id: 4, arName: "فوريفر بي بولين (Forever Bee Pollen)", enName: "Forever Bee Pollen", price: 77.79, points: 0.068, img: "https://cdn.foreverliving.com/content/products/images/forever_bee_pollen_pd_category_256_X_256_1786444341629.jpg", category: "supplements", keywords: ["بي بولين", "حبوب لقاح", "نحل", "طاقة", "bee", "pollen"]},
+            {id: 5, arName: "ألو برايت توث جل (Aloe Bright Toothgel)", enName: "Aloe Bright Toothgel", price: 39.20, points: 0.035, img: "028.webp", category: "personal-care", keywords: ["أسنان", "معجون", "toothgel", "bright"]},
+            {id: 6, arName: "فوريفر رويال جيلي (Forever Royal Jelly)", enName: "Forever Royal Jelly", price: 168.44, points: 0.148, img: "036.webp", category: "supplements", keywords: ["رويال", "جيلي", "عكبر", "royal", "jelly"]},
+            {id: 7, arName: "ألو فيرست سبراي (Aloe First Spray)", enName: "Aloe First Spray", price: 101.19, points: 0.089, img: "040.webp", category: "care", keywords: ["فيرست", "بخاخ", "first", "spray"]},
+            {id: 8, arName: "ألو بروبوليس كريم (Aloe Propolis Creme)", enName: "Aloe Propolis Creme", price: 101.19, points: 0.089, img: "051.webp", category: "care", keywords: ["بروبوليس", "عكبر", "كريم", "propolis", "creme"]},
+            {id: 9, arName: "ألوفيرا جيلي (Aloe Vera Gelly)", enName: "Aloe Vera Gelly", price: 76.46, points: 0.067, img: "061.webp", category: "care", keywords: ["جيلي", "صبار", "ألوفيرا", "gelly", "aloe"]},
+            {id: 10, arName: "ألو موسترايزينغ لوشن (Aloe Moisturizing Lotion)", enName: "Aloe Moisturizing Lotion", price: 76.46, points: 0.067, img: "063.webp", category: "care", keywords: ["لوشن", "مرطب", "moisturizing", "lotion"]},
+            {id: 11, arName: "ألو هيت لوشن (Aloe Heat Lotion)", enName: "Aloe Heat Lotion", price: 76.46, points: 0.067, img: "https://cdn.foreverliving.com/content/products/images/aloe_heat_lotion_pd_main_512_X_512_1607846951607.jpg", category: "care", keywords: ["هيت", "لوشن", "مساج", "حرارة", "ألو", "heat", "lotion", "aloe"]},
+            {id: 12, arName: "فوريفر جارليك ثايم (Garlic Thyme)", enName: "Garlic Thyme", price: 92.62, points: 0.081, img: "065.webp", category: "supplements", keywords: ["ثوم", "زعتر", "جارليك", "garlic", "thyme"]},
+            {id: 13, arName: "ألو إيفر شيلد (Aloe Ever-Shield Deodorant)", enName: "Aloe Ever-Shield Deodorant", price: 39.00, points: 0.032, img: "067.webp", category: "personal-care", keywords: ["مزيل", "عرق", "إيفرشيلد", "deodorant", "shield"]},
+            {id: 14, arName: "فوريفر غارسينيا بلس (Garcinia Plus)", enName: "Garcinia Plus", price: 168.28, points: 0.148, img: "071.webp", category: "weight", keywords: ["غارسينيا", "تخسيس", "حرق", "garcinia"]},
+            {id: 15, arName: "زيت البهرنجراج للشعر (Bhringraj Hair Oil)", enName: "Bhringraj Hair Oil", price: 56.80, points: 0.50, img: "082.webp", category: "care", keywords: ["زيت", "شعر", "بهرنجراج", "hair", "oil"]},
+            {id: 16, arName: "ألو إم إس إم جل (Aloe MSM Gel)", enName: "Aloe MSM Gel", price: 123.28, points: 0.109, img: "205.webp", category: "care", keywords: ["إم إس إم", "مفاصل", "جل", "msm", "gel"]},
+            {id: 17, arName: "فوريفر بي هاني (Forever Bee Honey)", enName: "Forever Bee Honey", price: 86.35, points: 0.075, img: "https://cdn.foreverliving.com/content/products/images/forever_bee_honey_pd_main_512_X_512_1786708650663.png", category: "supplements", keywords: ["عسل", "نحل", "بي هاني", "bee", "honey", "forever"]},
+            {id: 18, arName: "فوريفر ألو سكراب (Forever Aloe Scrub)", enName: "Forever Aloe Scrub", price: 80.10, points: 0.070, img: "238.webp", category: "care", keywords: ["سكراب", "مقشر", "scrub"]},
+            {id: 19, arName: "صابون الأفوكادو للوجه والجسم (Avocado Face & Body Soap)", enName: "Avocado Face & Body Soap", price: 38.64, points: 0.034, img: "284.webp", category: "personal-care", keywords: ["صابون", "أفوكادو", "soap", "avocado"]},
+            {id: 20, arName: "فيتولايز للرجال (Forever Vitolize Men)", enName: "Forever Vitolize Men", price: 159.49, points: 0.109, img: "374.webp", category: "supplements", keywords: ["فيتولايز", "رجال", "مكمل", "vitolize", "men"]},
+            {id: 21, arName: "فوريفر أكتيك سي (Forever Arctic Sea)", enName: "Forever Arctic Sea", price: 168.27, points: 0.095, img: "376.webp", category: "supplements", keywords: ["أكتيك", "أوميغا", "سمك", "arctic", "sea", "omega"]},
+            {id: 22, arName: "فوريفر ثيرم (Forever Therm)", enName: "Forever Therm", price: 146.36, points: 0.129, img: "463.webp", category: "weight", keywords: ["ثيرم", "حرق", "طاقة", "therm", "energy"]},
+            {id: 23, arName: "فوريفر فايبر (Forever Fiber)", enName: "Forever Fiber", price: 152.81, points: 0.130, img: "464.webp", category: "weight", keywords: ["فايبر", "ألياف", "تخسيس", "fiber", "weight"]},
+            {id: 24, arName: "مقشر للبشرة (Smoothing Exfoliator)", enName: "Smoothing Exfoliator", price: 90.00, points: 0.078, img: "https://cdn.foreverliving.com/content/products/images/smoothing_exfoliator_pd_category_256_X_256_1561491730834.png", category: "care", keywords: ["مقشر", "بشرة", "تقشير", "exfoliator", "smoothing", "scrub"]},
+            {id: 25, arName: "تونر موازن (Balancing Toner)", enName: "Balancing Toner", price: 102.52, points: 0.089, img: "560.webp", category: "care", keywords: ["تونر", "موازن", "toner"]},
+            {id: 26, arName: "كريم العين المنشط (Awakening Eye Cream)", enName: "Awakening Eye Cream", price: 95.25, points: 0.083, img: "https://cdn.foreverliving.com/content/products/images/awakening_eye_cream_pd_category_256_X_256_1699909304847.png", category: "care", keywords: ["كريم", "عين", "منشط", "هالات", "تجاعيد", "awakening", "eye", "cream"]},
+            {id: 27, arName: "سونيا جل مضيء للبشرة (Sonya Illuminating Gel)", enName: "Sonya Illuminating Gel", price: 111.42, points: 0.098, img: "606.webp", category: "care", keywords: ["سونيا", "جل", "مضيء", "sonya", "illuminating"]},
+            {id: 28, arName: "ألو أكتيفيتور (Aloe Activator)", enName: "Aloe Activator", price: 77.29, points: 0.066, img: "612.webp", category: "care", keywords: ["أكتيفيتور", "منشط", "activator"]},
+            {id: 29, arName: "سيروم مرطب (Hydrating Serum)", enName: "Hydrating Serum", price: 163.17, points: 0.144, img: "618.webp", category: "care", keywords: ["سيروم", "مرطب", "بشرة", "serum", "hydrating"]},
+            {id: 30, arName: "صابون ألو سائل (Aloe Liquid Soap)", enName: "Aloe Liquid Soap", price: 100.15, points: 0.088, img: "https://cdn.foreverliving.com/content/products/images/aloe_liquid_soap_pd_main_512_X_512_1659524575840.jpg", category: "personal-care", keywords: ["صابون", "سائل", "ألوفيرا", "liquid", "soap", "aloe"]},
+            {id: 31, arName: "شامبو ألو جوجوبا (Aloe Jojoba Shampoo)", enName: "Aloe Jojoba Shampoo", price: 102.35, points: 0.090, img: "640.webp", category: "care", keywords: ["شامبو", "جوجوبا", "شعر", "shampoo", "jojoba"]},
+            {id: 32, arName: "بلسم ألو جوجوبا (Aloe Jojoba Conditioner)", enName: "Aloe Jojoba Conditioner", price: 110.20, points: 0.097, img: "https://cdn.foreverliving.com/content/products/images/aloe_jojoba_conditioner_pd_category_256_X_256_1619818356409.jpg", category: "care", keywords: ["بلسم", "جوجوبا", "شعر", "ألوفيرا", "ترطيب", "conditioner", "jojoba", "aloe"]},
+            {id: 33, arName: "زيت الشعر المغذي (Nourishing Hair Oil)", enName: "Nourishing Hair Oil", price: 126.10, points: 0.111, img: "https://cdn.foreverliving.com/content/products/images/nourishing_hair_oil_pd_category_256_X_256_1695353889114.jpg", category: "care", keywords: ["زيت", "شعر", "مغذي", "ألوفيرا", "أرغان", "جوجوبا", "nourishing", "hair", "oil"]},
+            {id: 34, arName: "فوريفر ألوفا عطر (Forever Alofa Fine Fragrance)", enName: "Forever Alofa Fine Fragrance", price: 152.23, points: 0.134, img: "643.webp", category: "care", keywords: ["ألوفا", "عطر", "parfum", "alofa"]},
+            {id: 35, arName: "فوريفر مالوسي عطر (Forever Malosi Fine Fragrance)", enName: "Forever Malosi Fine Fragrance", price: 152.23, points: 0.134, img: "644.webp", category: "care", keywords: ["مالوسي", "عطر", "parfum", "malosi"]},
+            {id: 36, arName: "ألو بودي واش (Aloe Body Wash)", enName: "Aloe Body Wash", price: 121.81, points: 0.107, img: "646.webp", category: "care", keywords: ["بودي", "واش", "استحمام", "body", "wash"]},
+            {id: 37, arName: "ألو بودي لوشن (Aloe Body Lotion)", enName: "Aloe Body Lotion", price: 121.81, points: 0.107, img: "647.webp", category: "care", keywords: ["بودي", "لوشن", "مرطب", "body", "lotion"]},
+            {id: 38, arName: "كريم مرطب عميق (Deep Moisturizing Cream)", enName: "Deep Moisturizing Cream", price: 153.13, points: 0.133, img: "651.webp", category: "care", keywords: ["كريم", "مرطب", "عميق", "cream", "moisturizing"]},
+            {id: 39, arName: "زيت البشرة التجديد (Replenishing Skin Oil)", enName: "Replenishing Skin Oil", price: 137.47, points: 0.121, img: "https://cdn.foreverliving.com/content/products/images/replenishing_skin_oil_pd_category_256_X_256_1723654035137.jpg", category: "care", keywords: ["زيت", "بشرة", "تجديد", "ترطيب", "ريتينول", "replenishing", "skin", "oil"]},
+            {id: 40, arName: "ألو بيوسلولوز ماسك (Aloe Bio-cellulose Mask)", enName: "Aloe Bio-cellulose Mask", price: 144.27, points: 0.127, img: "664.webp", category: "care", keywords: ["ماسك", "قناع", "بشرة", "mask", "cellulose"]},
+            {id: 41, arName: "فوريفر مارين كولاجين (Forever Marine Collagen)", enName: "Forever Marine Collagen", price: 0.00, points: 0.327, img: "https://cdn.foreverliving.com/content/products/images/forever_marine_collagen__pd_thumbnail_128_X_128_1708426053337.jpg", category: "supplements", keywords: ["كولاجين", "مارين", "بشرة", "شعر", "مفاصل", "collagen", "marine", "skin"]},
+            {id: 42, arName: "سيستم العناية بالبشرة لوجيك باي فوريفر (Logic by Forever Skin Care System)", enName: "Logic by Forever Skin Care System", price: 0.00, points: 0.275, img: "https://cdn.foreverliving.com/content/products/images/logic_by_forever__skin_care_system_pd_category_256_X_256_1770793165190.jpg", category: "care", keywords: ["لوجيك", "عناية", "بشرة", "غسول", "مرطب", "سيستم", "logic", "skincare", "system"]},
+            {id: 43, arName: "إسنس الألوفيرا الموازن لوجيك باي فوريفر (Logic Balancing Aloe Essence)", enName: "Logic Balancing Aloe Essence", price: 0.00, points: 0.096, img: "https://cdn.foreverliving.com/content/products/images/logic_by_forever__balancing_aloe_essence___pd_category_256_X_256_1746022386017.jpg", category: "care", keywords: ["لوجيك", "إسنس", "ألوفيرا", "تونر", "ترطيب", "بشرة", "logic", "aloe", "essence", "balancing"]},
+            {id: 44, arName: "جل مرطب مهدئ للبشرة لوجيك باي فوريفر (Logic Soothing Gel Moisturizer)", enName: "Logic Soothing Gel Moisturizer", price: 0.00, points: 0.106, img: "https://cdn.foreverliving.com/content/products/images/logic_by_forever__soothing_gel_moisturizer___pd_category_256_X_256_1745955046526.jpg", category: "care", keywords: ["لوجيك", "جل", "مرطب", "مهدئ", "بشرة", "ترطيب", "logic", "soothing", "gel", "moisturizer"]},
+            {id: 45, arName: "جل تنظيف الوجه بالألوفيرا لوجيك باي فوريفر (Logic Aloe Gel Cleanser)", enName: "Logic Aloe Gel Cleanser", price: 0.00, points: 0.100, img: "https://cdn.foreverliving.com/content/products/images/logic_by_forever__aloe_gel_cleanser__pd_category_256_X_256_1746101793642.jpg", category: "care", keywords: ["لوجيك", "غسول", "تنظيف", "وجه", "ألوفيرا", "جل", "logic", "aloe", "gel", "cleanser"]},
+            {id: 46, arName: "فوريفر ألوفيرا بيري نكتار (Forever Aloe Berry Nectar)", enName: "Forever Aloe Berry Nectar", price: 0.00, points: 0.113, img: "https://cdn.foreverliving.com/content/products/images/forever_aloe_berry_nectar__pd_category_256_X_256_1721847010683.jpg", category: "drinks", keywords: ["بيري نكتار", "ألوفيرا", "عصير", "مشروب", "توت", "تفاح", "aloe", "berry", "nectar", "drink"]},
+            {id: 47, arName: "فوريفر فريدوم (Forever Freedom)", enName: "Forever Freedom", price: 0.00, points: 0.158, img: "https://cdn.foreverliving.com/content/products/images/Forever_Freedom___pd_category_256_X_256_1792130207181.jpg", category: "drinks", keywords: ["فريدوم", "فوريفر", "مفاصل", "غضاريف", "ألوفيرا", "مشروب", "freedom", "joints", "aloe", "drink"]}
         ];
 
+
+
         // Defaults for legacy product records and store pricing rules.
-        products = products.map(p => ({ ...p, points: Number.isFinite(Number(p.points)) ? Number(p.points) : 0 }));
+        products = products.map(p => ({...p, points: Number.isFinite(Number(p.points)) ? Number(p.points) : 0}));
         const VAT_RATE = 0.15;
         const SHIPPING_FEE = 30;
-        try { localStorage.setItem('store_custom_products', JSON.stringify(products)); } catch (_) { }
+        try {localStorage.setItem('store_custom_products_v2_2025', JSON.stringify(products));} catch (_) { }
         let favorites = [];
         try {
             const savedFavorites = JSON.parse(localStorage.getItem('forever_favorites') || '[]');
             favorites = Array.isArray(savedFavorites) ? savedFavorites.map(Number).filter(Number.isFinite) : [];
-        } catch (_) { favorites = []; }
+        } catch (_) {favorites = [];}
 
         const translations = {
             ar: {
@@ -2742,7 +2875,7 @@
             document.getElementById('cartPageContainer').classList.remove('active');
             document.getElementById('favoritesPageContainer').classList.remove('active');
             document.getElementById('adminDashboardContainer').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         function updateFavoritesCount() {
@@ -2760,7 +2893,7 @@
             document.getElementById('adminDashboardContainer').classList.add('hidden');
             document.getElementById('favoritesPageContainer').classList.add('active');
             renderFavoriteProducts();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         function renderFavoriteProducts() {
@@ -2796,7 +2929,7 @@
             showMainShop();
             const target = document.getElementById('products-grid');
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                target.scrollIntoView({behavior: 'smooth', block: 'start'});
             }
         }
 
@@ -2807,7 +2940,7 @@
             document.getElementById('cartPageContainer').classList.add('active');
             document.getElementById('favoritesPageContainer').classList.remove('active');
             updateCartUI();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         // لوحة التحكم الإدارية المحمية بكلمة مرور
@@ -2829,7 +2962,7 @@
                 document.getElementById('adminDashboardContainer').classList.remove('hidden');
                 renderAdminProductsTable();
                 renderCharts();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({top: 0, behavior: 'smooth'});
             } catch (error) {
                 console.error("خطأ:", error);
             } finally {
@@ -2935,7 +3068,7 @@
             if (existingItem) {
                 existingItem.qty += 1;
             } else {
-                cart.push({ name: productName, price: price, img: img, qty: 1 });
+                cart.push({name: productName, price: price, img: img, qty: 1});
             }
 
             saveCart();
@@ -2952,7 +3085,7 @@
                     cart[index].qty = newQty;
                 }
             } else if (newQty > 0) {
-                cart.push({ name: productName, price: price, img: img, qty: newQty });
+                cart.push({name: productName, price: price, img: img, qty: newQty});
             }
 
             saveCart();
@@ -2995,7 +3128,7 @@
 
             const targetSection = document.getElementById('products-grid');
             if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                targetSection.scrollIntoView({behavior: 'smooth', block: 'start'});
             }
         }
 
@@ -3010,7 +3143,7 @@
 
             const targetSection = document.getElementById('products-grid');
             if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                targetSection.scrollIntoView({behavior: 'smooth', block: 'start'});
             }
         }
 
@@ -3098,26 +3231,26 @@
         }
 
         function updateCartUI() {
-    const cartCount = document.getElementById('cart-count');
-    const cartTableContainer = document.getElementById('cartTableContainer');
-    const cartTotal = document.getElementById('cartTotal');
-    const checkoutBtn = document.getElementById('whatsappCheckoutBtn');
-    const t = translations[currentLang];
+            const cartCount = document.getElementById('cart-count');
+            const cartTableContainer = document.getElementById('cartTableContainer');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('whatsappCheckoutBtn');
+            const t = translations[currentLang];
 
-    if (!cartCount || !cartTableContainer || !cartTotal || !checkoutBtn) return;
+            if (!cartCount || !cartTableContainer || !cartTotal || !checkoutBtn) return;
 
-    let totalCount = 0;
-    let subtotalWithVat = 0; // المجموع الشامل للضريبة (كما يظهر للعميل)
+            let totalCount = 0;
+            let subtotalWithVat = 0; // المجموع الشامل للضريبة (كما يظهر للعميل)
 
-    if (cart.length === 0) {
-        cartTableContainer.innerHTML = `<p style="text-align: center; color: #888; padding: 35px;">${t.cartEmpty}</p>`;
-        checkoutBtn.style.display = 'none';
-        cartCount.textContent = '0';
-        cartTotal.innerHTML = `${t.total}: 0.00 ${t.sar}`;
-        return;
-    } 
+            if (cart.length === 0) {
+                cartTableContainer.innerHTML = `<p style="text-align: center; color: #888; padding: 35px;">${t.cartEmpty}</p>`;
+                checkoutBtn.style.display = 'none';
+                cartCount.textContent = '0';
+                cartTotal.innerHTML = `${t.total}: 0.00 ${t.sar}`;
+                return;
+            }
 
-    let tableHtml = `
+            let tableHtml = `
         <table class="cart-table dark:text-gray-200">
             <thead>
                 <tr>
@@ -3131,15 +3264,15 @@
             <tbody>
     `;
 
-    cart.forEach((item, index) => {
-        totalCount += item.qty;
-        let itemTotal = item.price * item.qty;
-        subtotalWithVat += itemTotal;
+            cart.forEach((item, index) => {
+                totalCount += item.qty;
+                let itemTotal = item.price * item.qty;
+                subtotalWithVat += itemTotal;
 
-        const safeName = item.name.replace(/'/g, "\\'");
-        const imgTag = item.img ? `<img src="${item.img}" class="cart-product-img" alt="${item.name}">` : `<div style="width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:#eee;border-radius:6px;font-size:20px;">📦</div>`;
+                const safeName = item.name.replace(/'/g, "\\'");
+                const imgTag = item.img ? `<img src="${item.img}" class="cart-product-img" alt="${item.name}">` : `<div style="width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:#eee;border-radius:6px;font-size:20px;">📦</div>`;
 
-        tableHtml += `
+                tableHtml += `
             <tr>
                 <td>
                     <div class="cart-product-cell">
@@ -3159,57 +3292,57 @@
                 <td><button class="btn-remove" onclick="removeFromCart(${index})">${t.deleteBtn}</button></td>
             </tr>
         `;
-    });
+            });
 
-    tableHtml += `</tbody></table>`;
-    cartTableContainer.innerHTML = tableHtml;
-    checkoutBtn.style.display = 'block';
+            tableHtml += `</tbody></table>`;
+            cartTableContainer.innerHTML = tableHtml;
+            checkoutBtn.style.display = 'block';
 
-    // استخراج قيمة المنتج الصافية وقيمة الضريبة المضمنة (15%)
-    const netSubtotal = subtotalWithVat / 1.15;
-    const vatAmount = subtotalWithVat - netSubtotal;
+            // استخراج قيمة المنتج الصافية وقيمة الضريبة المضمنة (15%)
+            const netSubtotal = subtotalWithVat / 1.15;
+            const vatAmount = subtotalWithVat - netSubtotal;
 
-    // رسوم الشحن الثابتة (30 ريال)
-    const shippingFee = subtotalWithVat > 0 ? 30 : 0;
+            // رسوم الشحن الثابتة (30 ريال)
+            const shippingFee = subtotalWithVat > 0 ? 30 : 0;
 
-    // المجموع الإجمالي النهائي (المجموع شامل الضريبة + رسوم الشحن)
-    const finalTotal = subtotalWithVat + shippingFee;
+            // المجموع الإجمالي النهائي (المجموع شامل الضريبة + رسوم الشحن)
+            const finalTotal = subtotalWithVat + shippingFee;
 
-    // تحديث تفاصيل الأسعار في واجهة السلة بشكل واضح ومفصل
-    if (currentLang === 'ar') {
-        cartTotal.innerHTML = `
+            // تحديث تفاصيل الأسعار في واجهة السلة بشكل واضح ومفصل
+            if (currentLang === 'ar') {
+                cartTotal.innerHTML = `
             <div style="font-size: 13px; color: #;">المجموع الصافي للمنتجات: ${netSubtotal.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">ضريبة القيمة المضافة (15% مشمولة): ${vatAmount.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">رسوم الشحن الثابتة: ${shippingFee.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 16px; font-weight: 800; color: #e74c3c; margin-top: 8px;">الإجمالي النهائي: ${finalTotal.toFixed(2)} ${t.sar}</div>
         `;
-    } else {
-        cartTotal.innerHTML = `
+            } else {
+                cartTotal.innerHTML = `
             <div style="font-size: 13px; color: #;">Net Subtotal: ${netSubtotal.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">VAT (15% included): ${vatAmount.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 13px; color: #;">Shipping Fee: ${shippingFee.toFixed(2)} ${t.sar}</div>
             <div style="font-size: 16px; font-weight: 800; color: #e74c3c; margin-top: 8px;">Final Total: ${finalTotal.toFixed(2)} ${t.sar}</div>
         `;
-    }
+            }
 
-    // إعداد رسالة واتساب الاحترافية والمفصلة للطلب
-    let rawMessage = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
+            // إعداد رسالة واتساب الاحترافية والمفصلة للطلب
+            let rawMessage = currentLang === 'ar' ? "السلام عليكم، أرغب في طلب المنتجات التالية:\n\n" : "Hello, I would like to order the following products:\n\n";
 
-    cart.forEach((item, index) => {
-        rawMessage += (index + 1) + ". " + item.name + " (الكمية: " + item.qty + " - السعر: " + (item.price * item.qty).toFixed(2) + " " + t.sar + ")\n";
-    });
+            cart.forEach((item, index) => {
+                rawMessage += (index + 1) + ". " + item.name + " (الكمية: " + item.qty + " - السعر: " + (item.price * item.qty).toFixed(2) + " " + t.sar + ")\n";
+            });
 
-    rawMessage += "\n-------------------";
-    rawMessage += "\n" + (currentLang === 'ar' ? `المجموع الفرعي: ${subtotalWithVat.toFixed(2)} ${t.sar}` : `Subtotal: ${subtotalWithVat.toFixed(2)} ${t.sar}`);
-    rawMessage += "\n" + (currentLang === 'ar' ? `(مضمنة ضريبة القيمة المضافة 15%: ${vatAmount.toFixed(2)} ${t.sar})` : `(Includes 15% VAT: ${vatAmount.toFixed(2)} ${t.sar})`);
-    rawMessage += "\n" + (currentLang === 'ar' ? `رسوم الشحن: ${shippingFee.toFixed(2)} ${t.sar}` : `Shipping Fee: ${shippingFee.toFixed(2)} ${t.sar}`);
-    rawMessage += "\n" + (currentLang === 'ar' ? `الإجمالي النهائي: ${finalTotal.toFixed(2)} ${t.sar}` : `Final Total: ${finalTotal.toFixed(2)} ${t.sar}`);
+            rawMessage += "\n-------------------";
+            rawMessage += "\n" + (currentLang === 'ar' ? `المجموع الفرعي: ${subtotalWithVat.toFixed(2)} ${t.sar}` : `Subtotal: ${subtotalWithVat.toFixed(2)} ${t.sar}`);
+            rawMessage += "\n" + (currentLang === 'ar' ? `(مضمنة ضريبة القيمة المضافة 15%: ${vatAmount.toFixed(2)} ${t.sar})` : `(Includes 15% VAT: ${vatAmount.toFixed(2)} ${t.sar})`);
+            rawMessage += "\n" + (currentLang === 'ar' ? `رسوم الشحن: ${shippingFee.toFixed(2)} ${t.sar}` : `Shipping Fee: ${shippingFee.toFixed(2)} ${t.sar}`);
+            rawMessage += "\n" + (currentLang === 'ar' ? `الإجمالي النهائي: ${finalTotal.toFixed(2)} ${t.sar}` : `Final Total: ${finalTotal.toFixed(2)} ${t.sar}`);
 
-    const phone = "966546723820";
-    checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(rawMessage);
-    checkoutBtn.textContent = t.whatsappCheckout;
-    cartCount.textContent = totalCount;
-}
+            const phone = "966546723820";
+            checkoutBtn.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(rawMessage);
+            checkoutBtn.textContent = t.whatsappCheckout;
+            cartCount.textContent = totalCount;
+        }
 
         // إدارة محتوى المنتجات (CMS) في لوحة التحكم
         function renderAdminProductsTable() {
@@ -3287,11 +3420,11 @@
                 showToast("تم تعديل المنتج بنجاح!");
             } else {
                 const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
-                products.push({ id: newId, arName, enName, price, points, category, img, keywords: [arName] });
+                products.push({id: newId, arName, enName, price, points, category, img, keywords: [arName]});
                 showToast("تمت إضافة المنتج الجديد بنجاح!");
             }
 
-            localStorage.setItem('store_custom_products', JSON.stringify(products));
+            localStorage.setItem('store_custom_products_v2_2025', JSON.stringify(products));
             closeProductModal();
             renderAdminProductsTable();
             renderProducts(products);
@@ -3308,7 +3441,7 @@
                 localStorage.setItem('forever_favorites', JSON.stringify(favorites));
                 updateFavoritesCount();
                 if (document.getElementById('favoritesPageContainer')?.classList.contains('active')) renderFavoriteProducts();
-                localStorage.setItem('store_custom_products', JSON.stringify(products));
+                localStorage.setItem('store_custom_products_v2_2025', JSON.stringify(products));
                 renderAdminProductsTable();
                 renderProducts(products);
                 showToast("تم حذف المنتج بنجاح!");
@@ -3359,7 +3492,7 @@
                         borderRadius: 6
                     }]
                 },
-                options: { responsive: true, plugins: { legend: { display: false } } }
+                options: {responsive: true, plugins: {legend: {display: false}}}
             });
 
             const trafficCtx = document.getElementById('trafficChart').getContext('2d');
@@ -3376,7 +3509,7 @@
                         tension: 0.3
                     }]
                 },
-                options: { responsive: true, plugins: { legend: { display: false } } }
+                options: {responsive: true, plugins: {legend: {display: false}}}
             });
         }
 
@@ -3397,7 +3530,7 @@
             }
 
             slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; }
+            if (slideIndex > slides.length) {slideIndex = 1;}
 
             if (slides[slideIndex - 1]) {
                 slides[slideIndex - 1].classList.add("active");
@@ -3434,189 +3567,279 @@
             showSlides();
             updateCartUI();
         };
-            document.addEventListener('DOMContentLoaded', updateFavoritesCount);
+        document.addEventListener('DOMContentLoaded', updateFavoritesCount);
 
-</script>
-<!-- BIZMINDMAKERS_INVOICE_FEATURE_V1: إضافة مستقلة لإدارة الطلبات وطباعة الفواتير دون تعديل الكود السابق -->
-<style id="bizmindmakers-invoice-styles">
-    .bm-orders-panel { background:#fff; color:#1f2937; border:1px solid #e5e7eb; border-radius:16px; padding:22px; margin:0 0 28px; box-shadow:0 4px 16px rgba(0,0,0,.04); }
-    .dark .bm-orders-panel { background:#1f2937; color:#f3f4f6; border-color:#374151; }
-    .bm-orders-heading { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; }
-    .bm-orders-heading h3 { font-size:20px; font-weight:900; color:#163d2b; }
-    .dark .bm-orders-heading h3 { color:#a7f3d0; }
-    .bm-orders-scroll { overflow-x:auto; }
-    .bm-orders-table { width:100%; border-collapse:collapse; min-width:720px; font-size:13px; }
-    .bm-orders-table th,.bm-orders-table td { border-bottom:1px solid #e5e7eb; padding:11px 9px; text-align:right; vertical-align:middle; }
-    .dark .bm-orders-table th,.dark .bm-orders-table td { border-color:#374151; }
-    .bm-orders-table th { background:#f3f4f6; color:#163d2b; font-weight:800; }
-    .dark .bm-orders-table th { background:#374151; color:#a7f3d0; }
-    .bm-print-invoice-btn { background:#163d2b; color:#fff; border:0; border-radius:8px; padding:8px 12px; font-weight:800; cursor:pointer; white-space:nowrap; }
-    .bm-print-invoice-btn:hover { background:#0e2a1d; }
-    .bm-order-empty { padding:24px 10px; text-align:center; color:#6b7280; }
-    .bm-order-status { display:inline-block; padding:4px 8px; border-radius:999px; background:#fef3c7; color:#92400e; font-size:11px; font-weight:800; }
-    @media print { .bm-no-print { display:none !important; } }
-</style>
-<script id="bizmindmakers-invoice-feature">
-(function () {
-    'use strict';
-    const ORDERS_STORAGE_KEY = 'bizmindmakers_saved_orders_v1';
-
-    function bmReadOrders() {
-        try {
-            const value = JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY) || '[]');
-            return Array.isArray(value) ? value : [];
-        } catch (error) {
-            console.error('تعذر قراءة سجل الطلبات المحفوظة:', error);
-            return [];
+    </script>
+    <!-- BIZMINDMAKERS_INVOICE_FEATURE_V1: إضافة مستقلة لإدارة الطلبات وطباعة الفواتير دون تعديل الكود السابق -->
+    <style id="bizmindmakers-invoice-styles">
+        .bm-orders-panel {
+            background: #fff;
+            color: #1f2937;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 22px;
+            margin: 0 0 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .04);
         }
-    }
 
-    function bmSaveOrders(orders) {
-        try {
-            localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
-            return true;
-        } catch (error) {
-            console.error('تعذر حفظ الطلبات. قد تكون مساحة التخزين ممتلئة:', error);
-            alert('تعذر حفظ الطلب في هذا المتصفح. يرجى التأكد من تفعيل التخزين المحلي وتوفر مساحة كافية.');
-            return false;
+        .dark .bm-orders-panel {
+            background: #1f2937;
+            color: #f3f4f6;
+            border-color: #374151;
         }
-    }
 
-    function bmEscapeHtml(value) {
-        return String(value == null ? '' : value).replace(/[&<>"']/g, function (character) {
-            return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character];
-        });
-    }
+        .bm-orders-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
 
-    function bmCurrency(value) {
-        return (Number(value) || 0).toFixed(2) + ' ر.س';
-    }
+        .bm-orders-heading h3 {
+            font-size: 20px;
+            font-weight: 900;
+            color: #163d2b;
+        }
 
-    function bmCaptureCheckoutOrder() {
-        if (typeof cart === 'undefined' || !Array.isArray(cart) || cart.length === 0) return;
-        const items = cart.map(function (item) {
-            return {
-                id: item.id == null ? null : item.id,
-                name: String(item.name || 'منتج'),
-                price: Number(item.price) || 0,
-                qty: Math.max(1, Number(item.qty) || 1),
-                img: String(item.img || '')
+        .dark .bm-orders-heading h3 {
+            color: #a7f3d0;
+        }
+
+        .bm-orders-scroll {
+            overflow-x: auto;
+        }
+
+        .bm-orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 720px;
+            font-size: 13px;
+        }
+
+        .bm-orders-table th,
+        .bm-orders-table td {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 11px 9px;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .dark .bm-orders-table th,
+        .dark .bm-orders-table td {
+            border-color: #374151;
+        }
+
+        .bm-orders-table th {
+            background: #f3f4f6;
+            color: #163d2b;
+            font-weight: 800;
+        }
+
+        .dark .bm-orders-table th {
+            background: #374151;
+            color: #a7f3d0;
+        }
+
+        .bm-print-invoice-btn {
+            background: #163d2b;
+            color: #fff;
+            border: 0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-weight: 800;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .bm-print-invoice-btn:hover {
+            background: #0e2a1d;
+        }
+
+        .bm-order-empty {
+            padding: 24px 10px;
+            text-align: center;
+            color: #6b7280;
+        }
+
+        .bm-order-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: #fef3c7;
+            color: #92400e;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        @media print {
+            .bm-no-print {
+                display: none !important;
+            }
+        }
+    </style>
+    <script id="bizmindmakers-invoice-feature">
+        (function () {
+            'use strict';
+            const ORDERS_STORAGE_KEY = 'bizmindmakers_saved_orders_v1';
+
+            function bmReadOrders() {
+                try {
+                    const value = JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY) || '[]');
+                    return Array.isArray(value) ? value : [];
+                } catch (error) {
+                    console.error('تعذر قراءة سجل الطلبات المحفوظة:', error);
+                    return [];
+                }
+            }
+
+            function bmSaveOrders(orders) {
+                try {
+                    localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
+                    return true;
+                } catch (error) {
+                    console.error('تعذر حفظ الطلبات. قد تكون مساحة التخزين ممتلئة:', error);
+                    alert('تعذر حفظ الطلب في هذا المتصفح. يرجى التأكد من تفعيل التخزين المحلي وتوفر مساحة كافية.');
+                    return false;
+                }
+            }
+
+            function bmEscapeHtml(value) {
+                return String(value == null ? '' : value).replace(/[&<>"']/g, function (character) {
+                    return ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[character];
+                });
+            }
+
+            function bmCurrency(value) {
+                return (Number(value) || 0).toFixed(2) + ' ر.س';
+            }
+
+            function bmCaptureCheckoutOrder() {
+                if (typeof cart === 'undefined' || !Array.isArray(cart) || cart.length === 0) return;
+                const items = cart.map(function (item) {
+                    return {
+                        id: item.id == null ? null : item.id,
+                        name: String(item.name || 'منتج'),
+                        price: Number(item.price) || 0,
+                        qty: Math.max(1, Number(item.qty) || 1),
+                        img: String(item.img || '')
+                    };
+                });
+                const subtotal = items.reduce(function (sum, item) {return sum + item.price * item.qty;}, 0);
+                const netSubtotal = subtotal / 1.15;
+                const vatAmount = subtotal - netSubtotal;
+                const shippingFee = subtotal > 0 ? 30 : 0;
+                const now = new Date();
+                const order = {
+                    id: 'BM-' + now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0') + '-' + now.getTime().toString().slice(-6),
+                    createdAt: now.toISOString(),
+                    createdAtLocal: now.toLocaleString('ar-SA', {dateStyle: 'medium', timeStyle: 'short'}),
+                    currency: 'SAR',
+                    items: items,
+                    subtotal: subtotal,
+                    netSubtotal: netSubtotal,
+                    vatAmount: vatAmount,
+                    shippingFee: shippingFee,
+                    total: subtotal + shippingFee,
+                    status: 'تم فتح رابط واتساب — بانتظار تأكيد الطلب'
+                };
+                const orders = bmReadOrders();
+                orders.unshift(order);
+                if (bmSaveOrders(orders)) {
+                    // نسجل الطلب مرة واحدة عند الضغط على رابط إتمام الطلب، دون تغيير مسار واتساب الأصلي.
+                    try {sessionStorage.setItem('bm_last_saved_checkout', order.id);} catch (_) { }
+                }
+            }
+
+            function bmEnsureOrdersPanel() {
+                const dashboard = document.getElementById('adminDashboardContainer');
+                if (!dashboard || document.getElementById('bmOrdersPanel')) return;
+                const panel = document.createElement('section');
+                panel.id = 'bmOrdersPanel';
+                panel.className = 'bm-orders-panel';
+                panel.innerHTML = '<div class="bm-orders-heading"><div><h3>🧾 الطلبات والفواتير</h3><p style="font-size:12px;color:#6b7280;margin-top:4px">الطلبات التي تم بدء إتمامها عبر واتساب، مع إمكانية طباعة كل فاتورة بشكل مستقل.</p></div><button type="button" class="bm-print-invoice-btn bm-no-print" id="bmRefreshOrdersBtn">تحديث سجل الطلبات ↻</button></div><div id="bmOrdersTableHost"></div>';
+                const dashboardHeader = dashboard.firstElementChild;
+                if (dashboardHeader && dashboardHeader.nextElementSibling) {
+                    dashboard.insertBefore(panel, dashboardHeader.nextElementSibling);
+                } else {
+                    dashboard.prepend(panel);
+                }
+                document.getElementById('bmRefreshOrdersBtn').addEventListener('click', bmRenderOrders);
+                bmRenderOrders();
+            }
+
+            function bmRenderOrders() {
+                const host = document.getElementById('bmOrdersTableHost');
+                if (!host) return;
+                const orders = bmReadOrders();
+                if (!orders.length) {
+                    host.innerHTML = '<div class="bm-order-empty">لا توجد طلبات محفوظة حتى الآن. ستظهر الطلبات هنا عند الضغط على «إتمام الطلب عبر الواتساب» من السلة.</div>';
+                    return;
+                }
+                host.innerHTML = '<div class="bm-orders-scroll"><table class="bm-orders-table"><thead><tr><th>رقم الطلب</th><th>التاريخ</th><th>عدد القطع</th><th>الإجمالي</th><th>الحالة</th><th class="bm-no-print">الإجراء</th></tr></thead><tbody>' + orders.map(function (order, index) {
+                    const pieces = (order.items || []).reduce(function (sum, item) {return sum + (Number(item.qty) || 0);}, 0);
+                    return '<tr><td><strong>' + bmEscapeHtml(order.id) + '</strong></td><td>' + bmEscapeHtml(order.createdAtLocal || order.createdAt || '') + '</td><td>' + pieces + '</td><td><strong>' + bmCurrency(order.total) + '</strong></td><td><span class="bm-order-status">' + bmEscapeHtml(order.status || 'محفوظ') + '</span></td><td class="bm-no-print"><button type="button" class="bm-print-invoice-btn" data-bm-print-order="' + index + '">🖨️ طباعة الفاتورة</button></td></tr>';
+                }).join('') + '</tbody></table></div>';
+                host.querySelectorAll('[data-bm-print-order]').forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        const index = Number(button.getAttribute('data-bm-print-order'));
+                        const latestOrders = bmReadOrders();
+                        if (Number.isInteger(index) && latestOrders[index]) bmPrintInvoice(latestOrders[index]);
+                    });
+                });
+            }
+
+            function bmPrintInvoice(order) {
+                const printWindow = window.open('', '_blank', 'width=900,height=750');
+                if (!printWindow) {
+                    alert('يرجى السماح بالنوافذ المنبثقة لهذا الموقع حتى تتمكن من طباعة الفاتورة.');
+                    return;
+                }
+                const itemRows = (order.items || []).map(function (item, index) {
+                    return '<tr><td>' + (index + 1) + '</td><td>' + bmEscapeHtml(item.name) + '</td><td>' + (Number(item.qty) || 0) + '</td><td>' + bmCurrency(item.price) + '</td><td>' + bmCurrency((Number(item.price) || 0) * (Number(item.qty) || 0)) + '</td></tr>';
+                }).join('');
+                const invoiceHtml = '<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>فاتورة ' + bmEscapeHtml(order.id) + '</title><style>body{font-family:Tahoma,Arial,sans-serif;color:#222;margin:0;padding:28px;line-height:1.7}header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #163d2b;padding-bottom:18px;margin-bottom:22px;gap:20px}.brand{color:#163d2b;font-size:23px;font-weight:800}.muted{color:#666;font-size:12px}.invoice-title{font-size:24px;font-weight:800;margin:20px 0}.meta{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:15px 0 24px}.meta div{background:#f5f7f5;padding:10px 14px;border-radius:8px}table{width:100%;border-collapse:collapse;margin:18px 0}th,td{border:1px solid #ddd;padding:10px;text-align:right}th{background:#163d2b;color:#fff}.totals{width:min(100%,390px);margin-right:auto}.totals p{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #eee;padding:5px 0}.grand{font-size:19px;font-weight:800;color:#163d2b}.note{margin-top:26px;border-top:1px solid #ddd;padding-top:12px;font-size:12px;color:#666}.print-action{background:#163d2b;color:white;border:0;border-radius:7px;padding:10px 20px;font-weight:bold;cursor:pointer}@media print{body{padding:0}.print-action{display:none} }</style></head><body><header><div><div class="brand">متجر د. محمد النبهاني</div><div class="muted">BizmindMakers | منتجات فوريفر ليفينج</div></div><div><strong>فاتورة طلب</strong><br><span class="muted">Invoice</span></div></header><div class="invoice-title">فاتورة رقم: ' + bmEscapeHtml(order.id) + '</div><div class="meta"><div><strong>تاريخ الطلب:</strong><br>' + bmEscapeHtml(order.createdAtLocal || order.createdAt || '') + '</div><div><strong>حالة الطلب:</strong><br>' + bmEscapeHtml(order.status || 'محفوظ') + '</div></div><table><thead><tr><th>#</th><th>المنتج</th><th>الكمية</th><th>سعر الوحدة</th><th>الإجمالي</th></tr></thead><tbody>' + itemRows + '</tbody></table><div class="totals"><p><span>المجموع شامل الضريبة</span><strong>' + bmCurrency(order.subtotal) + '</strong></p><p><span>صافي المنتجات قبل الضريبة</span><strong>' + bmCurrency(order.netSubtotal) + '</strong></p><p><span>ضريبة القيمة المضافة (15% ضمن الأسعار)</span><strong>' + bmCurrency(order.vatAmount) + '</strong></p><p><span>رسوم الشحن</span><strong>' + bmCurrency(order.shippingFee) + '</strong></p><p class="grand"><span>الإجمالي النهائي</span><strong>' + bmCurrency(order.total) + '</strong></p></div><div class="note">هذه الفاتورة مستخرجة من تفاصيل السلة المحفوظة عند بدء إتمام الطلب. لا تُعد إثباتًا للدفع أو تأكيدًا نهائيًا للطلب ما لم يتم تأكيده بشكل مستقل.</div><p style="text-align:center;margin-top:22px"><button class="print-action" onclick="window.print()">طباعة الفاتورة</button></p><script>window.onload=function(){setTimeout(function(){window.print()},300)};<\/script></body></html>';
+                printWindow.document.open();
+                printWindow.document.write(invoiceHtml);
+                printWindow.document.close();
+            }
+
+            // حفظ نسخة من محتويات السلة عند بدء الانتقال إلى واتساب، مع الإبقاء على الرابط الأصلي كما هو.
+            document.addEventListener('click', function (event) {
+                const checkout = event.target && event.target.closest ? event.target.closest('#whatsappCheckoutBtn') : null;
+                if (!checkout) return;
+                try {bmCaptureCheckoutOrder();}
+                catch (error) {console.error('حدث خطأ أثناء حفظ الطلب:', error);}
+            }, true);
+
+            // إتاحة الدوال للتشغيل من لوحة التحكم دون تغيير الدوال الأصلية.
+            window.bmRenderSavedOrders = bmRenderOrders;
+            window.bmPrintSavedInvoice = function (orderId) {
+                const order = bmReadOrders().find(function (item) {return item.id === orderId;});
+                if (order) bmPrintInvoice(order);
             };
-        });
-        const subtotal = items.reduce(function (sum, item) { return sum + item.price * item.qty; }, 0);
-        const netSubtotal = subtotal / 1.15;
-        const vatAmount = subtotal - netSubtotal;
-        const shippingFee = subtotal > 0 ? 30 : 0;
-        const now = new Date();
-        const order = {
-            id: 'BM-' + now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0') + '-' + now.getTime().toString().slice(-6),
-            createdAt: now.toISOString(),
-            createdAtLocal: now.toLocaleString('ar-SA', { dateStyle: 'medium', timeStyle: 'short' }),
-            currency: 'SAR',
-            items: items,
-            subtotal: subtotal,
-            netSubtotal: netSubtotal,
-            vatAmount: vatAmount,
-            shippingFee: shippingFee,
-            total: subtotal + shippingFee,
-            status: 'تم فتح رابط واتساب — بانتظار تأكيد الطلب'
-        };
-        const orders = bmReadOrders();
-        orders.unshift(order);
-        if (bmSaveOrders(orders)) {
-            // نسجل الطلب مرة واحدة عند الضغط على رابط إتمام الطلب، دون تغيير مسار واتساب الأصلي.
-            try { sessionStorage.setItem('bm_last_saved_checkout', order.id); } catch (_) { }
-        }
-    }
 
-    function bmEnsureOrdersPanel() {
-        const dashboard = document.getElementById('adminDashboardContainer');
-        if (!dashboard || document.getElementById('bmOrdersPanel')) return;
-        const panel = document.createElement('section');
-        panel.id = 'bmOrdersPanel';
-        panel.className = 'bm-orders-panel';
-        panel.innerHTML = '<div class="bm-orders-heading"><div><h3>🧾 الطلبات والفواتير</h3><p style="font-size:12px;color:#6b7280;margin-top:4px">الطلبات التي تم بدء إتمامها عبر واتساب، مع إمكانية طباعة كل فاتورة بشكل مستقل.</p></div><button type="button" class="bm-print-invoice-btn bm-no-print" id="bmRefreshOrdersBtn">تحديث سجل الطلبات ↻</button></div><div id="bmOrdersTableHost"></div>';
-        const dashboardHeader = dashboard.firstElementChild;
-        if (dashboardHeader && dashboardHeader.nextElementSibling) {
-            dashboard.insertBefore(panel, dashboardHeader.nextElementSibling);
-        } else {
-            dashboard.prepend(panel);
-        }
-        document.getElementById('bmRefreshOrdersBtn').addEventListener('click', bmRenderOrders);
-        bmRenderOrders();
-    }
-
-    function bmRenderOrders() {
-        const host = document.getElementById('bmOrdersTableHost');
-        if (!host) return;
-        const orders = bmReadOrders();
-        if (!orders.length) {
-            host.innerHTML = '<div class="bm-order-empty">لا توجد طلبات محفوظة حتى الآن. ستظهر الطلبات هنا عند الضغط على «إتمام الطلب عبر الواتساب» من السلة.</div>';
-            return;
-        }
-        host.innerHTML = '<div class="bm-orders-scroll"><table class="bm-orders-table"><thead><tr><th>رقم الطلب</th><th>التاريخ</th><th>عدد القطع</th><th>الإجمالي</th><th>الحالة</th><th class="bm-no-print">الإجراء</th></tr></thead><tbody>' + orders.map(function (order, index) {
-            const pieces = (order.items || []).reduce(function (sum, item) { return sum + (Number(item.qty) || 0); }, 0);
-            return '<tr><td><strong>' + bmEscapeHtml(order.id) + '</strong></td><td>' + bmEscapeHtml(order.createdAtLocal || order.createdAt || '') + '</td><td>' + pieces + '</td><td><strong>' + bmCurrency(order.total) + '</strong></td><td><span class="bm-order-status">' + bmEscapeHtml(order.status || 'محفوظ') + '</span></td><td class="bm-no-print"><button type="button" class="bm-print-invoice-btn" data-bm-print-order="' + index + '">🖨️ طباعة الفاتورة</button></td></tr>';
-        }).join('') + '</tbody></table></div>';
-        host.querySelectorAll('[data-bm-print-order]').forEach(function (button) {
-            button.addEventListener('click', function () {
-                const index = Number(button.getAttribute('data-bm-print-order'));
-                const latestOrders = bmReadOrders();
-                if (Number.isInteger(index) && latestOrders[index]) bmPrintInvoice(latestOrders[index]);
+            document.addEventListener('DOMContentLoaded', function () {
+                bmEnsureOrdersPanel();
             });
-        });
-    }
-
-    function bmPrintInvoice(order) {
-        const printWindow = window.open('', '_blank', 'width=900,height=750');
-        if (!printWindow) {
-            alert('يرجى السماح بالنوافذ المنبثقة لهذا الموقع حتى تتمكن من طباعة الفاتورة.');
-            return;
-        }
-        const itemRows = (order.items || []).map(function (item, index) {
-            return '<tr><td>' + (index + 1) + '</td><td>' + bmEscapeHtml(item.name) + '</td><td>' + (Number(item.qty) || 0) + '</td><td>' + bmCurrency(item.price) + '</td><td>' + bmCurrency((Number(item.price) || 0) * (Number(item.qty) || 0)) + '</td></tr>';
-        }).join('');
-        const invoiceHtml = '<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>فاتورة ' + bmEscapeHtml(order.id) + '</title><style>body{font-family:Tahoma,Arial,sans-serif;color:#222;margin:0;padding:28px;line-height:1.7}header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #163d2b;padding-bottom:18px;margin-bottom:22px;gap:20px}.brand{color:#163d2b;font-size:23px;font-weight:800}.muted{color:#666;font-size:12px}.invoice-title{font-size:24px;font-weight:800;margin:20px 0}.meta{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:15px 0 24px}.meta div{background:#f5f7f5;padding:10px 14px;border-radius:8px}table{width:100%;border-collapse:collapse;margin:18px 0}th,td{border:1px solid #ddd;padding:10px;text-align:right}th{background:#163d2b;color:#fff}.totals{width:min(100%,390px);margin-right:auto}.totals p{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #eee;padding:5px 0}.grand{font-size:19px;font-weight:800;color:#163d2b}.note{margin-top:26px;border-top:1px solid #ddd;padding-top:12px;font-size:12px;color:#666}.print-action{background:#163d2b;color:white;border:0;border-radius:7px;padding:10px 20px;font-weight:bold;cursor:pointer}@media print{body{padding:0}.print-action{display:none} }</style></head><body><header><div><div class="brand">متجر د. محمد النبهاني</div><div class="muted">BizmindMakers | منتجات فوريفر ليفينج</div></div><div><strong>فاتورة طلب</strong><br><span class="muted">Invoice</span></div></header><div class="invoice-title">فاتورة رقم: ' + bmEscapeHtml(order.id) + '</div><div class="meta"><div><strong>تاريخ الطلب:</strong><br>' + bmEscapeHtml(order.createdAtLocal || order.createdAt || '') + '</div><div><strong>حالة الطلب:</strong><br>' + bmEscapeHtml(order.status || 'محفوظ') + '</div></div><table><thead><tr><th>#</th><th>المنتج</th><th>الكمية</th><th>سعر الوحدة</th><th>الإجمالي</th></tr></thead><tbody>' + itemRows + '</tbody></table><div class="totals"><p><span>المجموع شامل الضريبة</span><strong>' + bmCurrency(order.subtotal) + '</strong></p><p><span>صافي المنتجات قبل الضريبة</span><strong>' + bmCurrency(order.netSubtotal) + '</strong></p><p><span>ضريبة القيمة المضافة (15% ضمن الأسعار)</span><strong>' + bmCurrency(order.vatAmount) + '</strong></p><p><span>رسوم الشحن</span><strong>' + bmCurrency(order.shippingFee) + '</strong></p><p class="grand"><span>الإجمالي النهائي</span><strong>' + bmCurrency(order.total) + '</strong></p></div><div class="note">هذه الفاتورة مستخرجة من تفاصيل السلة المحفوظة عند بدء إتمام الطلب. لا تُعد إثباتًا للدفع أو تأكيدًا نهائيًا للطلب ما لم يتم تأكيده بشكل مستقل.</div><p style="text-align:center;margin-top:22px"><button class="print-action" onclick="window.print()">طباعة الفاتورة</button></p><script>window.onload=function(){setTimeout(function(){window.print()},300)};<\/script></body></html>';
-        printWindow.document.open();
-        printWindow.document.write(invoiceHtml);
-        printWindow.document.close();
-    }
-
-    // حفظ نسخة من محتويات السلة عند بدء الانتقال إلى واتساب، مع الإبقاء على الرابط الأصلي كما هو.
-    document.addEventListener('click', function (event) {
-        const checkout = event.target && event.target.closest ? event.target.closest('#whatsappCheckoutBtn') : null;
-        if (!checkout) return;
-        try { bmCaptureCheckoutOrder(); }
-        catch (error) { console.error('حدث خطأ أثناء حفظ الطلب:', error); }
-    }, true);
-
-    // إتاحة الدوال للتشغيل من لوحة التحكم دون تغيير الدوال الأصلية.
-    window.bmRenderSavedOrders = bmRenderOrders;
-    window.bmPrintSavedInvoice = function (orderId) {
-        const order = bmReadOrders().find(function (item) { return item.id === orderId; });
-        if (order) bmPrintInvoice(order);
-    };
-
-    document.addEventListener('DOMContentLoaded', function () {
-        bmEnsureOrdersPanel();
-    });
-    const originalShowAdminDashboard = window.showAdminDashboard;
-    if (typeof originalShowAdminDashboard === 'function') {
-        window.showAdminDashboard = async function () {
-            const result = await originalShowAdminDashboard.apply(this, arguments);
-            bmEnsureOrdersPanel();
-            bmRenderOrders();
-            return result;
-        };
-    } else {
-        // في حال تحميل هذا السكربت قبل تعريف دالة لوحة التحكم، أضف القسم عند أول فتح للوحة.
-        document.addEventListener('click', function () {
-            if (document.getElementById('adminDashboardContainer') && !document.getElementById('adminDashboardContainer').classList.contains('hidden')) bmEnsureOrdersPanel();
-        });
-    }
-})();
-</script>
-<!-- نهاية إضافة نظام الطلبات والفواتير -->
+            const originalShowAdminDashboard = window.showAdminDashboard;
+            if (typeof originalShowAdminDashboard === 'function') {
+                window.showAdminDashboard = async function () {
+                    const result = await originalShowAdminDashboard.apply(this, arguments);
+                    bmEnsureOrdersPanel();
+                    bmRenderOrders();
+                    return result;
+                };
+            } else {
+                // في حال تحميل هذا السكربت قبل تعريف دالة لوحة التحكم، أضف القسم عند أول فتح للوحة.
+                document.addEventListener('click', function () {
+                    if (document.getElementById('adminDashboardContainer') && !document.getElementById('adminDashboardContainer').classList.contains('hidden')) bmEnsureOrdersPanel();
+                });
+            }
+        })();
+    </script>
+    <!-- نهاية إضافة نظام الطلبات والفواتير -->
 
 </body>
 
